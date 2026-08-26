@@ -8,7 +8,7 @@ Before building the dashboard we want to establish
                          │
                          │ Product ID
                          ▼
-Dim_Customer ─────── Fact_Sales
+ Dim_Customer ─────── Fact_Sales
     │                    │
     │                    │ Order Date
     │                    ▼
