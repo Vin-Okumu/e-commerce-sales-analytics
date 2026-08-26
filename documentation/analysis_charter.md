@@ -17,7 +17,6 @@ Product and commercial performance	|Which products are driving demand, and are p
 Customer value	                    |Who are the most valuable customers and what characterizes them?
 Retention & Experience	            |Are customers returning, and what factors may influence their experience?
 Growth Opportunities	            |Where should management focus its resources?
-------------------------------------|---------------------------------------------------------------
 
 This gives this project a logical progression; from Performance to Action, through drivers, customers and experience respectively. 
 
@@ -95,10 +94,9 @@ Here we prefer to use a revenue vs rating or revenue vs discount scatter plot
 Additionally, insights from this metric shall be achieved from generating a product performance matrix
 
                 |High sales	                |Low sales
-----------------|---------------------------|-------------------------------------------------------
+----------------|---------------------------|--------------------------
 High ratings	|Star products	            |Growth opportunities
 Low ratings	    |Customer-experience risk	|Products requiring review
-----------------|---------------------------|-------------------------------------------------------
 
 #### Potential decision: 
 Determine which products should be:
@@ -156,5 +154,6 @@ Identify the customers and customer segments that contribute most strongly to th
 - Which geographic segments are most valuable?
 - Do high-spending customers have distinctive characteristics?
 
-
+#### Metrics
+- Customer revenue, Orders per customer, AOV, Customer tenure, Customer tier, Revenue contribution
 
