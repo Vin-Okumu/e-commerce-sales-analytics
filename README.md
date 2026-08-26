@@ -35,13 +35,43 @@ For this e-commerce data analytics project, we are most interested in answering 
 ### Commercial strategy
 -	Where should management focus resources to improve profitability and long-term growth?
 
+## Repository Structure
+
+ecommerce-commercial-analytics/
+│
+├── data/
+│   ├── raw/
+│   │   ├── sales.csv
+│   │   ├── products.csv
+│   │   └── customers.csv
+│   │
+│   └── processed/
+│       └── README.md
+│
+├── powerbi/
+│   └── ecommerce_analysis.pbix
+│
+├── documentation/
+│   ├── analysis_charter.md
+│   └── data_dictionary.md
+│
+├── screenshots/
+│   ├── executive_overview.png
+│   ├── product_performance.png
+│   ├── customer_analysis.png
+│   ├── retention_analysis.png
+│   └── growth_opportunities.png
+│
+├── README.md
+└── .gitignore
 
 ## Dataset
 
-Description of:
-- Sales data
-- Product data
-- Customer data
+- Sales data: contains transactional records for customer purchases. Each row represents a single order placed on the platform and links customers with products through Customer_ID and Product_ID. This table is ideal for revenue analysis, sales trends, payment analysis, delivery performance, and dashboard development.
+
+- Product data: stores information about products available on the e-commerce platform. It includes product details, pricing, discounts, inventory, ratings, and brand information. Each product is uniquely identified by Product_ID and is connected to sales.csv for transaction analysis.
+
+- Customer data: contains demographic information, contact details, registration history, and purchasing statistics for customers. Each record represents one unique customer and is linked to the sales.csv table through the Customer_ID column. This table is useful for customer segmentation, demographic analysis, customer lifetime value (CLV), and regional sales analysis.
 
 ## Tools
 
