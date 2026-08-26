@@ -13,10 +13,10 @@ The analysis focuses on five interconnected areas:
 Area	                            | Central Business Question
 ------------------------------------|---------------------------------------------------------------
 Business Performance	            | How is the business performing and where is growth coming from?
-Product and commercial performance	|Which products are driving demand, and are pricing and discounting being used effectively?
-Customer value	                    |Who are the most valuable customers and what characterizes them?
-Retention & Experience	            |Are customers returning, and what factors may influence their experience?
-Growth Opportunities	            |Where should management focus its resources?
+Product and commercial performance	| Which products are driving demand, and are pricing and discounting being used effectively?
+Customer value	                    | Who are the most valuable customers and what characterizes them?
+Retention & Experience	            | Are customers returning, and what factors may influence their experience?
+Growth Opportunities	            | Where should management focus its resources?
 
 This gives this project a logical progression; from Performance to Action, through drivers, customers and experience respectively. 
 
@@ -93,7 +93,7 @@ Decision being supported: - Management wants to determine which products and cat
 Here we prefer to use a revenue vs rating or revenue vs discount scatter plot 
 Additionally, insights from this metric shall be achieved from generating a product performance matrix
 
-                |High sales	                |Low sales
+-               |High sales	                |Low sales
 ----------------|---------------------------|--------------------------
 High ratings	|Star products	            |Growth opportunities
 Low ratings	    |Customer-experience risk	|Products requiring review
