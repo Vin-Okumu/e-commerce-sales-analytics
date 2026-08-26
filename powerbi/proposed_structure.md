@@ -7,9 +7,9 @@ What we are building is a Power BI dashboard built around six pages, rather than
 
 ## Page 1 — Executive Overview
 
-### Question: How is the business performing?
+#### Question: How is the business performing?
 
-### KPIs:
+#### KPIs:
 
 - Revenue
 - Orders
@@ -18,7 +18,7 @@ What we are building is a Power BI dashboard built around six pages, rather than
 - AOV
 - Repeat customer rate
 
-### Core visuals:
+#### Core visuals:
 
 - Revenue trend
 - Orders trend
@@ -27,9 +27,9 @@ What we are building is a Power BI dashboard built around six pages, rather than
 
 ## Page 2 — Product & Promotion Performance
 
-### Question: Which products are driving demand, and how effectively are discounts being used?
+#### Question: Which products are driving demand, and how effectively are discounts being used?
 
-### Focus:
+#### Focus:
 
 - Products
 - Categories
@@ -40,9 +40,9 @@ What we are building is a Power BI dashboard built around six pages, rather than
 
 ## Page 3 — Customer Value & Segmentation
 
-### Question: Who are our most valuable customers?
+#### Question: Who are our most valuable customers?
 
-### Focus:
+#### Focus:
 
 - Customer tiers
 - Spend
@@ -53,9 +53,9 @@ What we are building is a Power BI dashboard built around six pages, rather than
 
 ## Page 4 — Retention & Customer Experience
 
-### Question: Are we building long-term customer relationships?
+#### Question: Are we building long-term customer relationships?
 
-### Focus:
+#### Focus:
 
 - New vs repeat
 - Customer tenure
@@ -65,9 +65,9 @@ What we are building is a Power BI dashboard built around six pages, rather than
 
 ## Page 5 — Operations & Market Performance
 
-### Question: Where are operational or geographic problems affecting performance?
+#### Question: Where are operational or geographic problems affecting performance?
 
-### Focus:
+#### Focus:
 
 - Order status
 - Delivery time
@@ -77,7 +77,7 @@ What we are building is a Power BI dashboard built around six pages, rather than
 
 ## Page 6 — Growth Opportunities
 
-### Question: What should management do next?
+#### Question: What should management do next?
 
 This shall contain:
 
@@ -86,4 +86,3 @@ This shall contain:
 - Priority actions
 - Supporting evidence
 
-This final page is what I'd use to demonstrate that you understand business analytics rather than merely Power BI visualization.

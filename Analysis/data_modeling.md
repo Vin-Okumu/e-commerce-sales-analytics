@@ -2,19 +2,20 @@
 Data Modeling Requirements before Analysis
 </h1>
 
-Before building the dashboard we want to establish 
+Before building the dashboard we want to establish the dimensions as follows:
 
-                    Dim_Product
-                         │
-                         │ Product ID
-                         ▼
-  Dim_Customer ─────── Fact_Sales
-      │                    │
-      │                    │ Order Date
-      │                    ▼
-      │                Dim_Date
-      │
-      └── Customer ID
+
+                       Dim_Product
+                           │
+                           │ Product ID
+                           ▼
+                  Dim_Customer ─────── Fact_Sales
+                    │                    │
+                    │                    │ Order Date
+                    │                    ▼
+                    │                Dim_Date
+                    │
+                    └── Customer ID
 
 We also want to create a proper **Date dimension** rather than relying entirely on the raw order date
 
