@@ -1,4 +1,9 @@
-# E-Commerce Commercial Analytics
+<h1 align = "center">
+E-Commerce Commercial Analytics <br>
+
+<p align = "center">
+<img src = "../screenshots/Cover.png" width = "1000" height = "400">
+</p>
 
 ## Project Overview
 
