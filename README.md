@@ -37,33 +37,33 @@ For this e-commerce data analytics project, we are most interested in answering 
 
 ## Repository Structure
 
-ecommerce-commercial-analytics/
-│
-├── data/
-│   ├── raw/
-│   │   ├── sales.csv
-│   │   ├── products.csv
-│   │   └── customers.csv
-│   │
-│   └── processed/
-│       └── README.md
-│
-├── powerbi/
-│   └── ecommerce_analysis.pbix
-│
-├── documentation/
-│   ├── analysis_charter.md
-│   └── data_dictionary.md
-│
-├── screenshots/
-│   ├── executive_overview.png
-│   ├── product_performance.png
-│   ├── customer_analysis.png
-│   ├── retention_analysis.png
-│   └── growth_opportunities.png
-│
-├── README.md
-└── .gitignore
+    ecommerce-commercial-analytics/
+    │
+    ├── data/
+    │   ├── raw/
+    │   │   ├── sales.csv
+    │   │   ├── products.csv
+    │   │   └── customers.csv
+    │   │
+    │   └── processed/
+    │       └── README.md
+    │
+    ├── powerbi/
+    │   └── ecommerce_analysis.pbix
+    │
+    ├── documentation/
+    │   ├── analysis_charter.md
+    │   └── data_dictionary.md
+    │
+    ├── screenshots/
+    │   ├── executive_overview.png
+    │   ├── product_performance.png
+    │   ├── customer_analysis.png
+    │   ├── retention_analysis.png
+    │   └── growth_opportunities.png
+    │
+    ├── README.md
+    └── .gitignore
 
 ## Dataset
 
