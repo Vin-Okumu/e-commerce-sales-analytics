@@ -31,4 +31,43 @@ with:
 
 as the central transaction table.
 
-This is expected to make our DAX measures and time intelligence much cleaner.
+This we expect to make our DAX measures and time intelligence much cleaner.
+
+
+Our expectation is that the entire project can follow the following logic
+
+                    BUSINESS OBJECTIVE
+                           │
+                           ▼
+                How healthy is the business?
+                           │
+                           ▼
+                 Where does growth come from?
+                    /                \
+                   /                  \
+                  ▼                    ▼
+             PRODUCTS              CUSTOMERS
+                │                      │
+                ▼                      ▼
+         What drives demand?     Who creates value?
+                │                      │
+                ▼                      ▼
+          Pricing/discounts       Retention
+          Inventory              Segmentation
+          Ratings                Tenure
+                │                      │
+                └──────────┬───────────┘
+                           ▼
+                     OPERATIONS
+                           │
+                           ▼
+                 Delivery / Status
+                           │
+                           ▼
+                    CUSTOMER EXPERIENCE
+                           │
+                           ▼
+                 GROWTH OPPORTUNITIES
+                           │
+                           ▼
+                    MANAGEMENT ACTION
