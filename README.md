@@ -37,7 +37,7 @@ For this e-commerce data analytics project, we are most interested in answering 
 
 ## Repository Structure
 
-    ecommerce-commercial-analytics/
+    | e-commerce-commercial-analytics/
     │
     ├── data/
     │   ├── raw/
