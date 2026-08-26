@@ -2,7 +2,7 @@
 E-Commerce Commercial Analytics <br>
 
 <p align = "center">
-<img src = "../images/Cover.png" width = "900" height = "400">
+<img src = "images/Cover.png" width = "900" height = "400">
 </p>
 
 ## Project Overview
