@@ -20,7 +20,7 @@ Growth Opportunities	            | Where should management focus its resources?
 
 This gives this project a logical progression; from Performance to Action, through drivers, customers and experience respectively. 
 
-### Business Question 1: How is the Business Performance?
+### Business Question 1 — How is the Business Performance?
 
 #### Decision being supported: 
  Management needs to understand whether the business is experiencing healthy growth and which factors are contributing to overall performance.
@@ -83,7 +83,7 @@ We are interested in identifying whether the business’ growth is driven by:
 #### Potential decision
 Management can determine where growth is coming from and whether growth appears broad-based or concentrated in particular products, customers or markets. 
 
-### Business Question 2: Which products are driving commercial performance?
+### Business Question 2 — Which products are driving commercial performance?
 
 Decision being supported: - Management wants to determine which products and categories deserve commercial attention and which may require intervention. 
 
@@ -124,7 +124,7 @@ Determine which products should be:
 -	Potentially deprioritized
 -	Investigated for customer-experience issues
 
-### Business Question 3: Is discounting generating enough demand?
+### Business Question 3 — Is discounting generating enough demand?
 This deserves its own analysis because our data supports both product-level discounts and coupon discounts.
 
 #### Decision being supported
@@ -167,7 +167,7 @@ Should inform future promotional strategy and identify products/categories where
 
 Importantly, this should be described as discount efficiency and not profitability since the data doesn't include COGS/ product acquisition cost. 
 
-### Business Question 4: Who are the most valuable customers?
+### Business Question 4 — Who are the most valuable customers?
 
 #### Decision being supported
 Identify the customers and customer segments that contribute most strongly to the business.
