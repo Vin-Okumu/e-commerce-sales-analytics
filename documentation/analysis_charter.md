@@ -93,10 +93,10 @@ Decision being supported: - Management wants to determine which products and cat
 Here we prefer to use a revenue vs rating or revenue vs discount scatter plot 
 Additionally, insights from this metric shall be achieved from generating a product performance matrix
 
--               |High sales	                |Low sales
-----------------|---------------------------|--------------------------
-High ratings	|Star products	            |Growth opportunities
-Low ratings	    |Customer-experience risk	|Products requiring review
+---          |High sales	            |Low sales
+-------------|--------------------------|--------------------------
+High ratings |Star products	            |Growth opportunities
+Low ratings	 |Customer-experience risk	|Products requiring review
 
 #### Potential decision: 
 Determine which products should be:
