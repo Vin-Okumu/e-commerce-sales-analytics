@@ -1,3 +1,7 @@
+<h1 align = "center">
+Analysis Charter
+</h1>
+
 ## Project Purpose
 ### Business Objective
 Assess the commercial and operational performance of an e-commerce business to identify the products, customers, markets, and operational factors driving growth, while uncovering opportunities to improve customer retention, sales efficiency, and long-term business performance.
