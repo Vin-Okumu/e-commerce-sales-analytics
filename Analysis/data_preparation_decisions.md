@@ -316,9 +316,9 @@ The next question is, perhaps, what should actually happen during data preparati
 
 Now we can move into the next notebook:
 
-analysis/
-├── 01_data_profiling.ipynb
-└── 02_data_preparation.ipynb
+    analysis/
+    ├── 01_data_profiling.ipynb
+    └── 02_data_preparation.ipynb
 
 Our philosophy remains:
 
