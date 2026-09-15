@@ -84,10 +84,30 @@ For this e-commerce data analytics project, we are most interested in answering 
 - Power Query
 - DAX
 - Git/GitHub
+- Python
 
 ## Dashboard
 
-Screenshots of the major Power BI pages.
+### Page 1: Executive Overview
+This part of the dashboard answers the question: How is the business performing overall?
+
+Ideally, the interest here is to identify trends such as in net transaction over time, which illustrate commercial performance/
+
+We are also interested in identifying which product categories drive what proportion of commercial value, which hint at category concentration.
+
+Lastly, we want to find out the customer mix i.e., which customer tier contribute to what proportion of transaction value. 
+
+<p align = "center">
+<img src = "screenshots/executive_overview.png" width = "900" height = "400">
+</p>
+
+For instance, in the 2026 period, as shown in the above screenshot, we can see that although the net transaction value has flactuated, it has been relatively been higher than the previous year.
+
+In terms of product performance, it's noticeable that electronics drive the majority of commercial value for the e-commerce platform, with over 1 bn in transaction value.
+
+Further, the dashboard shows that platinum customers drive the most sales for the platform, being involved in over 1.2 billion in transaction value in 2026.
+
+The score cards further illustrate the e-commerce platform's efficiency, especially in terms of delivery, with products seen to be delivered in roughly 5 days from date of purchase.
 
 ## Key Findings
 
