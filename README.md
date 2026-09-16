@@ -135,7 +135,8 @@ This page is intended to answer the questions **What are we selling? Who is buyi
 <img src = "screenshots/customer_analysis.png" width = "900" height = "400">
 
 From the illustration above, we can see that the page illustrates that:
-    - Most customers using the platform subscribe to the **platinum** tier, the tier boasting over 20,000 customers who transacted in 2026 alone.
+
+   - Most customers using the platform subscribe to the **platinum** tier, the tier boasting over 20,000 customers who transacted in 2026 alone.
 
     - The most value is driven by customers in the platinum tier, who were involved in transactions worth over 1.25 billion rupees in 2026.
 
