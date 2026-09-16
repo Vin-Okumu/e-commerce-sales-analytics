@@ -151,7 +151,7 @@ From the illustration above, we can see that the page illustrates that:
 
 This page was intended to answer the question: **Who are our customers and where does customer value come from?**
 
-    - The interest here is to discern whether customers are coming back, and if they are, how frequently do they purchase, and how does their behavior change over time?
+- The interest here is to discern whether customers are coming back, and if they are, how frequently do they purchase, and how does their behavior change over time?
 
 <p align = "center">
 <img src = "screenshots/retention_and_customer_behavior.png" width = "900" height = "400">
@@ -166,6 +166,10 @@ The page shows that in 2026:
 
 ### Operations
 
+This page was intended to answer the questions: **How effectively is teh business fulfilling customer orders? and Where are operational problems affecting customer experience or commercial performance?**
+
+<p align = "center">
+<img src = "screenshots/operations.png" width = "900" height = "400">
 
 ### Growth Opportunities
 
