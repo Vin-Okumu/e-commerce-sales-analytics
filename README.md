@@ -138,16 +138,31 @@ From the illustration above, we can see that the page illustrates that:
 
    - Most customers using the platform subscribe to the **platinum** tier, the tier boasting over 20,000 customers who transacted in 2026 alone.
 
-    - The most value is driven by customers in the platinum tier, who were involved in transactions worth over 1.25 billion rupees in 2026.
+   - The most value is driven by customers in the platinum tier, who were involved in transactions worth over 1.25 billion rupees in 2026.
 
-    - Again, customers subscribing to the platinum tier turn out to make the most purchases per trasaction, averaging 2 orders per customer.
+   - Again, customers subscribing to the platinum tier turn out to make the most purchases per trasaction, averaging 2 orders per customer.
 
-This page further stamps the value of customers subsrcibing to the platinum tier, indicating they are the most likely to repeatedly purchase products through the platform. 
-    - It shows that platinum customers are 60.2% likely to purchase products again using the platform, gold tier customers only coming second with 52.8% chances of becoming repeat customers.
-The score cards, illustrate that each customer using the platform is involved in transactions worth an average of 45,800 rupees.
+   - This page further stamps the value of customers subsrcibing to the platinum tier, indicating they are the most likely to repeatedly purchase products through the platform. 
+       - It shows that platinum customers are 60.2% likely to purchase products again using the platform, gold tier customers only coming second with 52.8% chances of becoming repeat customers.
+
+   - The score cards, illustrate that each customer using the platform is involved in transactions worth an average of 45,800 rupees.
 
 ### Retention & Customer Behavior
 
+This page was intended to answer the question: **Who are our customers and where does customer value come from?**
+
+    - The interest here is to discern whether customers are coming back, and if they are, how frequently do they purchase, and how does their behavior change over time?
+
+<p align = "center">
+<img src = "screenshots/retention_and_customer_behavior.png" width = "900" height = "400">
+
+The page shows that in 2026:
+
+- A surge in repeat customers was realized between February and March, and between April and June
+
+    - This trend simultaneously coincided with a surge in purchase frequency in the said periods 
+
+- The commercial value chart illustrates that repeat customers drive transaction value, with this group being involved in transactions worth more than 1 billion rupees between January and June of 2026.
 
 ### Operations
 
