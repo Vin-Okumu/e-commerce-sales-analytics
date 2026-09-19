@@ -115,7 +115,7 @@ For this e-commerce data analytics project, we are most interested in answering 
 <img src = "screenshots/executive_overview.png" width = "900" height = "400">
 </p>
 
-### Key Findings - period 2026
+### Key Findings: Period - 2026
 - In 2026, between January and June, the net transaction value trend shows a relatively better performance compared to the same period in 2025.
     - This allows for the assumption that the business is growing, as the net transaction in 2026 is an improvement on the net transaction in the previous year. 
         - This helps answer the question of whether the business growing.
@@ -171,7 +171,7 @@ For this e-commerce data analytics project, we are most interested in answering 
 <img src = "screenshots/product_performance.png" width = "900" height = "400">
 </p>
 
-### Key findings - period 2026
+### Key Findings: Period - 2026
 - The page illustrates that in 2026, the top 5 performing products came from electonics, home, sports, fahion and grocery categories.
 
     - It further illustrates that electronics contributed significantly more in transaction value than other four categories combined. 
@@ -190,39 +190,58 @@ For this e-commerce data analytics project, we are most interested in answering 
     - This, however, should not be taken as the worst performing product on the platform, given the low unit price of the product, compared to others.
 
         - Instead, the performance could be judged in terms of units sold. 
+### Recommendations
+
+- With electronics driving transaction value the most, the business is advised to give priority to this category of products to drive sales even further in future, even as it intends to diversify its portfolio to attract different customer tiers.
+
+- Although novels and other books looked to lead to least revenue by product, the business is advised against discarding this product since the net revenue may not tell the whole story about its performance. 
+
+    - Instead, the business is advised to monitor the product by units sold over the course of its financial year to discern whether proportions sold are encouraging.
 
 ## Page 3: Customer Analysis
 
-This page is intended to answer the questions **What are we selling? Who is buying? How valuable are they? and How is customer value distributed?**
+This page is intended to answer the questions: 
+- **What are we selling?** 
+- **Who is buying?** 
+- **How valuable are they?** and 
+- **How is customer value distributed?**
 
-- It gives insights into who are the most commercially valuable customers to the business, how customer value differs across segments and where the business should focus its customer strategy.
+- What we are interested in most is to get insights into who are the most commercially valuable customers to the business, how customer value differs across segments and where the business should focus its customer strategy.
 
 <p align = "center">
 <img src = "screenshots/customer_analysis.png" width = "900" height = "400">
+</p>
+### Key Findings: Period - 2026
+From the illustration above, it's evident that:
 
-From the illustration above, we can see that the page illustrates that:
-
-   - Most customers using the platform subscribe to the **platinum** tier, the tier boasting over 20,000 customers who transacted in 2026 alone.
+   - Most customers using the platform subscribe to the **platinum** tier.
+    - Platinum tier boasts over 20,000 customers who transacted in 2026 alone.
+    - Gold tier customers, on the other hand, are just shy of 5,000  
 
    - The most value is driven by customers in the platinum tier, who were involved in transactions worth over 1.25 billion rupees in 2026.
 
    - Again, customers subscribing to the platinum tier turn out to make the most purchases per trasaction, averaging 2 orders per customer.
 
    - This page further stamps the value of customers subsrcibing to the platinum tier, indicating they are the most likely to repeatedly purchase products through the platform. 
+
        - It shows that platinum customers are 60.2% likely to purchase products again using the platform, gold tier customers only coming second with 52.8% chances of becoming repeat customers.
 
    - The score cards, illustrate that each customer using the platform is involved in transactions worth an average of 45,800 rupees.
 
+### Recommendations
+
+- As already established, customers subscribing to the platinum tier drive the most value, therefore, the business is advised to prioritize product demand dictated by this tier.
+
 ## Page 4: Retention & Customer Behavior
 
-This page was intended to answer the question: **Who are our customers and where does customer value come from?**
+- This page seeks to answer the question: **Who are our customers and where does customer value come from?**
 
 - The interest here is to discern whether customers are coming back, and if they are, how frequently do they purchase, and how does their behavior change over time?
 
 <p align = "center">
 <img src = "screenshots/retention_and_customer_behavior.png" width = "900" height = "400">
-
-The page shows that in 2026:
+</p>
+### Key Findings: Period - 2026
 
 - A surge in repeat customers was realized between February and March, and between April and June
 
@@ -230,16 +249,74 @@ The page shows that in 2026:
 
 - The commercial value chart illustrates that repeat customers drive transaction value, with this group being involved in transactions worth more than 1 billion rupees between January and June of 2026.
 
+### Recommendations
+
+- The business is advised to prioritize product promotion during the periods February-March and April-June to capitalize on egagement of repeat customers and the upsurge of purchase frequency.
+
 ## Page 5: Operations
 
-This page is intended to answer the questions: **How effectively is the business fulfilling customer orders? and Where are operational problems affecting customer experience or commercial performance?**
+- This page is intended to answer the questions:
+
+    - **How effectively is the business fulfilling customer orders?** and 
+    
+    - **Where are operational problems affecting customer experience or commercial performance?**
+
+Here we are interested in drawing insights into what will improve order fulfillment, delivery performance, order-status outcomes and operational patterns over time and across locations.
 
 <p align = "center">
 <img src = "screenshots/operations.png" width = "900" height = "400">
+</p>
+### Key Findings: Period - 2026
+
+- Out of 59,000 orders placed, 80.27% were fulfilled, translating to moe than 49,000 orders being delivered between January and June of 2026
+
+- 2,900 orders were cancelled in the same duration, with a further 2,900 returned.
+
+- As at time of reporting, 6,000 orders are either under processing or being shipped
+
+- Orders placed by customers are delivered in an average of 4.5 days. However, toward June of 2026, the turn-around time is seen to increase significantly
+
+- UP state drives the most order placed, followed closely by Haryana and Rajasthan, respectively.
+     - UP accounted for 7772 orders placed between January and June 2026
+     - Haryana accounted for 7628 orders placed in the same duration, while Rajasthan accounted for 7497 orders.
+
+- The majority of orders, more than 30,000, were paid for using UPI, with COD payment following closely with 19,000 orders
+
+### Recommendations
+
+- The business is advised to:
+    - Uphold, or improve the current order delivery turn-around time
+    - Look into factors inflating the turn-around time for order delivery toward June
+
+- The business is also advised to promote UPI payment for customers as it emerges as the most convenient mode of payment.
 
 ## Page 6: Growth Opportunities
 
+- This page intends to provide insights into where the business can realistically grow commercial value, and which customers, products and market opportunities deserve attantion
 
+- The key is to answer the questions on:
+
+    - Where we can increase repeat purchasing
+    - Which products or categories have strong commercial potential
+    - Which customer segments or states are commercially attractive
+
+<p align = "center">
+<img src = "screenshots/growth_opportunities.png" width = "900" height = "400">
+</p>
+
+### Key Findings: Period - 2026
+
+- Between January and June 2026, repeat customers have driven commercial value the most for the business, accounting for over 1.2 billion rupees in revenue
+
+- Consumers aged between 26 and 35 contributed most to the business revenue, driving value by up to 0.6 billion rupees in revenue
+
+- The business is enjoying a 56.54% rate of customers becoming repeat customers
+
+### Recommendations
+
+- The business is advised to prioritize converting customers to repeat customers as it drives more value than one-time customer transaction.
+
+- By age, the business is advised to stock more products that appeal to customers above the age of 25, as this age group drives more value than any other. 
 
 # Project Structure
 
