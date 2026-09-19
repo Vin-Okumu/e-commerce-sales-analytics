@@ -50,7 +50,7 @@ E-Commerce Commercial Analytics <br>
 - One way of ensuring this is by understanding: 
     - what drives sales, 
     - which products and customers create the most value, and 
-    - where are we losing opportunities?
+    - where is the business losing opportunities?
 
 Such questions bring about various analytical dimensions that we are going to segment into six business areas:
 
@@ -97,15 +97,15 @@ For this e-commerce data analytics project, we are most interested in answering 
 - Power BI
 - Power Query
 - DAX
-- Git/GitHub
 - Python
+- Git/GitHub
 
 # Dashboard
 
-### Page 1: Executive Overview
+## Page 1: Executive Overview
 - This page of the dashboard answers the question: **How is the business performing overall?**
 
-    - Ideally, the interest here is to identify trends such as net transaction over time, which illustrate commercial performance.
+    - Ideally, our interest here is to identify trends such as net transaction over time, which illustrate commercial performance.
 
     - We are also interested in identifying which product categories drive what proportion of commercial value, which hint at category concentration.
 
@@ -115,31 +115,83 @@ For this e-commerce data analytics project, we are most interested in answering 
 <img src = "screenshots/executive_overview.png" width = "900" height = "400">
 </p>
 
-- The net transaction value trend shows a relatively better performance in 2026 compared to the same period in 2025.
-    - Therefore, to answer teh question, **is the business growing?** it's safe to allude that the business is generally growing 
-    - As to whether the growth is profitable, comparing the two trends shows that the business is selling more product than before, which gives a rough basis for alleging profitability.
-    
-- In answering teh question **which periods, categories and markets are driving financial performance?** the page shows that: 
-    - The end of Q1, between February and March of 2026, saw a rather sharp increase in demand for prouctsproduct performance, 
-    - At the same time, the top 5 categories chart shows that electronics drive the majority of commercial value for the e-commerce platform, with over 1 bn Indian rupees in transaction value.
-    - The customer tier chart shows that customers classified in the platinum tier drive the majority of commercial value for the platform.
+### Key Findings - period 2026
+- In 2026, between January and June, the net transaction value trend shows a relatively better performance compared to the same period in 2025.
+    - This allows for the assumption that the business is growing, as the net transaction in 2026 is an improvement on the net transaction in the previous year. 
+        - This helps answer the question of whether the business growing.
+        - This assumption is drawn from equating higher revenue to improved product sale, assuming the product prices remain the same.  
+        
+- In answering the question of which periods drive financial performance? the executive overview paints a clear picture that: 
+
+    - The end of Q1, between February and March of 2026, indicates a rather sharp increase in demand for proucts under order volume trend. 
+
+        - This we can take to mean that the business enjoys a good spell of product sales during this period compared to other seasons through the year. 
+
+- On the question of which products drive financial performance, this overview shows that:
+
+    - Electronics drive the majority of commercial value for the business, with over 1 bn Indian rupees in transaction value, evidence from the topn 5 categories by value chart.
+
+- Similarly, on the question of which customers drive financial performance, the executive overview shows that:
+
+    - Customers in the platinum tier drive the majority of commercial value for the platform.
+
+        - This tier, from the customer tier performance chart, is involved in transactions worth more than 1.2 billion rupees.
+
+        - The second tier, by a distance, is Gold tier, which is responsible for close to 100 million rupees.
 
 - From the score cards, it's evident that the e-commerce platform is quite efficient in its operations, especially in terms of delivery:
-    - We can see that products are delivered in roughly 5 days from date of purchase, which is a relatively effective turn-around time, given each order is valued at about 23,000 Indian rupees.
 
-### Product Performance
+    - Products are delivered in roughly 5 days from date of purchase, which is a relatively effective turn-around time.
 
-This page answers the question: **WHich products are particularly important among premium customers?**
+    - The delivery time is impressive given each order is valued at about 23,000 Indian rupees.
+
+### Recommendations
+- Given the business tends to draw higher volumes in customer traffic during the February-March period, the strategy should be to target huge sale volumes during this period
+
+    - One recommended approach would be for the business incentivize its products more during this period by offering significant discounts during this period and capitalize on the high customer traffic.
+
+    - An alternative approach would be to promote products more aggressively during this period through allied platforms with the aim of capitalizing on the huge traffic.
+
+- Regarding capitalizing on consummer segmentation, the busines is advised to capitalize on promoting its product  more aggressively to customers in the platinum tier, as this class of consumers tends to drive product sales.
+
+    - At the same time, the business is advised to explore the option of incentivizing its product to attract more customers in the gold and silver tiers
+    
+## Page 2: Product Performance
+
+- This page answers the question: **Which products are particularly important among premium customers?**
+
+ - Here, our biggest interest is to get insights regarding:
+
+    - Categories that generate the most value
+    - Products that drive value
+    - Commercial value coming from volume or price
+    - Whether there are products or categories that deserve management attention.
 
 <p align = "center">
 <img src = "screenshots/product_performance.png" width = "900" height = "400">
 </p>
 
-- The page illustrates that in 2026, electonics contribute way more in transaction value than four of the next bigest contributors combined. 
-- This observation is backed by the realization that in the same period, electronics were the most sought after products on the platform, with over 20,000 units sold, with only fashion products coming close with 15,000 units sold.
-- The chart on net transaction value by product shows that the top 10 products selling on the platform in the 2026 period are all electronics, teh Noise Watch V1 leading the way with transactions worth 46.8 million Indian rupees.
+### Key findings - period 2026
+- The page illustrates that in 2026, the top 5 performing products came from electonics, home, sports, fahion and grocery categories.
 
-### Customer Analysis
+    - It further illustrates that electronics contributed significantly more in transaction value than other four categories combined. 
+
+- In terms of products that drive value, in the same period, electronics emerged as the most sought after products for the business:
+
+    - Over 20,000 units were sold, 
+    - Only fashion products came close in terms of products sold, with 15,000 units sold.
+
+- In terms of net transaction value by product the top 10 products selling on the platform in 2026 period are all electronics.
+    - Best selling product overall is the Noise Watch V1 generating over 46.8 million Indian rupees in revenue.
+    - Samsung Mobile comes close second, generating over 43.1 million Indian rupees in revenue
+
+- Elsewhere, the least cummulative revenue by product was generated by fiction novels, generating 10 million rupees in revenue. 
+
+    - This, however, should not be taken as the worst performing product on the platform, given the low unit price of the product, compared to others.
+
+        - Instead, the performance could be judged in terms of units sold. 
+
+## Page 3: Customer Analysis
 
 This page is intended to answer the questions **What are we selling? Who is buying? How valuable are they? and How is customer value distributed?**
 
@@ -161,7 +213,7 @@ From the illustration above, we can see that the page illustrates that:
 
    - The score cards, illustrate that each customer using the platform is involved in transactions worth an average of 45,800 rupees.
 
-### Retention & Customer Behavior
+## Page 4: Retention & Customer Behavior
 
 This page was intended to answer the question: **Who are our customers and where does customer value come from?**
 
@@ -178,24 +230,16 @@ The page shows that in 2026:
 
 - The commercial value chart illustrates that repeat customers drive transaction value, with this group being involved in transactions worth more than 1 billion rupees between January and June of 2026.
 
-### Operations
+## Page 5: Operations
 
 This page is intended to answer the questions: **How effectively is the business fulfilling customer orders? and Where are operational problems affecting customer experience or commercial performance?**
 
 <p align = "center">
 <img src = "screenshots/operations.png" width = "900" height = "400">
 
-### Growth Opportunities
+## Page 6: Growth Opportunities
 
 
-
-# Key Findings
-
-Brief summary of the most important findings.
-
-# Recommendations
-
-Summary of recommended business actions.
 
 # Project Structure
 
