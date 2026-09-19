@@ -5,11 +5,54 @@ E-Commerce Commercial Analytics <br>
 <img src = "images/Cover.png" width = "900" height = "400">
 </p>
 
-## Project Overview
+# Repository Structure:
 
-For any e-commerce company, one of the overarching questions is usually: How can we improve profitability and sustainable growth by understanding what drives sales, which products and customers create the most value, and where are we losing opportunities?
+    | e-commerce-commercial-analytics/
+    │
+    ├── data/
+    │   ├── raw/
+    │   │   ├── sales.csv
+    │   │   ├── products.csv
+    │   │   └── customers.csv
+    │   │
+    │   └── processed/
+    │       ├── Dim_Customers.csv
+    │       ├── Dim_Products.csv
+    │       ├── Fact_Sales.csv
+    │       └── README.md
+    │
+    ├── powerbi/
+    │   ├── DAX_measure_layer.md
+    │   ├── proposed_structure.md
+    │   └── e-commerce-sales-analytics.pbix
+    │
+    ├── documentation/
+    │   ├── analysis_charter.md
+    │   ├── analysis_report.md
+    │   ├── data dictionary.md
+    │   └── data_dictionary.md
+    │
+    ├── screenshots/
+    │   ├── executive_overview.png
+    │   ├── product_performance.png
+    │   ├── customer_analysis.png
+    │   ├── operations.png
+    │   ├── retention_&_customer_behavior.png
+    │   └── growth_opportunities.png
+    │
+    ├── README.md
+    └── .gitignore
 
-Such a question brings about several analytical dimensions that can be segmented into six business areas:
+# Project Overview
+
+- As an e-commerce company, one of the overarching questions in staying industry-relevant and profitable is: **How can we improve profitability and sustainable growth?** 
+
+- One way of ensuring this is by understanding: 
+    - what drives sales, 
+    - which products and customers create the most value, and 
+    - where are we losing opportunities?
+
+Such questions bring about various analytical dimensions that we are going to segment into six business areas:
 
 1.	Revenue & profitability
 2.	Product performance
@@ -20,7 +63,7 @@ Such a question brings about several analytical dimensions that can be segmented
 
 For this e-commerce data analytics project, we are most interested in answering the following 12 interconnected questions:
 
-## Business Questions
+# Business Questions
 
 ### Business performance
 -	Is the business growing, and is that growth profitable?
@@ -40,37 +83,8 @@ For this e-commerce data analytics project, we are most interested in answering 
 ### Commercial strategy
 -	Where should management focus resources to improve profitability and long-term growth?
 
-## Repository Structure
 
-    | e-commerce-commercial-analytics/
-    │
-    ├── data/
-    │   ├── raw/
-    │   │   ├── sales.csv
-    │   │   ├── products.csv
-    │   │   └── customers.csv
-    │   │
-    │   └── processed/
-    │       └── README.md
-    │
-    ├── powerbi/
-    │   └── ecommerce_analysis.pbix
-    │
-    ├── documentation/
-    │   ├── analysis_charter.md
-    │   └── data_dictionary.md
-    │
-    ├── screenshots/
-    │   ├── executive_overview.png
-    │   ├── product_performance.png
-    │   ├── customer_analysis.png
-    │   ├── retention_analysis.png
-    │   └── growth_opportunities.png
-    │
-    ├── README.md
-    └── .gitignore
-
-## Dataset
+# Dataset
 
 - Sales data: contains transactional records for customer purchases. Each row represents a single order placed on the platform and links customers with products through Customer_ID and Product_ID. This table is ideal for revenue analysis, sales trends, payment analysis, delivery performance, and dashboard development.
 
@@ -78,7 +92,7 @@ For this e-commerce data analytics project, we are most interested in answering 
 
 - Customer data: contains demographic information, contact details, registration history, and purchasing statistics for customers. Each record represents one unique customer and is linked to the sales.csv table through the Customer_ID column. This table is useful for customer segmentation, demographic analysis, customer lifetime value (CLV), and regional sales analysis.
 
-## Tools
+# Tools
 
 - Power BI
 - Power Query
@@ -86,16 +100,16 @@ For this e-commerce data analytics project, we are most interested in answering 
 - Git/GitHub
 - Python
 
-## Dashboard
+# Dashboard
 
 ### Page 1: Executive Overview
-This page of the dashboard answers the question: **How is the business performing overall?**
+- This page of the dashboard answers the question: **How is the business performing overall?**
 
-- Ideally, the interest here is to identify trends such as in net transaction over time, which illustrate commercial performance/
+    - Ideally, the interest here is to identify trends such as net transaction over time, which illustrate commercial performance.
 
-- We are also interested in identifying which product categories drive what proportion of commercial value, which hint at category concentration.
+    - We are also interested in identifying which product categories drive what proportion of commercial value, which hint at category concentration.
 
-- Lastly, we want to find out the customer mix i.e., which customer tier contribute to what proportion of transaction value. 
+    - Lastly, we want to find out the customer mix i.e., which customer tier contribute to what proportion of transaction value. 
 
 <p align = "center">
 <img src = "screenshots/executive_overview.png" width = "900" height = "400">
@@ -166,7 +180,7 @@ The page shows that in 2026:
 
 ### Operations
 
-This page was intended to answer the questions: **How effectively is teh business fulfilling customer orders? and Where are operational problems affecting customer experience or commercial performance?**
+This page is intended to answer the questions: **How effectively is the business fulfilling customer orders? and Where are operational problems affecting customer experience or commercial performance?**
 
 <p align = "center">
 <img src = "screenshots/operations.png" width = "900" height = "400">
@@ -175,14 +189,14 @@ This page was intended to answer the questions: **How effectively is teh busines
 
 
 
-## Key Findings
+# Key Findings
 
 Brief summary of the most important findings.
 
-## Recommendations
+# Recommendations
 
 Summary of recommended business actions.
 
-## Project Structure
+# Project Structure
 
 Explanation of the repository folders.
