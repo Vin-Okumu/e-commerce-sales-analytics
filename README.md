@@ -165,3 +165,7 @@ e-commerce-sales-analytics/
 └── images/Cover.png
 ```
 </details>
+
+Have a similar project on your hands? Invite to work on [Upwork](https://www.upwork.com/freelancers/uv23o9) · Reach out via [LinkedIn](https://www.linkedin.com/in/vince-okumu23/) · Or email me at vinny.otieno23@gmail.com
+
+**Vincent Okumu**
