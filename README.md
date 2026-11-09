@@ -1,6 +1,10 @@
 <h1 align="center">E-Commerce Sales Analytics Case Study</h1>
 
 <p align="center">
+<img src="images/Cover.png" width="1000">
+</p>
+
+<p align="center">
 <b>A six-page Power BI dashboard built on 250,000 orders. It shows that Platinum-tier customers (71% of buyers) generate 90% of revenue, and that repeat buyers account for 77% of it.</b>
 </p>
 
@@ -10,10 +14,6 @@
 <img src="https://img.shields.io/badge/Power%20Query-217346?style=flat" alt="Power Query">
 <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python">
 <img src="https://img.shields.io/badge/pandas-150458?style=flat&logo=pandas&logoColor=white" alt="pandas">
-</p>
-
-<p align="center">
-<img src="images/Cover.png" width="1000">
 </p>
 
 ---
