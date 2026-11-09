@@ -1,4 +1,4 @@
-<h1 align="center">E-Commerce Sales Analytics</h1>
+<h1 align="center">E-Commerce Sales Analytics Case Study</h1>
 
 <p align="center">
 <b>A six-page Power BI dashboard built on 250,000 orders. It shows that Platinum-tier customers (71% of buyers) generate 90% of revenue, and that repeat buyers account for 77% of it.</b>
