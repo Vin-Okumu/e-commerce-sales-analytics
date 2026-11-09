@@ -126,7 +126,8 @@ Raw CSVs ──► Python profiling ──► Python cleaning & feature engineer
 
 **View the dashboard**
 1. Install [Power BI Desktop](https://www.microsoft.com/power-bi/desktop) (Windows).
-2. Open `powerbi/e-commerce-sales-analytics.pbix`. It reads the cleaned CSVs in `data/processed/`, so you don't need to run the notebooks first.
+2. Open `powerbi/e-commerce-sales-analytics.pbix`. 
+    * It reads the cleaned CSVs in `data/processed/`, so you don't need to run the notebooks first.
 
 **Reproduce the data preparation**
 ```bash
