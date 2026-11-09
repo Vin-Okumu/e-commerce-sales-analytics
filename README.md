@@ -33,7 +33,7 @@
 
 ## 1. The problem
 
-> *"Client's sales have stopped growing and they don't know where to focus. They are uncertain about Which products and customers actually bring in the money, whether those customers are coming back, and where is the business losing orders? Client needs a dashboard that leadership can use to decide where to put the next rupee."*
+> *"Client claims sales have stopped growing and they don't know where to focus. They are uncertain about Which products and customers actually bring in the money, whether those customers are coming back, and where is the business losing orders? Client needs a dashboard that leadership can use to decide where to put the next rupee."*
 
 The project answers 12 business questions grouped into six areas: overall performance, products, customer value, retention, operations and growth opportunities. The full question list, KPI definitions and the decision each question supports are in the [analysis charter](documentation/analysis_charter.md).
 
