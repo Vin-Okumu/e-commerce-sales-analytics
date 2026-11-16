@@ -1,0 +1,244 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.2.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY26SU04",
+      "reportVersionAtImport": {
+        "visual": "2.8.0",
+        "report": "3.2.0",
+        "page": "2.3.1"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY26SU04",
+          "path": "BaseThemes/CY26SU04.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "cart-shopping5364990632365706.svg",
+          "path": "cart-shopping5364990632365706.svg",
+          "type": "Image"
+        },
+        {
+          "name": "cart-shopping7201250513646609.svg",
+          "path": "cart-shopping7201250513646609.svg",
+          "type": "Image"
+        },
+        {
+          "name": "cart-shopping9492065906165148.svg",
+          "path": "cart-shopping9492065906165148.svg",
+          "type": "Image"
+        },
+        {
+          "name": "clip-board37241666078651436.svg",
+          "path": "clip-board37241666078651436.svg",
+          "type": "Image"
+        },
+        {
+          "name": "clip-board402561567082545.svg",
+          "path": "clip-board402561567082545.svg",
+          "type": "Image"
+        },
+        {
+          "name": "clip-board7685169482627534.svg",
+          "path": "clip-board7685169482627534.svg",
+          "type": "Image"
+        },
+        {
+          "name": "coins-hand6403050505013069.svg",
+          "path": "coins-hand6403050505013069.svg",
+          "type": "Image"
+        },
+        {
+          "name": "customers06714139515253736.svg",
+          "path": "customers06714139515253736.svg",
+          "type": "Image"
+        },
+        {
+          "name": "customers6748327022964553.svg",
+          "path": "customers6748327022964553.svg",
+          "type": "Image"
+        },
+        {
+          "name": "customers8555748650547332.svg",
+          "path": "customers8555748650547332.svg",
+          "type": "Image"
+        },
+        {
+          "name": "delivery17180946818313048.svg",
+          "path": "delivery17180946818313048.svg",
+          "type": "Image"
+        },
+        {
+          "name": "delivery48878959785473286.svg",
+          "path": "delivery48878959785473286.svg",
+          "type": "Image"
+        },
+        {
+          "name": "employee_sale8938765615591189.svg",
+          "path": "employee_sale8938765615591189.svg",
+          "type": "Image"
+        },
+        {
+          "name": "growth3816319940165728.svg",
+          "path": "growth3816319940165728.svg",
+          "type": "Image"
+        },
+        {
+          "name": "growth8454533449708644.svg",
+          "path": "growth8454533449708644.svg",
+          "type": "Image"
+        },
+        {
+          "name": "order_image6674897047030203.png",
+          "path": "order_image6674897047030203.png",
+          "type": "Image"
+        },
+        {
+          "name": "Photorealistic-cinematic-close4978826413163454.png",
+          "path": "Photorealistic-cinematic-close4978826413163454.png",
+          "type": "Image"
+        },
+        {
+          "name": "Photorealistic-wide-cinematic-13154294489626095.png",
+          "path": "Photorealistic-wide-cinematic-13154294489626095.png",
+          "type": "Image"
+        },
+        {
+          "name": "Photorealistic-wide-cinematic-13826382307385254.png",
+          "path": "Photorealistic-wide-cinematic-13826382307385254.png",
+          "type": "Image"
+        },
+        {
+          "name": "Photorealistic-wide-cinematic-35120412887263774.png",
+          "path": "Photorealistic-wide-cinematic-35120412887263774.png",
+          "type": "Image"
+        },
+        {
+          "name": "Photorealistic-wide-cinematic-7220414625546429.png",
+          "path": "Photorealistic-wide-cinematic-7220414625546429.png",
+          "type": "Image"
+        },
+        {
+          "name": "Photorealistic-wide-cinematic-9943719840388903.png",
+          "path": "Photorealistic-wide-cinematic-9943719840388903.png",
+          "type": "Image"
+        },
+        {
+          "name": "purchase-order8815356662007573.svg",
+          "path": "purchase-order8815356662007573.svg",
+          "type": "Image"
+        },
+        {
+          "name": "repeat_customer_rate42349240705586577.svg",
+          "path": "repeat_customer_rate42349240705586577.svg",
+          "type": "Image"
+        },
+        {
+          "name": "repeat_customer_rate8104905992153045.svg",
+          "path": "repeat_customer_rate8104905992153045.svg",
+          "type": "Image"
+        },
+        {
+          "name": "repeat_customer9683284024251014.svg",
+          "path": "repeat_customer9683284024251014.svg",
+          "type": "Image"
+        },
+        {
+          "name": "sale_per_customer10797517507191357.svg",
+          "path": "sale_per_customer10797517507191357.svg",
+          "type": "Image"
+        },
+        {
+          "name": "sale_per_customer1428482024392299.svg",
+          "path": "sale_per_customer1428482024392299.svg",
+          "type": "Image"
+        },
+        {
+          "name": "sale_per_customer36105192106926165.svg",
+          "path": "sale_per_customer36105192106926165.svg",
+          "type": "Image"
+        },
+        {
+          "name": "transaction_value08004412730270116.svg",
+          "path": "transaction_value08004412730270116.svg",
+          "type": "Image"
+        },
+        {
+          "name": "transaction_value78611265302633.svg",
+          "path": "transaction_value78611265302633.svg",
+          "type": "Image"
+        },
+        {
+          "name": "value56510354179057.svg",
+          "path": "value56510354179057.svg",
+          "type": "Image"
+        },
+        {
+          "name": "value6638823147171837.svg",
+          "path": "value6638823147171837.svg",
+          "type": "Image"
+        },
+        {
+          "name": "value9165953789453192.svg",
+          "path": "value9165953789453192.svg",
+          "type": "Image"
+        },
+        {
+          "name": "value9537594067266281.svg",
+          "path": "value9537594067266281.svg",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

@@ -1,0 +1,129 @@
+table Dim_Products
+	lineageTag: 9e8e2ea4-274a-4acd-8061-f38ae3ede5b1
+
+	column product_id
+		dataType: string
+		lineageTag: 99207994-548c-4112-8047-203d556f33e2
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		lineageTag: a6149190-a485-4922-80fc-78d6f34de0d7
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: ca64de2e-781d-491d-8ef9-20efe0145740
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column brand
+		dataType: string
+		lineageTag: 7452b8cb-31e8-41d8-b7ff-933326f40fa1
+		summarizeBy: none
+		sourceColumn: brand
+
+		annotation SummarizationSetBy = Automatic
+
+	column original_price
+		dataType: double
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		lineageTag: 658523ac-f939-45c4-bf73-6314e79b552f
+		summarizeBy: none
+		sourceColumn: original_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column discount_percent
+		dataType: int64
+		formatString: 0
+		lineageTag: 04763fc1-a0a3-425b-891e-1541d4b66fd5
+		summarizeBy: none
+		sourceColumn: discount_percent
+
+		annotation SummarizationSetBy = Automatic
+
+	column discount_amount
+		dataType: double
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		lineageTag: fb3be14a-e432-47fa-8d8a-ae2cba99b883
+		summarizeBy: none
+		sourceColumn: discount_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column selling_price
+		dataType: double
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		lineageTag: bb8edfbf-5cb0-490a-a456-8ac75ad3fdd4
+		summarizeBy: none
+		sourceColumn: selling_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column stock_quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 747f7c3e-d832-4f98-8c5e-6c30ef5c27c4
+		summarizeBy: none
+		sourceColumn: stock_quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column weight_kg
+		dataType: double
+		lineageTag: 0ce4b5c3-eb0f-402e-a110-d755e4842223
+		summarizeBy: none
+		sourceColumn: weight_kg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_rating
+		dataType: double
+		lineageTag: 8b6cb164-1697-43ad-8e5c-b06c2df1ae7f
+		summarizeBy: none
+		sourceColumn: avg_rating
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_reviews
+		dataType: int64
+		formatString: 0
+		lineageTag: d4442953-5f55-48e2-a7d9-47fee03e7707
+		summarizeBy: none
+		sourceColumn: total_reviews
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Products = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\admin\Documents\Projects\e-commerce-sales-analytics\data\processed\products.csv"),[Delimiter=",", Columns=12, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"product_id", type text}, {"product_name", type text}, {"category", type text}, {"brand", type text}, {"original_price", type number}, {"discount_percent", Int64.Type}, {"discount_amount", type number}, {"selling_price", type number}, {"stock_quantity", Int64.Type}, {"weight_kg", type number}, {"avg_rating", type number}, {"total_reviews", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

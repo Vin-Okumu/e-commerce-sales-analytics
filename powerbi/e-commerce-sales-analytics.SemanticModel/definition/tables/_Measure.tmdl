@@ -1,0 +1,481 @@
+table _Measure
+	lineageTag: 23f9efe0-40a1-43d5-8d62-fde6be1022b7
+
+	measure 'Total Orders' =
+			
+			DISTINCTCOUNT(Fact_Sales[Order_ID])
+		formatString: 0
+		lineageTag: c752c0f1-8fde-47d4-b2c2-cf1d5eef8102
+
+	measure 'Units Sold' =
+			
+			SUM(Fact_Sales[quantity])
+		formatString: 0
+		lineageTag: ffdb5d9f-ed4d-43ac-861b-5ec70be703e7
+
+	measure 'Gross Order Value' =
+			
+			SUM(Fact_Sales[order_value])
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		lineageTag: 571e7a20-8b77-4250-907e-175aca81717d
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure 'Shipping Revenue' =
+			
+			SUM(Fact_Sales[shipping_cost])
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		lineageTag: b7e7c4d5-9031-4a8a-a7a0-eb345354226f
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure 'Coupon Discounts' =
+			
+			SUM(Fact_Sales[coupon_discount])
+		lineageTag: 16ef6a49-6b25-4c00-bf9c-6f2dabab9066
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Net Transaction Value' =
+			
+			SUM(Fact_Sales[total_amount])
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		lineageTag: 9e0892c6-3e06-4375-8c85-b7dbcde004ec
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure 'Average Order Value' =
+			
+			DIVIDE(
+			    [Net Transaction Value],
+			    [Total Orders]
+			)
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		lineageTag: 17c590e0-374c-4888-a6ca-6977279e3bbf
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure 'Average Units per Order' =
+			
+			DIVIDE(
+			    [Units Sold],
+			    [Total Orders]
+			)
+		lineageTag: e8c309f1-044e-47bc-a87c-1c1b2d078aaa
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Customers' =
+			
+			DISTINCTCOUNT(Fact_Sales[customer_id])
+		formatString: 0
+		lineageTag: 0905152d-1d7e-4c4d-9af0-141898ce2f95
+
+	measure 'Orders per Customer' =
+			
+			DIVIDE(
+			    [Total Orders],
+			    [Total Customers]
+			)
+		lineageTag: faad90d1-6d5f-4d48-a358-9b5994aa9852
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Value per Customer' =
+			
+			DIVIDE(
+			    [Net Transaction Value],
+			    [Total Customers]
+			)
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		lineageTag: abc52926-909a-47ad-823f-4d3191c76b82
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure 'Average Selling Price' =
+			
+			DIVIDE(
+			    [Gross Order Value],
+			    [Units Sold]
+			)
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		lineageTag: 171f4b99-90f0-462f-b3a8-979496378403
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure 'Coupon Discount Rate' =
+			
+			DIVIDE(
+			    [Coupon Discounts],
+			    [Gross Order Value]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 20ee25a7-8908-40e8-a748-09cf70c33ad6
+
+	measure 'Average Delivery Days' =
+			
+			AVERAGE(Fact_Sales[delivery_days])
+		formatString: 0.0
+		lineageTag: 524e89b4-27d6-4974-ac71-46aa8233add0
+
+	measure 'Median Delivery Days' =
+			
+			MEDIAN(Fact_Sales[delivery_days])
+		formatString: 0.0
+		lineageTag: ae7fc4ca-215e-429b-a88a-4bb2459111a1
+
+	measure 'Previous Month Value' =
+			
+			CALCULATE(
+			    [Net Transaction Value],
+			    DATEADD(
+			        Dim_Date[Date],
+			        -1,
+			        MONTH
+			    )
+			)
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		lineageTag: 03d0540f-26fd-4abc-98e6-e882e832e712
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure 'Previous Year Value' =
+			
+			CALCULATE(
+			    [Net Transaction Value],
+			    DATEADD(
+			        Dim_Date[Date],
+			        -1,
+			        YEAR
+			    )
+			)
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		lineageTag: 79737232-b60e-4e69-9500-19abf1f17cbb
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure 'MoM Growth %' =
+			
+			DIVIDE(
+			    [Net Transaction Value] - [Previous Month Value],
+			    [Previous Month Value]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d2bfe0a8-e573-450d-9eb3-bcf917fef1d3
+
+	measure 'YoY Growth %' =
+			
+			DIVIDE(
+			    [Net Transaction Value] - [Previous Year Value],
+			    [Previous Year Value]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 0e2fa573-b981-4708-ba46-a96f76960682
+
+	measure 'Product Contribution %' =
+			
+			DIVIDE(
+			    [Net Transaction Value],
+			    CALCULATE(
+			        [Net Transaction Value],
+			        REMOVEFILTERS(Dim_Products)
+			    )
+			)
+		lineageTag: 6b7bf0b0-500d-447d-8286-c04905087d7e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Product Rank' =
+			
+			RANKX(
+			    ALLSELECTED(Dim_Products[Product_Name]),
+			    [Net Transaction Value],
+			    ,
+			    DESC
+			)
+		formatString: 0
+		lineageTag: 255e8d36-2885-47d9-81f4-dfd7ca1e8080
+
+	measure 'Repeat Customers' =
+			
+			COUNTROWS(
+			    FILTER(
+			        VALUES(Fact_Sales[Customer_ID]),
+			        CALCULATE([Total Orders]) > 1
+			    )
+			)
+		formatString: 0
+		lineageTag: dd8e4969-f1ab-4328-8407-f140651da380
+
+	measure 'Repeat Customer Rate' =
+			
+			DIVIDE(
+			    [Repeat Customers],
+			    [Total Customers]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a3044e21-c552-4a9c-b9ce-5f0632b279f9
+
+	measure 'Value per Customer by Tier' =
+			
+			DIVIDE(
+			    [Net Transaction Value],
+			    [Total Customers]
+			)
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		lineageTag: 7dea092b-efc3-41ca-a10d-ed4ea239e644
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure 'One-Time Customers' =
+			
+			COUNTROWS(
+			    FILTER(
+			        VALUES(Fact_Sales[customer_id]),
+			        CALCULATE([Total Orders]) = 1
+			    )
+			)
+		formatString: 0
+		lineageTag: 2e017623-3a04-40a2-8486-7de95484c892
+
+	measure 'One-Time Customer Rate' =
+			
+			DIVIDE(
+			    [One-Time Customers],
+			    [Total Customers]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 39997190-dbb9-4743-9f18-b8c61e0b9b6f
+
+	measure 'Repeat Customer Value' =
+			
+			CALCULATE(
+			    [Net Transaction Value],
+			    FILTER(
+			        VALUES(Fact_Sales[customer_id]),
+			        CALCULATE([Total Orders]) > 1
+			    )
+			)
+		lineageTag: ed026b2e-eb56-484c-9b5b-8be288e1c260
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'One-Time Customer Value' =
+			
+			CALCULATE(
+			    [Net Transaction Value],
+			    FILTER(
+			        VALUES(Fact_Sales[customer_id]),
+			        CALCULATE([Total Orders]) = 1
+			    )
+			)
+		lineageTag: 68c0e801-b567-424d-a88b-6658261c4147
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Repeat Customer Value Share %' =
+			
+			DIVIDE(
+			    [Repeat Customer Value],
+			    [Net Transaction Value]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d1f35646-bdf0-4a8d-a73d-28cc150d42b5
+
+	measure 'Orders per Repeat Customer' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        [Total Orders],
+			        FILTER(
+			            VALUES(Fact_Sales[customer_id]),
+			            CALCULATE([Total Orders]) > 1
+			        )
+			    ),
+			    [Repeat Customers]
+			)
+		lineageTag: 6aa92552-23ef-4f55-ba15-bd8775d83987
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Customer Type Value' =
+			
+			SWITCH(
+			    SELECTEDVALUE(Customer_Behavior[Customer Type]),
+			    "One-Time", [One-Time Customer Value],
+			    "Repeat", [Repeat Customer Value]
+			)
+		lineageTag: a71e6caf-4d5e-476c-ad2c-730e230ddf01
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Customer Type Count' =
+			
+			SWITCH(
+			    SELECTEDVALUE(Customer_Behavior[Customer Type]),
+			    "One-Time", [One-Time Customers],
+			    "Repeat", [Repeat Customers]
+			)
+		formatString: 0
+		lineageTag: 6bac8bdf-5f62-4ab5-b7b3-efa67200e271
+
+	measure 'Customer Type Rate' =
+			
+			SWITCH(
+			    SELECTEDVALUE(Customer_Behavior[Customer Type]),
+			    "One-Time", [One-Time Customer Rate],
+			    "Repeat", [Repeat Customer Rate]
+			)
+		lineageTag: 550828ab-c925-425e-ae0a-53ff67d985a5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Customer Type Orders' =
+			
+			SWITCH(
+			    SELECTEDVALUE(Customer_Behavior[Customer Type]),
+			    "One-Time",
+			        CALCULATE(
+			            [Total Orders],
+			            FILTER(
+			                VALUES(Fact_Sales[customer_id]),
+			                CALCULATE([Total Orders]) = 1
+			            )
+			        ),
+			    "Repeat",
+			        CALCULATE(
+			            [Total Orders],
+			            FILTER(
+			                VALUES(Fact_Sales[customer_id]),
+			                CALCULATE([Total Orders]) > 1
+			            )
+			        )
+			)
+		formatString: 0
+		lineageTag: 7e411075-4612-4cbb-8e44-c33ae16d90a5
+
+	measure 'Customer Type Value per Customer' =
+			
+			SWITCH(
+			    SELECTEDVALUE(Customer_Behavior[Customer Type]),
+			    "One-Time",
+			        DIVIDE(
+			            [One-Time Customer Value],
+			            [One-Time Customers]
+			        ),
+			    "Repeat",
+			        DIVIDE(
+			            [Repeat Customer Value],
+			            [Repeat Customers]
+			        )
+			)
+		lineageTag: 04eaaf40-c32b-40ff-a609-76553edaf130
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Completed Orders' =
+			
+			CALCULATE(
+			    [Total Orders],
+			    Fact_Sales[Order_Status] = "Delivered"
+			)
+		formatString: 0
+		lineageTag: a11c1a0f-3d67-42ee-b885-9e2cff4cbed6
+
+	measure 'Completed Order Rate' =
+			
+			DIVIDE(
+			    [Completed Orders],
+			    [Total Orders]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 21854575-0e27-4bec-a56a-eec4ef652eac
+
+	measure 'Cancelled Orders' =
+			
+			CALCULATE(
+			    [Total Orders],
+			    Fact_Sales[Order_Status] = "Cancelled"
+			)
+		formatString: 0
+		lineageTag: 787a46cb-5829-4623-9d80-a03c77b1fb2f
+
+	measure 'Cancelled Order Rate' =
+			
+			DIVIDE(
+			    [Cancelled Orders],
+			    [Total Orders]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 2223b0db-48dc-46b4-a86c-9b83a911427c
+
+	measure 'Average Shipping Cost' =
+			
+			DIVIDE(
+			    [Shipping Revenue],
+			    [Total Orders]
+			)
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		lineageTag: 2aea9dea-b823-4b68-a491-dc9d71787293
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure 'Orders Delivered Within 5 Days' =
+			
+			CALCULATE(
+			    [Total Orders],
+			    Fact_Sales[delivery_days] <= 5
+			)
+		formatString: 0
+		lineageTag: dd9bb977-8a32-488e-b2bf-dcd8b50678a5
+
+	measure 'Order Status Share %' =
+			
+			DIVIDE(
+			    [Total Orders],
+			    CALCULATE(
+			        [Total Orders],
+			        ALL(Fact_Sales[order_status])
+			    )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 832d14a3-c0be-43b1-9e2d-6fe969161a4a
+
+	measure 'One-Time Customer Value Share %' =
+			
+			DIVIDE(
+			    [One-Time Customer Value],
+			    [Net Transaction Value]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b5578508-6b1d-4cc8-ae5a-7da62c116e19
+
+	measure 'Category Value per Order' =
+			
+			DIVIDE(
+			    [Net Transaction Value],
+			    [Total Orders]
+			)
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		lineageTag: 161055c2-bbfc-419b-a2ea-f01d80a2823e
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column Measure
+		isHidden
+		formatString: 0
+		lineageTag: a6115bdf-8221-4758-923c-dce341da3d94
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Measure]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measure = calculated
+		mode: import
+		source = Row("Measure", BLANK())
+
+	annotation PBI_Id = 725e37b1f29642f08b6a43851c11244b
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

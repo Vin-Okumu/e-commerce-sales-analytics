@@ -1,0 +1,322 @@
+table Fact_Sales
+	lineageTag: ba402de1-7061-4edf-af1a-1031d303c47a
+
+	column order_id
+		dataType: string
+		lineageTag: 40f30b36-2f7c-4537-88fc-a0e3eab726c7
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: 73bc0889-bd32-4d2d-9750-f709087caa00
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		lineageTag: 1e5c57e8-30e5-4969-8fe9-4ff3139c21fc
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5b0c9ebe-2952-495d-a1c5-98ede8945861
+		summarizeBy: none
+		sourceColumn: order_date
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column order_time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: aede0af1-f20e-4f38-9178-90222c170500
+		summarizeBy: none
+		sourceColumn: order_time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column delivery_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5e58fb43-28fb-45e8-b1c6-8327dd7966d4
+		summarizeBy: none
+		sourceColumn: delivery_date
+
+		variation Variation
+			isDefault
+			relationship: db1ada2f-3edb-47f5-8cd1-48460d1415c1
+			defaultHierarchy: LocalDateTable_4b9ed7ac-b32b-49ff-9be2-f64a6a657a6c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 99b2b14e-24b8-4137-af44-c2080af8cb1a
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit_price
+		dataType: double
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		lineageTag: 86c84c77-a804-4d8b-9263-6ddf86c01166
+		summarizeBy: sum
+		sourceColumn: unit_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column order_value
+		dataType: double
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		lineageTag: 47ae3b18-297c-4ee7-8637-3f6ce7824e96
+		summarizeBy: sum
+		sourceColumn: order_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column shipping_cost
+		dataType: double
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		lineageTag: 569f1fa8-4a19-4b5d-a98e-f594b7e5f8fe
+		summarizeBy: sum
+		sourceColumn: shipping_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column coupon_code
+		dataType: string
+		lineageTag: 64db2a28-7620-45f0-9341-6cf2080443dd
+		summarizeBy: none
+		sourceColumn: coupon_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column coupon_discount
+		dataType: double
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		lineageTag: 3a5c7e05-da97-4126-af00-117cb7d6ed28
+		summarizeBy: sum
+		sourceColumn: coupon_discount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column total_amount
+		dataType: double
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		lineageTag: 8328a776-45d1-4797-ab48-903b79d7e526
+		summarizeBy: sum
+		sourceColumn: total_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column payment_mode
+		dataType: string
+		lineageTag: f3c2b93a-a792-45ef-813f-6df1edafaadf
+		summarizeBy: none
+		sourceColumn: payment_mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_status
+		dataType: string
+		lineageTag: a846d8e7-de8a-4fbb-8938-5898ded6cd83
+		summarizeBy: none
+		sourceColumn: order_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column rating
+		dataType: int64
+		formatString: 0
+		lineageTag: 22327b3c-fedc-427b-a5c7-3a0f45d7e766
+		summarizeBy: sum
+		sourceColumn: rating
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_text
+		dataType: string
+		lineageTag: 57d59bb1-9825-4e01-85d1-27240b3644d9
+		summarizeBy: none
+		sourceColumn: review_text
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: bc93544d-2baa-43f0-9f8a-42ec40606187
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column state
+		dataType: string
+		lineageTag: 1f22ef31-c3a7-497b-abc7-6e8c0fd94f33
+		summarizeBy: none
+		sourceColumn: state
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_age
+		dataType: int64
+		formatString: 0
+		lineageTag: 2daff143-d5a6-4f4f-bac9-757e2b2a90b3
+		summarizeBy: sum
+		sourceColumn: customer_age
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_age_group
+		dataType: string
+		lineageTag: bf0b3593-2365-4eb4-9306-5ba4ceca6525
+		summarizeBy: none
+		sourceColumn: customer_age_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_hour
+		dataType: int64
+		formatString: 0
+		lineageTag: f636f281-0003-4adb-a265-9ed7c53be704
+		summarizeBy: sum
+		sourceColumn: order_hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivery_days
+		dataType: int64
+		formatString: 0
+		lineageTag: aac345b8-99ae-47d4-97ae-092165f235ad
+		summarizeBy: sum
+		sourceColumn: delivery_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column coupon_used
+		dataType: string
+		lineageTag: 7a1b340f-2f5b-4d86-93dd-845071be062d
+		summarizeBy: none
+		sourceColumn: coupon_used
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 7f8c8890-b280-486e-9ca8-9c14a539a415
+		summarizeBy: sum
+		sourceColumn: order_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_month
+		dataType: int64
+		formatString: 0
+		lineageTag: b165b420-7e68-4390-bd19-f318b187ab6c
+		summarizeBy: sum
+		sourceColumn: order_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_month_name
+		dataType: string
+		lineageTag: 82a709f1-01ca-446c-93a7-aa6fb5450c76
+		summarizeBy: none
+		sourceColumn: order_month_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: 187925cb-8297-4ce5-8e87-0a8e1b837a32
+		summarizeBy: sum
+		sourceColumn: order_quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_day
+		dataType: int64
+		formatString: 0
+		lineageTag: f4cc4c28-c13c-47f4-8fd2-7f5839371cf9
+		summarizeBy: sum
+		sourceColumn: order_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_day_name
+		dataType: string
+		lineageTag: 6fdcb6f5-d02e-4ac9-9d86-2d68e004f93a
+		summarizeBy: none
+		sourceColumn: order_day_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column registration_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1218c2e1-bd51-433a-adb8-f17c5f54052a
+		summarizeBy: none
+		sourceColumn: registration_date
+
+		variation Variation
+			isDefault
+			relationship: 0dd5064a-fa6a-433f-afe3-ecf3393d8a40
+			defaultHierarchy: LocalDateTable_a01eff83-b8b3-4b67-bb6d-a088df26d3dd.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column customer_tenure_days
+		dataType: int64
+		formatString: 0
+		lineageTag: d338e2fe-2a84-4f58-871c-24fc32aab5f4
+		summarizeBy: sum
+		sourceColumn: customer_tenure_days
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Sales = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\admin\Documents\Projects\e-commerce-sales-analytics\data\processed\sales.csv"),[Delimiter=",", Columns=32, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"order_id", type text}, {"customer_id", type text}, {"product_id", type text}, {"order_date", type date}, {"order_time", type time}, {"delivery_date", type date}, {"quantity", Int64.Type}, {"unit_price", type number}, {"order_value", type number}, {"shipping_cost", type number}, {"coupon_code", type text}, {"coupon_discount", type number}, {"total_amount", type number}, {"payment_mode", type text}, {"order_status", type text}, {"rating", Int64.Type}, {"review_text", type text}, {"city", type text}, {"state", type text}, {"customer_age", Int64.Type}, {"customer_age_group", type text}, {"order_hour", Int64.Type}, {"delivery_days", Int64.Type}, {"coupon_used", type text}, {"order_year", Int64.Type}, {"order_month", Int64.Type}, {"order_month_name", type text}, {"order_quarter", Int64.Type}, {"order_day", Int64.Type}, {"order_day_name", type text}, {"registration_date", type date}, {"customer_tenure_days", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

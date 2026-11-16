@@ -1,0 +1,106 @@
+table Dim_Date
+	lineageTag: 339b6de5-d630-44fe-a87b-185d545761cd
+
+	column Date
+		formatString: General Date
+		lineageTag: f8270a5e-7c43-4e07-8ac7-262ec1ac3379
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: b83371d5-c74a-426f-a3e4-ea3eeac45a31
+			defaultHierarchy: LocalDateTable_8997ec06-15c5-4b71-b4fc-5e1c734933b9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: eb0de0f0-1a6a-44ae-8ee0-1b99f708220d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = User
+
+	column 'Month Number'
+		formatString: 0
+		lineageTag: 71adb629-3ab1-441d-bec9-c7190a047a86
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Month Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		lineageTag: 0c9719e7-25c3-40d7-a22f-4c157cff92af
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		lineageTag: 71ffb4fb-5065-49a6-a3f8-6969be2b5f97
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month'
+		lineageTag: f138fb93-d41f-4ff2-8dc1-787d7aae1883
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Number'
+		formatString: 0
+		lineageTag: 31b060e6-7c1f-478a-bd25-ce36c48afb99
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Week Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		formatString: 0
+		lineageTag: 38c2222e-f479-46a2-b12e-0e58ca8baa30
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Day]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Name'
+		lineageTag: 6654ff26-40d0-471e-9d34-2d1f02f489cf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Day Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Date = calculated
+		mode: import
+		source =
+				
+				ADDCOLUMNS(
+				    CALENDAR(
+				        MIN(Fact_Sales[order_date]),
+				        MAX(Fact_Sales[order_date])
+				    ),
+				    "Year", YEAR([Date]),
+				    "Month Number", MONTH([Date]),
+				    "Month", FORMAT([Date], "MMMM"),
+				    "Quarter", "Q" & FORMAT([Date], "Q"),
+				    "Year Month", FORMAT([Date], "yyyy-MM"),
+				    "Week Number", WEEKNUM([Date]),
+				    "Day", DAY([Date]),
+				    "Day Name", FORMAT([Date], "dddd")
+				)
+
+	annotation PBI_Id = 44fbddcef4654380ae45e9079afdde17
+

@@ -1,0 +1,109 @@
+table Dim_Customers
+	lineageTag: 7acfcaae-4f61-43d5-b862-ac47076e3423
+
+	column customer_id
+		dataType: string
+		lineageTag: d13dc76a-90df-49d2-842f-762dfb77915e
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column gender
+		dataType: string
+		lineageTag: 0f5d1e71-3d35-4edb-8e82-d4fead4e6daf
+		summarizeBy: none
+		sourceColumn: gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column age
+		dataType: int64
+		formatString: 0
+		lineageTag: eea130e8-ccb5-4227-8ae2-a70cee3281ca
+		summarizeBy: sum
+		sourceColumn: age
+
+		annotation SummarizationSetBy = Automatic
+
+	column age_group
+		dataType: string
+		lineageTag: bebf26ff-e89f-4980-bd0a-c777a7f0f374
+		summarizeBy: none
+		sourceColumn: age_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: f05f55b4-9c0a-48dc-9106-a9252c59ab89
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column state
+		dataType: string
+		lineageTag: 8b58f80f-8daa-4893-b7bb-a34595abe1c3
+		summarizeBy: none
+		sourceColumn: state
+
+		annotation SummarizationSetBy = Automatic
+
+	column registration_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 91a121e4-6bd9-4648-9233-800e856fbcee
+		summarizeBy: none
+		sourceColumn: registration_date
+
+		variation Variation
+			isDefault
+			relationship: 62c404f6-e55f-4b18-8cfa-fd6e633db3e5
+			defaultHierarchy: LocalDateTable_82e4b951-190c-4af6-bda7-c7351a3afcbc.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column customer_tier
+		dataType: string
+		lineageTag: 92faefd5-b3b8-4613-991d-97a2ee69854f
+		summarizeBy: none
+		sourceColumn: customer_tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_orders
+		dataType: int64
+		formatString: 0
+		lineageTag: 5be8af26-adb4-40de-8666-b39c0973b06a
+		summarizeBy: sum
+		sourceColumn: total_orders
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_spent
+		dataType: double
+		lineageTag: dd2bc68a-eaaa-4efc-a1bb-43815f1839ae
+		summarizeBy: sum
+		sourceColumn: total_spent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Dim_Customers = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\admin\Documents\Projects\e-commerce-sales-analytics\data\processed\customers.csv"),[Delimiter=",", Columns=10, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"customer_id", type text}, {"gender", type text}, {"age", Int64.Type}, {"age_group", type text}, {"city", type text}, {"state", type text}, {"registration_date", type date}, {"customer_tier", type text}, {"total_orders", Int64.Type}, {"total_spent", type number}})
+				in
+				    #"Changed Type"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

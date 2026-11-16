@@ -1,0 +1,32 @@
+relationship db1ada2f-3edb-47f5-8cd1-48460d1415c1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fact_Sales.delivery_date
+	toColumn: LocalDateTable_4b9ed7ac-b32b-49ff-9be2-f64a6a657a6c.Date
+
+relationship 0dd5064a-fa6a-433f-afe3-ecf3393d8a40
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fact_Sales.registration_date
+	toColumn: LocalDateTable_a01eff83-b8b3-4b67-bb6d-a088df26d3dd.Date
+
+relationship 62c404f6-e55f-4b18-8cfa-fd6e633db3e5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Customers.registration_date
+	toColumn: LocalDateTable_82e4b951-190c-4af6-bda7-c7351a3afcbc.Date
+
+relationship AutoDetected_6b87280e-a2bd-46e4-9c84-7faff2059918
+	fromColumn: Fact_Sales.customer_id
+	toColumn: Dim_Customers.customer_id
+
+relationship AutoDetected_38c4b9f2-08bb-4f57-873e-45640080f21d
+	fromColumn: Fact_Sales.product_id
+	toColumn: Dim_Products.product_id
+
+relationship b83371d5-c74a-426f-a3e4-ea3eeac45a31
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Date.Date
+	toColumn: LocalDateTable_8997ec06-15c5-4b71-b4fc-5e1c734933b9.Date
+
+relationship 2add55bb-e477-966f-4517-406c2f3934ab
+	fromColumn: Fact_Sales.order_date
+	toColumn: Dim_Date.Date
+
