@@ -1,0 +1,33 @@
+table 'Growth Levers'
+	lineageTag: bb75a5e1-1ecf-4a07-be5d-e01247074f54
+
+	column Lever
+		dataType: string
+		lineageTag: f8b8463e-fc4e-45c9-9586-f7e962203b1f
+		summarizeBy: none
+		sourceColumn: [Lever]
+
+		annotation SummarizationSetBy = User
+
+	column 'Short Name'
+		dataType: string
+		lineageTag: b2446772-6ea0-41cf-8773-92ae370f1fc2
+		summarizeBy: none
+		sourceColumn: [Short Name]
+
+		annotation SummarizationSetBy = User
+
+	column Sort
+		dataType: int64
+		formatString: 0
+		lineageTag: c1c69ae6-2da0-4988-8fda-16f6e2cafa3e
+		summarizeBy: none
+		sourceColumn: [Sort]
+
+		annotation SummarizationSetBy = User
+
+	partition 'Growth Levers' = calculated
+		mode: import
+		source = DATATABLE ( "Lever", STRING, "Short Name", STRING, "Sort", INTEGER, { { "Second purchase from one-time buyers", "Winning second orders", 1 }, { "Platinum churn avoided", "Protecting Platinum", 2 }, { "Home cross-sell to Electronics-only buyers", "Cross-selling Home", 3 } } )
+
+	annotation PBI_Id = 1b0ccb40692a4e99ae24f525be34286b

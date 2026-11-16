@@ -1,0 +1,21 @@
+table Refresh_Log
+	lineageTag: b394d423-637b-4a92-8d2d-9c54bf3a34b4
+
+	column Refreshed
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7bc3e952-f7b1-409d-95b9-4a264f57210f
+		summarizeBy: none
+		sourceColumn: Refreshed
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Refresh_Log = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [Refreshed = datetime], {{DateTime.LocalNow()}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

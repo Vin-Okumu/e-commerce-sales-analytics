@@ -8,7 +8,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["Fact_Sales","Dim_Customers","Dim_Products","Customer_Behavior"]
+annotation PBI_QueryOrder = ["Fact_Sales","Dim_Customers","Dim_Products","Customer_Behavior","Refresh_Log"]
 
 annotation PBI_ProTooling = ["DaxQueryView_Desktop","DevMode"]
 
@@ -20,9 +20,13 @@ ref table Dim_Customers
 ref table LocalDateTable_82e4b951-190c-4af6-bda7-c7351a3afcbc
 ref table Dim_Products
 ref table Dim_Date
-ref table LocalDateTable_8997ec06-15c5-4b71-b4fc-5e1c734933b9
 ref table _Measure
 ref table Customer_Behavior
+ref table 'Growth Levers'
+ref table 'Second Order Conversion'
+ref table 'Platinum Churn Avoided'
+ref table 'Home Attach Rate'
+ref table Refresh_Log
 
 ref cultureInfo en-US
 

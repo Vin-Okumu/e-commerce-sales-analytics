@@ -1,0 +1,26 @@
+table 'Home Attach Rate'
+	lineageTag: 52cf8973-4e39-4021-8510-26d68484cb40
+
+	measure 'Home Attach Rate Value' = SELECTEDVALUE('Home Attach Rate'[Home Attach Rate], 0.05)
+		formatString: 0.0%
+		lineageTag: d554ff2c-2be4-4425-a850-604687b412f2
+
+	column 'Home Attach Rate'
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 5e1a6360-c7ac-43c8-b339-294e5b576f69
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition 'Home Attach Rate' = calculated
+		mode: import
+		source = GENERATESERIES(0, 0.2, 0.01)
+
+	annotation PBI_Id = 9860ee50758244f480733503cfa66173

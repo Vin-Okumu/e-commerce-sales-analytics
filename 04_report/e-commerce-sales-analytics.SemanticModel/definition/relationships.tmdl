@@ -21,11 +21,6 @@ relationship AutoDetected_38c4b9f2-08bb-4f57-873e-45640080f21d
 	fromColumn: Fact_Sales.product_id
 	toColumn: Dim_Products.product_id
 
-relationship b83371d5-c74a-426f-a3e4-ea3eeac45a31
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Dim_Date.Date
-	toColumn: LocalDateTable_8997ec06-15c5-4b71-b4fc-5e1c734933b9.Date
-
 relationship 2add55bb-e477-966f-4517-406c2f3934ab
 	fromColumn: Fact_Sales.order_date
 	toColumn: Dim_Date.Date

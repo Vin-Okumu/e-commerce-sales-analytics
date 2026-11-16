@@ -1,0 +1,26 @@
+table 'Second Order Conversion'
+	lineageTag: afea01dd-f3cf-4eaa-b687-397f93285ff9
+
+	measure 'Second Order Conversion Value' = SELECTEDVALUE('Second Order Conversion'[Second Order Conversion], 0.1)
+		formatString: 0.0%
+		lineageTag: 17318512-b606-4292-966a-ce411831391b
+
+	column 'Second Order Conversion'
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 218b53e7-d3d2-412a-94e6-61b06e4d886b
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition 'Second Order Conversion' = calculated
+		mode: import
+		source = GENERATESERIES(0, 0.3, 0.01)
+
+	annotation PBI_Id = fa30708558d64476855995971deff706

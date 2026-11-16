@@ -1,0 +1,26 @@
+table 'Platinum Churn Avoided'
+	lineageTag: 7522c267-951c-4aa0-bfa4-0b7674b74d82
+
+	measure 'Platinum Churn Avoided Value' = SELECTEDVALUE('Platinum Churn Avoided'[Platinum Churn Avoided], 0.02)
+		formatString: 0.0%
+		lineageTag: 1c442c2f-37ab-41f2-a997-1e0dd0748798
+
+	column 'Platinum Churn Avoided'
+		dataType: double
+		formatString: 0.0%
+		lineageTag: bc34d6a0-30e7-4abe-868a-4d6f477d1411
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition 'Platinum Churn Avoided' = calculated
+		mode: import
+		source = GENERATESERIES(0, 0.05, 0.005)
+
+	annotation PBI_Id = baa2a26ca9ca48388c926963269d9bb0

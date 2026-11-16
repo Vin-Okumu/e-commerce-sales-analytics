@@ -20,7 +20,7 @@
               "color": {
                 "expr": {
                   "Literal": {
-                    "Value": "'#0A1450'"
+                    "Value": "'#0A1428'"
                   }
                 }
               }
@@ -32,31 +32,28 @@
                 "Value": "0D"
               }
             }
+          }
+        }
+      }
+    ],
+    "outspace": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#0A1428'"
+                  }
+                }
+              }
+            }
           },
-          "image": {
-            "image": {
-              "name": {
-                "expr": {
-                  "Literal": {
-                    "Value": "'Photorealistic-wide-cinematic-photograph 2 copy.png'"
-                  }
-                }
-              },
-              "url": {
-                "expr": {
-                  "ResourcePackageItem": {
-                    "PackageName": "RegisteredResources",
-                    "PackageType": 1,
-                    "ItemName": "Photorealistic-wide-cinematic-7220414625546429.png"
-                  }
-                }
-              },
-              "scaling": {
-                "expr": {
-                  "Literal": {
-                    "Value": "'Normal'"
-                  }
-                }
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
               }
             }
           }

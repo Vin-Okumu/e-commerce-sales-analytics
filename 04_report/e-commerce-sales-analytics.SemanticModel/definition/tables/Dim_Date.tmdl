@@ -1,17 +1,15 @@
 table Dim_Date
 	lineageTag: 339b6de5-d630-44fe-a87b-185d545761cd
+	dataCategory: Time
 
 	column Date
+		dataType: dateTime
+		isKey
 		formatString: General Date
 		lineageTag: f8270a5e-7c43-4e07-8ac7-262ec1ac3379
 		summarizeBy: none
 		isNameInferred
 		sourceColumn: [Date]
-
-		variation Variation
-			isDefault
-			relationship: b83371d5-c74a-426f-a3e4-ea3eeac45a31
-			defaultHierarchy: LocalDateTable_8997ec06-15c5-4b71-b4fc-5e1c734933b9.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -35,6 +33,7 @@ table Dim_Date
 
 	column Month
 		lineageTag: 0c9719e7-25c3-40d7-a22f-4c157cff92af
+		sortByColumn: 'Month Number'
 		summarizeBy: none
 		isNameInferred
 		sourceColumn: [Month]

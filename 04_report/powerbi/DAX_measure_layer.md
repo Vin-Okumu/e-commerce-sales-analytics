@@ -257,3 +257,20 @@ Just to recap, our intended report shall be organized as follows
 
 
 
+
+### Redesign measures (dashboard v2)
+
+The dashboard redesign added a second measure layer, stored in the semantic model (`_Measure` table) and grouped in display folders:
+
+| Display folder | What it holds |
+|---|---|
+| 0 Comparison | `Last Sale Date`, `PY Period Label`, `Net Transaction Value PY`. The prior-year window is capped 12 months before the last sale, so Jan–Jun 2026 is compared with Jan–Jun 2025 |
+| 1 Core additions | Lost orders (cancelled + returned), share-of-total measures (`% of Revenue`, `% of Customers`, `% of Units`, `% of Orders`), Electronics and Platinum shares, and display measures scaled to ₹M / ₹K for tables |
+| 2 KPI labels | One text measure per KPI card, e.g. `NTV YoY Label` → "▼ 0.1% vs Jan–Jun 2025" (% change for counts and values, percentage points for rates) |
+| 3 Formatting | Colour measures used by conditional formatting: gold for the one bar to look at, red for lost orders, cell colours for tables |
+| 4 Titles | Titles that state the insight and update with the slicers, e.g. `Exec Headline`, `Top Category Title`, `Growth Headline` |
+| 5 Growth what-if | Pools, uplift measures and lever measures behind the Growth page's three what-if parameters |
+
+Model changes made at the same time:
+- `Dim_Date` is marked as the date table (so time intelligence works when slicing by `Year`), and `Month` sorts by `Month Number`.
+- New tables: `Growth Levers` (lever list), `Refresh_Log` (refresh timestamp for the footer), and three what-if parameter tables: `Second Order Conversion`, `Platinum Churn Avoided` and `Home Attach Rate`.

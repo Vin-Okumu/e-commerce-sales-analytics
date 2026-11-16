@@ -61,9 +61,8 @@ table _Measure
 			    [Units Sold],
 			    [Total Orders]
 			)
+		formatString: 0.00
 		lineageTag: e8c309f1-044e-47bc-a87c-1c1b2d078aaa
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Total Customers' =
 			
@@ -77,9 +76,8 @@ table _Measure
 			    [Total Orders],
 			    [Total Customers]
 			)
+		formatString: 0.00
 		lineageTag: faad90d1-6d5f-4d48-a358-9b5994aa9852
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Value per Customer' =
 			
@@ -213,7 +211,7 @@ table _Measure
 			    [Repeat Customers],
 			    [Total Customers]
 			)
-		formatString: 0.00%;-0.00%;0.00%
+		formatString: 0.0%;-0.0%;0.0%
 		lineageTag: a3044e21-c552-4a9c-b9ce-5f0632b279f9
 
 	measure 'Value per Customer by Tier' =
@@ -326,9 +324,8 @@ table _Measure
 			    "One-Time", [One-Time Customer Rate],
 			    "Repeat", [Repeat Customer Rate]
 			)
+		formatString: 0.0%;-0.0%;0.0%
 		lineageTag: 550828ab-c925-425e-ae0a-53ff67d985a5
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Customer Type Orders' =
 			
@@ -388,7 +385,7 @@ table _Measure
 			    [Completed Orders],
 			    [Total Orders]
 			)
-		formatString: 0.00%;-0.00%;0.00%
+		formatString: 0.0%;-0.0%;0.0%
 		lineageTag: 21854575-0e27-4bec-a56a-eec4ef652eac
 
 	measure 'Cancelled Orders' =
@@ -460,6 +457,647 @@ table _Measure
 		lineageTag: 161055c2-bbfc-419b-a2ea-f01d80a2823e
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure 'Last Sale Date' =
+			CALCULATE ( MAX ( Fact_Sales[order_date] ), REMOVEFILTERS () )
+		formatString: d mmm yyyy
+		displayFolder: 0 Comparison
+		lineageTag: 9cbc1723-f80e-4fd3-a5c1-7b90b66661d0
+
+	measure 'PY Period Label' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			VAR _dates =
+			    CALCULATETABLE (
+			        VALUES ( Dim_Date[Date] ),
+			        SAMEPERIODLASTYEAR ( Dim_Date[Date] ),
+			        KEEPFILTERS ( Dim_Date[Date] <= _cap )
+			    )
+			VAR _start = MINX ( _dates, Dim_Date[Date] )
+			VAR _end = MAXX ( _dates, Dim_Date[Date] )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _start ),
+			        "vs "
+			            & IF ( YEAR ( _start ) = YEAR ( _end ), FORMAT ( _start, "mmm" ), FORMAT ( _start, "mmm yyyy" ) )
+			            & "–" & FORMAT ( _end, "mmm yyyy" )
+			    )
+		displayFolder: 0 Comparison
+		lineageTag: 8fcfaa32-1ebc-4488-a0da-8a9932d1cfbe
+
+	measure 'Net Transaction Value PY' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			RETURN
+			    CALCULATE ( [Net Transaction Value], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		displayFolder: 0 Comparison
+		lineageTag: 89fe7e73-1f7a-4056-a3e5-869ae66f84e1
+
+	measure 'Lost Orders' =
+			CALCULATE ( [Total Orders], Fact_Sales[order_status] IN { "Cancelled", "Returned" } )
+		formatString: #,0
+		displayFolder: 1 Core additions
+		lineageTag: d52c142d-1319-4f6f-9417-f79142ff100c
+
+	measure 'Lost Order Rate' =
+			DIVIDE ( [Lost Orders], [Total Orders] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 1 Core additions
+		lineageTag: 36ceadb7-d096-4220-800c-dc5930c92480
+
+	measure 'Lost Order Value' =
+			CALCULATE ( [Net Transaction Value], Fact_Sales[order_status] IN { "Cancelled", "Returned" } )
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		displayFolder: 1 Core additions
+		lineageTag: 2215c411-f645-4dfb-9a7d-536a473699ee
+
+	measure '% of Revenue' =
+			DIVIDE ( [Net Transaction Value], CALCULATE ( [Net Transaction Value], ALLSELECTED () ) )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 1 Core additions
+		lineageTag: 67656b03-ef64-4bf8-b8ce-7e8d21c95ce2
+
+	measure '% of Customers' =
+			DIVIDE ( [Total Customers], CALCULATE ( [Total Customers], ALLSELECTED () ) )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 1 Core additions
+		lineageTag: 36e382b7-bc01-4123-b905-8c0ffacb6536
+
+	measure '% of Units' =
+			DIVIDE ( [Units Sold], CALCULATE ( [Units Sold], ALLSELECTED () ) )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 1 Core additions
+		lineageTag: 824f3651-3b25-47c6-9a0b-a8e257c0a015
+
+	measure '% of Orders' =
+			DIVIDE ( [Total Orders], CALCULATE ( [Total Orders], ALLSELECTED () ) )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 1 Core additions
+		lineageTag: a4104232-be37-44cf-b8c9-d13a1caee87b
+
+	measure 'Electronics Share of Revenue' =
+			DIVIDE (
+			    CALCULATE ( [Net Transaction Value], Dim_Products[category] = "Electronics" ),
+			    CALCULATE ( [Net Transaction Value], REMOVEFILTERS ( Dim_Products ) )
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 1 Core additions
+		lineageTag: 77bad02f-6311-4588-9538-a46eae79bdd6
+
+	measure 'Platinum Share of Revenue' =
+			DIVIDE (
+			    CALCULATE ( [Net Transaction Value], Dim_Customers[customer_tier] = "Platinum" ),
+			    CALCULATE ( [Net Transaction Value], REMOVEFILTERS ( Dim_Customers[customer_tier] ) )
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 1 Core additions
+		lineageTag: 3451e19f-266d-4295-b63a-3a15462e4265
+
+	measure 'Platinum Share of Customers' =
+			DIVIDE (
+			    CALCULATE ( [Total Customers], Dim_Customers[customer_tier] = "Platinum" ),
+			    CALCULATE ( [Total Customers], REMOVEFILTERS ( Dim_Customers[customer_tier] ) )
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 1 Core additions
+		lineageTag: 4885c8a1-5ab3-4c9a-bbbf-43e3a9812685
+
+	measure 'Customer Type Share of Revenue' =
+			SWITCH (
+			    SELECTEDVALUE ( Customer_Behavior[Customer Type] ),
+			    "One-Time", [One-Time Customer Value Share %],
+			    "Repeat", [Repeat Customer Value Share %]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 1 Core additions
+		lineageTag: c3f3f7f7-244c-4f12-9b0f-7c48469eca27
+
+	measure 'Revenue (₹M)' =
+			DIVIDE ( [Net Transaction Value], 1e6 )
+		formatString: \₹#,0\M
+		displayFolder: 1 Core additions
+		lineageTag: c5e5c14a-9b80-424c-982f-e041649909b5
+
+	measure 'AOV (₹K)' =
+			DIVIDE ( [Average Order Value], 1e3 )
+		formatString: \₹#,0.0\K
+		displayFolder: 1 Core additions
+		lineageTag: b80bcce3-4dad-497a-9972-9ef7088dfa46
+
+	measure 'Value per Customer (₹K)' =
+			DIVIDE ( [Value per Customer], 1e3 )
+		formatString: \₹#,0.0\K
+		displayFolder: 1 Core additions
+		lineageTag: 9bd33e2a-92ba-4f40-9ff5-fbc67e0c4ece
+
+	measure 'Units (K)' =
+			DIVIDE ( [Units Sold], 1e3 )
+		formatString: #,0.0\K
+		displayFolder: 1 Core additions
+		lineageTag: 618b6370-a678-41c2-aa36-223b071c0ab2
+
+	measure 'NTV YoY Label' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			VAR _cur = [Net Transaction Value]
+			VAR _py = CALCULATE ( [Net Transaction Value], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _py ),
+			        FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label]
+			    )
+		displayFolder: 2 KPI labels
+		lineageTag: 0a7435dd-edf4-43a8-8646-b99d2a719504
+
+	measure 'Orders YoY Label' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			VAR _cur = [Total Orders]
+			VAR _py = CALCULATE ( [Total Orders], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _py ),
+			        FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label]
+			    )
+		displayFolder: 2 KPI labels
+		lineageTag: e0d30e0f-5387-4eb2-97fa-a71cc08b8ecf
+
+	measure 'AOV YoY Label' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			VAR _cur = [Average Order Value]
+			VAR _py = CALCULATE ( [Average Order Value], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _py ),
+			        FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label]
+			    )
+		displayFolder: 2 KPI labels
+		lineageTag: 8a234497-f878-4a21-95cb-8e2e1438b84b
+
+	measure 'Customers YoY Label' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			VAR _cur = [Total Customers]
+			VAR _py = CALCULATE ( [Total Customers], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _py ),
+			        FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label]
+			    )
+		displayFolder: 2 KPI labels
+		lineageTag: a18d9dfb-af90-47be-83bb-3670200e3d2b
+
+	measure 'Units YoY Label' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			VAR _cur = [Units Sold]
+			VAR _py = CALCULATE ( [Units Sold], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _py ),
+			        FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label]
+			    )
+		displayFolder: 2 KPI labels
+		lineageTag: dde84042-fe2b-4e18-beb9-5167797342cd
+
+	measure 'Units per Order YoY Label' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			VAR _cur = [Average Units per Order]
+			VAR _py = CALCULATE ( [Average Units per Order], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _py ),
+			        FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label]
+			    )
+		displayFolder: 2 KPI labels
+		lineageTag: 11df2a0a-b1bc-4b9d-bcd4-7d6902eeb28b
+
+	measure 'Value per Customer YoY Label' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			VAR _cur = [Value per Customer]
+			VAR _py = CALCULATE ( [Value per Customer], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _py ),
+			        FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label]
+			    )
+		displayFolder: 2 KPI labels
+		lineageTag: 16dc154d-37bc-47fd-8bbd-9d9c73d17f33
+
+	measure 'Orders per Customer YoY Label' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			VAR _cur = [Orders per Customer]
+			VAR _py = CALCULATE ( [Orders per Customer], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _py ),
+			        FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label]
+			    )
+		displayFolder: 2 KPI labels
+		lineageTag: 9f1a3c90-b5ff-43b4-ba35-fd88927875d8
+
+	measure 'Repeat Customers YoY Label' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			VAR _cur = [Repeat Customers]
+			VAR _py = CALCULATE ( [Repeat Customers], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _py ),
+			        FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label]
+			    )
+		displayFolder: 2 KPI labels
+		lineageTag: 863a006b-529d-4eae-9f62-6689e7ec4737
+
+	measure 'One-Time Customers YoY Label' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			VAR _cur = [One-Time Customers]
+			VAR _py = CALCULATE ( [One-Time Customers], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _py ),
+			        FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label]
+			    )
+		displayFolder: 2 KPI labels
+		lineageTag: 06a6331f-559a-4b79-a43b-f01631afa98f
+
+	measure 'Repeat Rate YoY Label' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			VAR _cur = [Repeat Customer Rate]
+			VAR _py = CALCULATE ( [Repeat Customer Rate], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _py ),
+			        FORMAT ( ( _cur - _py ) * 100, "▲ 0.0 pp;▼ 0.0 pp;— 0.0 pp" ) & " " & [PY Period Label]
+			    )
+		displayFolder: 2 KPI labels
+		lineageTag: 68b6255b-409a-4026-b123-5f8699e61d0d
+
+	measure 'Repeat Revenue Share YoY Label' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			VAR _cur = [Repeat Customer Value Share %]
+			VAR _py = CALCULATE ( [Repeat Customer Value Share %], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _py ),
+			        FORMAT ( ( _cur - _py ) * 100, "▲ 0.0 pp;▼ 0.0 pp;— 0.0 pp" ) & " " & [PY Period Label]
+			    )
+		displayFolder: 2 KPI labels
+		lineageTag: bbe1788c-acc7-4871-98ca-90d8e170351b
+
+	measure 'Electronics Share YoY Label' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			VAR _cur = [Electronics Share of Revenue]
+			VAR _py = CALCULATE ( [Electronics Share of Revenue], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _py ),
+			        FORMAT ( ( _cur - _py ) * 100, "▲ 0.0 pp;▼ 0.0 pp;— 0.0 pp" ) & " " & [PY Period Label]
+			    )
+		displayFolder: 2 KPI labels
+		lineageTag: 4a8e85f7-ce20-4bcc-ba23-9fad93980ff5
+
+	measure 'Platinum Share YoY Label' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			VAR _cur = [Platinum Share of Revenue]
+			VAR _py = CALCULATE ( [Platinum Share of Revenue], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _py ),
+			        FORMAT ( ( _cur - _py ) * 100, "▲ 0.0 pp;▼ 0.0 pp;— 0.0 pp" ) & " " & [PY Period Label]
+			    )
+		displayFolder: 2 KPI labels
+		lineageTag: be23962e-19f7-4a57-b8dc-8f23614f6b85
+
+	measure 'Delivered Rate YoY Label' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			VAR _cur = [Completed Order Rate]
+			VAR _py = CALCULATE ( [Completed Order Rate], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _py ),
+			        FORMAT ( ( _cur - _py ) * 100, "▲ 0.0 pp;▼ 0.0 pp;— 0.0 pp" ) & " " & [PY Period Label]
+			    )
+		displayFolder: 2 KPI labels
+		lineageTag: 4686f838-808c-4cd9-8ab9-2c565a0e20a4
+
+	measure 'Lost Order Rate YoY Label' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			VAR _cur = [Lost Order Rate]
+			VAR _py = CALCULATE ( [Lost Order Rate], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _py ),
+			        FORMAT ( ( _cur - _py ) * 100, "▲ 0.0 pp;▼ 0.0 pp;— 0.0 pp" ) & " " & [PY Period Label]
+			    )
+		displayFolder: 2 KPI labels
+		lineageTag: 545eef0f-ced5-43a8-bd11-7de9019a4776
+
+	measure 'Delivery Days YoY Label' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			VAR _cur = [Average Delivery Days]
+			VAR _py = CALCULATE ( [Average Delivery Days], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _py ),
+			        FORMAT ( _cur - _py, "▲ 0.0 days;▼ 0.0 days;— 0.0 days" ) & " " & [PY Period Label]
+			    )
+		displayFolder: 2 KPI labels
+		lineageTag: e0f75b11-0da9-4fbb-9ddf-72bd47e2acb7
+
+	measure 'Lost Value Label' =
+			"₹" & FORMAT ( DIVIDE ( [Lost Order Value], 1e6 ), "#,0" ) & "M of order value"
+		displayFolder: 2 KPI labels
+		lineageTag: ab4434f7-4beb-4b57-b700-d8c121b052c4
+
+	measure 'Total Uplift Label' =
+			"+" & FORMAT ( DIVIDE ( [Total Uplift], [Net Transaction Value] ), "0.0%" ) & " on " & [NTV Text] & " per half-year"
+		displayFolder: 2 KPI labels
+		lineageTag: 45291651-5b9b-4c5d-a2d9-a3e23b5afc75
+
+	measure 'Platinum Value Label' =
+			"₹" & FORMAT ( DIVIDE ( [Platinum Value per Customer], 1e3 ), "#,0.0" ) & "K each this period"
+		displayFolder: 2 KPI labels
+		lineageTag: 00ccac19-e7d5-4124-ad48-da7f3affba16
+
+	measure 'Electronics-Only Label' =
+			"of " & FORMAT ( CALCULATE ( [Total Customers], Dim_Products[category] = "Electronics" ), "#,0" ) & " Electronics buyers"
+		displayFolder: 2 KPI labels
+		lineageTag: a283b381-191c-4119-b6bb-c614c1086a41
+
+	measure 'Highlight Top Category' =
+			VAR _target = MAXX ( ALLSELECTED ( Dim_Products[category] ), [Net Transaction Value] )
+			RETURN
+			    IF ( [Net Transaction Value] = _target, "#F5B800", "#5B71A3" )
+		displayFolder: 3 Formatting
+		lineageTag: 9bb8aab4-2a8e-4f23-962a-316e29dc3bbd
+
+	measure 'Highlight Top Product' =
+			VAR _target = MAXX ( ALLSELECTED ( Dim_Products[product_name] ), [Net Transaction Value] )
+			RETURN
+			    IF ( [Net Transaction Value] = _target, "#F5B800", "#5B71A3" )
+		displayFolder: 3 Formatting
+		lineageTag: 1185e287-d1fa-42c1-a3aa-abedee0255ee
+
+	measure 'Highlight Top Tier Value' =
+			VAR _target = MAXX ( ALLSELECTED ( Dim_Customers[customer_tier] ), [Value per Customer] )
+			RETURN
+			    IF ( [Value per Customer] = _target, "#F5B800", "#5B71A3" )
+		displayFolder: 3 Formatting
+		lineageTag: c5b6b3b4-f85b-4af9-9c15-61a4fd02bdf0
+
+	measure 'Highlight Lowest Repeat Tier' =
+			VAR _target = MINX ( ALLSELECTED ( Dim_Customers[customer_tier] ), [Repeat Customer Rate] )
+			RETURN
+			    IF ( [Repeat Customer Rate] = _target, "#F5B800", "#5B71A3" )
+		displayFolder: 3 Formatting
+		lineageTag: 706a1db0-7a31-4721-91d6-1d8abf9d91ce
+
+	measure 'Highlight Top Age Group' =
+			VAR _target = MAXX ( ALLSELECTED ( Dim_Customers[age_group] ), [Net Transaction Value] )
+			RETURN
+			    IF ( [Net Transaction Value] = _target, "#F5B800", "#5B71A3" )
+		displayFolder: 3 Formatting
+		lineageTag: e7b425ea-3a0a-43da-83f8-be2032df0d8f
+
+	measure 'Highlight Top Payment Mode' =
+			VAR _target = MAXX ( ALLSELECTED ( Fact_Sales[payment_mode] ), [Total Orders] )
+			RETURN
+			    IF ( [Total Orders] = _target, "#F5B800", "#5B71A3" )
+		displayFolder: 3 Formatting
+		lineageTag: b1625cfc-c70f-4787-8d3f-da46f44c9523
+
+	measure 'Order Status Color' =
+			SWITCH (
+			    SELECTEDVALUE ( Fact_Sales[order_status] ),
+			    "Cancelled", "#FF7A6B",
+			    "Returned", "#FF7A6B",
+			    "Delivered", "#5B71A3",
+			    "#3A4C75"
+			)
+		displayFolder: 3 Formatting
+		lineageTag: 49479437-24a5-449e-ba45-78635aad52f6
+
+	measure 'AOV Cell Color' =
+			VAR _v = [Average Order Value]
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        _v >= 50000, "#7A6420",
+			        _v >= 15000, "#4A4530",
+			        _v >= 5000, "#2E3346",
+			        "#111D38"
+			    )
+		displayFolder: 3 Formatting
+		lineageTag: 15e0768b-f9a2-407c-a39c-7a5f52eeef88
+
+	measure 'Repeat Rate Cell Color' =
+			VAR _v = [Repeat Customer Rate]
+			RETURN
+			    SWITCH ( TRUE (), _v >= 0.58, "#1F4A45", _v < 0.45, "#5C3340", "#111D38" )
+		displayFolder: 3 Formatting
+		lineageTag: 4ae060a7-9f04-4261-97e3-d80bdc3cde96
+
+	measure 'Repeat Rate Font Color' =
+			VAR _v = [Repeat Customer Rate]
+			RETURN
+			    SWITCH ( TRUE (), _v >= 0.58, "#6EE7B7", _v < 0.45, "#FFA79C", "#FFFFFF" )
+		displayFolder: 3 Formatting
+		lineageTag: 13921934-c69a-41ab-93d8-0890ae14deda
+
+	measure 'Highlight Top Lever' =
+			VAR _max = MAXX ( ALL ( 'Growth Levers'[Lever] ), [Lever Uplift] )
+			RETURN
+			    IF ( [Lever Uplift] = _max, "#F5B800", "#5B71A3" )
+		displayFolder: 3 Formatting
+		lineageTag: 1fa3dc19-afd8-4282-90a5-286d69812e86
+
+	measure 'NTV Text' =
+			VAR _v = [Net Transaction Value]
+			RETURN
+			    "₹"
+			        & SWITCH (
+			            TRUE (),
+			            _v >= 1e9, FORMAT ( _v / 1e9, "0.00" ) & "bn",
+			            _v >= 1e6, FORMAT ( _v / 1e6, "#,0" ) & "M",
+			            FORMAT ( _v / 1e3, "#,0.0" ) & "K"
+			        )
+		displayFolder: 4 Titles
+		lineageTag: 09fce72e-4b89-44f1-b29a-42e96f98bc28
+
+	measure 'Exec Headline' =
+			VAR _cap = EDATE ( [Last Sale Date], -12 )
+			VAR _cur = [Net Transaction Value]
+			VAR _py = CALCULATE ( [Net Transaction Value], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			VAR _g = DIVIDE ( _cur - _py, _py )
+			VAR _verb =
+			    SWITCH (
+			        TRUE (),
+			        ISBLANK ( _py ), "Revenue reached ",
+			        ABS ( _g ) < 0.01, "Revenue held flat at ",
+			        _g > 0, "Revenue grew to ",
+			        "Revenue fell to "
+			    )
+			RETURN
+			    _verb & [NTV Text]
+			        & IF ( NOT ISBLANK ( _py ), " (" & FORMAT ( _g, "+0.0%;-0.0%;0.0%" ) & " " & [PY Period Label] & ")" )
+		displayFolder: 4 Titles
+		lineageTag: 8dad7b53-208a-46f7-adcc-2ca122681384
+
+	measure 'Top Category Title' =
+			VAR _ranked = TOPN ( 2, ALLSELECTED ( Dim_Products[category] ), [Net Transaction Value], DESC )
+			VAR _top = TOPN ( 1, _ranked, [Net Transaction Value], DESC )
+			VAR _topValue = MAXX ( _ranked, [Net Transaction Value] )
+			VAR _secondValue = MINX ( _ranked, [Net Transaction Value] )
+			VAR _share = DIVIDE ( _topValue, CALCULATE ( [Net Transaction Value], ALLSELECTED ( Dim_Products[category] ) ) )
+			RETURN
+			    MAXX ( _top, Dim_Products[category] ) & " is " & FORMAT ( _share, "0%" )
+			        & " of revenue, " & FORMAT ( DIVIDE ( _topValue, _secondValue ), "0" ) & "× the next category"
+		displayFolder: 4 Titles
+		lineageTag: 6b76881a-3906-409f-a8e8-59b35c543261
+
+	measure 'Platinum Title' =
+			"Platinum is " & FORMAT ( [Platinum Share of Customers], "0%" )
+			    & " of customers but " & FORMAT ( [Platinum Share of Revenue], "0%" ) & " of revenue"
+		displayFolder: 4 Titles
+		lineageTag: 9096c095-98b5-49d7-8c43-511f7d33320d
+
+	measure 'Retention Headline' =
+			"Repeat buyers are " & FORMAT ( [Repeat Customer Rate], "0%" )
+			    & " of customers but bring " & FORMAT ( [Repeat Customer Value Share %], "0%" ) & " of revenue"
+		displayFolder: 4 Titles
+		lineageTag: cd099964-0041-4d4f-8e36-c5b6ffa078f4
+
+	measure 'Operations Headline' =
+			"1 in " & FORMAT ( DIVIDE ( 1, [Lost Order Rate] ), "0" )
+			    & " orders is cancelled or returned: ₹" & FORMAT ( DIVIDE ( [Lost Order Value], 1e6 ), "#,0" ) & "M of order value"
+		displayFolder: 4 Titles
+		lineageTag: cb026f3b-7c83-45de-ae2e-49fcb03aa4d3
+
+	measure 'Growth Headline' =
+			VAR _levers = ADDCOLUMNS ( ALL ( 'Growth Levers' ), "@uplift", [Lever Uplift] )
+			VAR _top = TOPN ( 1, _levers, [@uplift], DESC )
+			RETURN
+			    MAXX ( _top, 'Growth Levers'[Short Name] ) & " is the biggest lever: ₹"
+			        & FORMAT ( MAXX ( _top, [@uplift] ) / 1e6, "#,0.0" ) & "M of the ₹"
+			        & FORMAT ( [Total Uplift] / 1e6, "#,0.0" ) & "M on the table"
+		displayFolder: 4 Titles
+		lineageTag: 3927f7ae-ea8c-4b37-96a8-f6c194eeaab1
+
+	measure 'Last Refreshed Text' =
+			"Last refreshed " & FORMAT ( MAX ( Refresh_Log[Refreshed] ), "d mmm yyyy" )
+		displayFolder: 4 Titles
+		lineageTag: 11f178c0-8fbc-47fa-8108-47e7f584d3ca
+
+	measure 'Platinum Customers' =
+			CALCULATE ( [Total Customers], Dim_Customers[customer_tier] = "Platinum" )
+		formatString: #,0
+		displayFolder: 5 Growth what-if
+		lineageTag: 169c1dfd-0061-4f3a-afd6-90b06b17b6be
+
+	measure 'Platinum Value per Customer' =
+			CALCULATE ( [Value per Customer], Dim_Customers[customer_tier] = "Platinum" )
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		displayFolder: 5 Growth what-if
+		lineageTag: c8d8324e-dfe9-4261-997c-e0da57a2b4e1
+
+	measure 'Electronics-Only Buyers' =
+			COUNTROWS (
+			    FILTER (
+			        VALUES ( Fact_Sales[customer_id] ),
+			        CALCULATE ( [Total Orders], Dim_Products[category] = "Electronics" ) > 0
+			            && CALCULATE ( [Total Orders], Dim_Products[category] <> "Electronics" ) = 0
+			    )
+			)
+		formatString: #,0
+		displayFolder: 5 Growth what-if
+		lineageTag: 50f4f28a-322c-40c1-96a0-be882b043b7f
+
+	measure 'Avg Home Order Value' =
+			CALCULATE ( [Average Order Value], Dim_Products[category] = "Home" )
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		displayFolder: 5 Growth what-if
+		lineageTag: bbfe09cc-fe01-421f-af26-30c4d27e92d4
+
+	measure 'Uplift Second Order' =
+			[One-Time Customers] * [Second Order Conversion Value] * [Average Order Value]
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		displayFolder: 5 Growth what-if
+		lineageTag: afe3d262-a7df-4ae1-b650-b6ab96305add
+
+	measure 'Uplift Platinum Retention' =
+			[Platinum Customers] * [Platinum Churn Avoided Value] * [Platinum Value per Customer]
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		displayFolder: 5 Growth what-if
+		lineageTag: 6d7dab05-2e74-4b11-9b09-f5dc6b2a2390
+
+	measure 'Uplift Home Cross-sell' =
+			[Electronics-Only Buyers] * [Home Attach Rate Value] * [Avg Home Order Value]
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		displayFolder: 5 Growth what-if
+		lineageTag: 271d7156-a221-4b33-8bb9-5c24d7668f52
+
+	measure 'Total Uplift' =
+			[Uplift Second Order] + [Uplift Platinum Retention] + [Uplift Home Cross-sell]
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		displayFolder: 5 Growth what-if
+		lineageTag: 55347e4c-150d-47cb-934e-d97b1e0566b0
+
+	measure 'Total Uplift (₹M)' =
+			DIVIDE ( [Total Uplift], 1e6 )
+		formatString: +\₹#,0.0\M
+		displayFolder: 5 Growth what-if
+		lineageTag: af318e29-6824-4f77-9c23-0d16c070c0f0
+
+	measure 'Total Uplift %' =
+			DIVIDE ( [Total Uplift], [Net Transaction Value] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 5 Growth what-if
+		lineageTag: c4f1fc86-211b-4e05-b20f-e2ec8b6c58c4
+
+	measure 'Lever Uplift' =
+			SWITCH (
+			    SELECTEDVALUE ( 'Growth Levers'[Lever] ),
+			    "Second purchase from one-time buyers", [Uplift Second Order],
+			    "Platinum churn avoided", [Uplift Platinum Retention],
+			    "Home cross-sell to Electronics-only buyers", [Uplift Home Cross-sell]
+			)
+		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
+		displayFolder: 5 Growth what-if
+		lineageTag: c9a2cc8a-8cbf-4ade-ae2d-e343f3c389ad
+
+	measure 'Lever Uplift (₹M)' =
+			DIVIDE ( [Lever Uplift], 1e6 )
+		formatString: +\₹#,0.0\M
+		displayFolder: 5 Growth what-if
+		lineageTag: 5ee5a5d9-6bfa-4fc5-b9bf-c810db2141e2
+
+	measure 'Lever Pool' =
+			SWITCH (
+			    SELECTEDVALUE ( 'Growth Levers'[Lever] ),
+			    "Second purchase from one-time buyers", [One-Time Customers],
+			    "Platinum churn avoided", [Platinum Customers],
+			    "Home cross-sell to Electronics-only buyers", [Electronics-Only Buyers]
+			)
+		formatString: #,0
+		displayFolder: 5 Growth what-if
+		lineageTag: c5ce9a0e-7289-48eb-aa36-86572b90a6d8
+
+	measure 'Lever Assumption' =
+			SWITCH (
+			    SELECTEDVALUE ( 'Growth Levers'[Lever] ),
+			    "Second purchase from one-time buyers", [Second Order Conversion Value],
+			    "Platinum churn avoided", [Platinum Churn Avoided Value],
+			    "Home cross-sell to Electronics-only buyers", [Home Attach Rate Value]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 5 Growth what-if
+		lineageTag: 989a4875-fa60-4010-a8db-7ce9116491e4
+
+	measure 'Lever Value Each (₹K)' =
+			DIVIDE ( SWITCH (
+			    SELECTEDVALUE ( 'Growth Levers'[Lever] ),
+			    "Second purchase from one-time buyers", [Average Order Value],
+			    "Platinum churn avoided", [Platinum Value per Customer],
+			    "Home cross-sell to Electronics-only buyers", [Avg Home Order Value]
+			), 1e3 )
+		formatString: \₹#,0.0\K
+		displayFolder: 5 Growth what-if
+		lineageTag: bcbfbe3d-1c19-4081-810b-a204487e7960
 
 	column Measure
 		isHidden
