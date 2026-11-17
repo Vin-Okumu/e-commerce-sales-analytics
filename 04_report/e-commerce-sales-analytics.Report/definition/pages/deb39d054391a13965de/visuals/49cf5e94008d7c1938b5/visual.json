@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "49cf5e94008d7c1938b5",
   "position": {
     "x": 24,
     "y": 447,
-    "z": 503,
+    "z": 16000,
     "height": 187,
     "width": 1231,
-    "tabOrder": 503
+    "tabOrder": 16000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -28,27 +28,8 @@
               },
               "queryRef": "Fact_Sales.state",
               "nativeQueryRef": "State",
-              "displayName": "State",
-              "active": true
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measure"
-                    }
-                  },
-                  "Property": "Lost Order Rate"
-                }
-              },
-              "queryRef": "_Measure.Lost Order Rate",
-              "nativeQueryRef": "Lost-order rate",
-              "displayName": "Lost-order rate"
+              "active": true,
+              "displayName": "State"
             }
           ]
         },
@@ -83,6 +64,25 @@
               "nativeQueryRef": "Lost Order Value"
             }
           ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measure"
+                    }
+                  },
+                  "Property": "Lost Order Rate"
+                }
+              },
+              "queryRef": "_Measure.Lost Order Rate",
+              "nativeQueryRef": "Lost-order rate",
+              "displayName": "Lost-order rate"
+            }
+          ]
         }
       },
       "sortDefinition": {
@@ -100,8 +100,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {

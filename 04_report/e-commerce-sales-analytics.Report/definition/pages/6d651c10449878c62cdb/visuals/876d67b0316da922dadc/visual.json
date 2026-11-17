@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "876d67b0316da922dadc",
   "position": {
     "x": 439,
     "y": 447,
-    "z": 501,
+    "z": 19000,
     "height": 239,
     "width": 816,
-    "tabOrder": 501
+    "tabOrder": 19000
   },
   "visual": {
     "visualType": "tableEx",
@@ -108,8 +108,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {
@@ -156,6 +155,13 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Right'"
                 }
               }
             }
@@ -285,6 +291,64 @@
                 }
               }
             }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "95.53932235001554D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measure.Lever Pool"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "144.430836182779D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measure.Lever Assumption"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "124.9717515916309D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measure.Lever Value Each (₹K)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "137.75473681159613D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measure.Lever Uplift (₹M)"
           }
         }
       ]

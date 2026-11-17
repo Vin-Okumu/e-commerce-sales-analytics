@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "2fe880882c158f0e1a17",
   "position": {
     "x": 24,
     "y": 447,
-    "z": 502,
+    "z": 16000,
     "height": 239,
     "width": 816,
-    "tabOrder": 502
+    "tabOrder": 16000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -28,8 +28,8 @@
               },
               "queryRef": "Dim_Products.category",
               "nativeQueryRef": "Category",
-              "displayName": "Category",
-              "active": true
+              "active": true,
+              "displayName": "Category"
             }
           ]
         },
@@ -68,8 +68,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {

@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "2961baeb046717335e0d",
   "position": {
     "x": 832,
     "y": 24,
-    "z": 300,
+    "z": 1000,
     "height": 58,
     "width": 100,
-    "tabOrder": 300
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "slicer",
@@ -188,7 +188,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "2026L"
+                                "Value": "2025L"
                               }
                             }
                           ]
@@ -304,11 +304,11 @@
         }
       ]
     },
-    "drillFilterOtherVisuals": true,
     "syncGroup": {
       "groupName": "Year",
       "fieldChanges": true,
       "filterChanges": true
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

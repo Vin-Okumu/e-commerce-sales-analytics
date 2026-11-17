@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "719a86819024b13a7801",
   "position": {
     "x": 439,
     "y": 194,
-    "z": 501,
+    "z": 14000,
     "height": 239,
     "width": 401,
-    "tabOrder": 501
+    "tabOrder": 14000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -28,8 +28,8 @@
               },
               "queryRef": "Fact_Sales.payment_mode",
               "nativeQueryRef": "Payment mode",
-              "displayName": "Payment mode",
-              "active": true
+              "active": true,
+              "displayName": "Payment mode"
             }
           ]
         },
@@ -68,8 +68,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {

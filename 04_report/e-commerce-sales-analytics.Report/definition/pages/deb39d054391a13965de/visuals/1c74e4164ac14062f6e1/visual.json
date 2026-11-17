@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "1c74e4164ac14062f6e1",
   "position": {
     "x": 24,
     "y": 194,
-    "z": 500,
+    "z": 13000,
     "height": 239,
     "width": 401,
-    "tabOrder": 500
+    "tabOrder": 13000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -28,8 +28,26 @@
               },
               "queryRef": "Fact_Sales.order_status",
               "nativeQueryRef": "Status",
-              "displayName": "Status",
-              "active": true
+              "active": true,
+              "displayName": "Status"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measure"
+                    }
+                  },
+                  "Property": "% of Orders"
+                }
+              },
+              "queryRef": "_Measure.% of Orders",
+              "nativeQueryRef": "% of Orders"
             }
           ]
         },
@@ -51,24 +69,6 @@
               "displayName": "Orders"
             }
           ]
-        },
-        "Tooltips": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measure"
-                    }
-                  },
-                  "Property": "% of Orders"
-                }
-              },
-              "queryRef": "_Measure.% of Orders",
-              "nativeQueryRef": "% of Orders"
-            }
-          ]
         }
       },
       "sortDefinition": {
@@ -86,8 +86,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {

@@ -24,3 +24,4 @@ table 'Home Attach Rate'
 		source = GENERATESERIES(0, 0.2, 0.01)
 
 	annotation PBI_Id = 9860ee50758244f480733503cfa66173
+

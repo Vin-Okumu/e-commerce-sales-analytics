@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "4277fa0b556fd20cf120",
   "position": {
     "x": 24,
     "y": 194,
-    "z": 500,
+    "z": 14000,
     "height": 239,
     "width": 816,
-    "tabOrder": 500
+    "tabOrder": 14000
   },
   "visual": {
     "visualType": "lineChart",
@@ -82,8 +82,7 @@
             },
             "direction": "Ascending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {
@@ -489,7 +488,7 @@
                       "Entity": "_Measure"
                     }
                   },
-                  "Property": "Exec Headline"
+                  "Property": "Trend Title"
                 }
               }
             },
@@ -555,7 +554,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Net transaction value by month, ₹ (axis starts at zero)'"
+                  "Value": "'Net transaction value by month, ₹, this period vs the same months last year (axis starts at zero)'"
                 }
               }
             },

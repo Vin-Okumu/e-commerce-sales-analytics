@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "da192e2a913ea00eec0a",
   "position": {
     "x": 36,
     "y": 370,
-    "z": 492,
+    "z": 15000,
     "height": 96,
     "width": 377,
-    "tabOrder": 492
+    "tabOrder": 15000
   },
   "visual": {
     "visualType": "slicer",
@@ -38,6 +38,13 @@
       "data": [
         {
           "properties": {
+            "numericStart": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.025D"
+                }
+              }
+            },
             "mode": {
               "expr": {
                 "Literal": {
@@ -189,6 +196,48 @@
                 "Literal": {
                   "Value": "9D"
                 }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "filter": {
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "p",
+                    "Entity": "Platinum Churn Avoided",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "p"
+                              }
+                            },
+                            "Property": "Platinum Churn Avoided"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "0.025D"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
               }
             }
           }

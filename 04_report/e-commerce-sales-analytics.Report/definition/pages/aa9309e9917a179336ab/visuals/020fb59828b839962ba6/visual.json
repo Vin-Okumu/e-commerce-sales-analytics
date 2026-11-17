@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "020fb59828b839962ba6",
   "position": {
     "x": 940,
     "y": 24,
-    "z": 301,
+    "z": 1000,
     "height": 58,
     "width": 100,
-    "tabOrder": 301
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "slicer",
@@ -141,6 +141,11 @@
             }
           }
         }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
       ]
     },
     "visualContainerObjects": {
@@ -244,11 +249,11 @@
         }
       ]
     },
-    "drillFilterOtherVisuals": true,
     "syncGroup": {
       "groupName": "Tier",
       "fieldChanges": true,
       "filterChanges": true
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

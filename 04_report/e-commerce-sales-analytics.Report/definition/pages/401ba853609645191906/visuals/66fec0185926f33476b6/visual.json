@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "66fec0185926f33476b6",
   "position": {
     "x": 439,
     "y": 447,
-    "z": 502,
+    "z": 15000,
     "height": 239,
     "width": 816,
-    "tabOrder": 502
+    "tabOrder": 15000
   },
   "visual": {
     "visualType": "tableEx",
@@ -108,8 +108,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {
@@ -156,6 +155,13 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Right'"
                 }
               }
             }
@@ -315,6 +321,78 @@
                 }
               }
             }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "125.86327355598698D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_Products.category"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "138.7634262755784D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measure.Units (K)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "184.39246263727105D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measure.Revenue (₹M)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "164.3223230476932D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measure.AOV (₹K)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "144.9984681407486D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measure.Lost Order Rate"
           }
         }
       ]

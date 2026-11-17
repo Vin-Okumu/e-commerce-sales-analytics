@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "3edf76d65d9207861f7c",
   "position": {
     "x": 24,
     "y": 447,
-    "z": 502,
+    "z": 15000,
     "height": 239,
     "width": 1231,
-    "tabOrder": 502
+    "tabOrder": 15000
   },
   "visual": {
     "visualType": "tableEx",
@@ -138,8 +138,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {
@@ -186,6 +185,13 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Right'"
                 }
               }
             }
@@ -361,6 +367,92 @@
                 }
               }
             }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "172.70125921852306D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measure.Total Customers"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "183.83649120773077D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measure.% of Customers"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "173.9968555516003D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measure.Revenue (₹M)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "180.29561533764226D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measure.% of Revenue"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "249.21365407735198D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measure.Value per Customer (₹K)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "171.5110315873515D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measure.Repeat Customer Rate"
           }
         }
       ]

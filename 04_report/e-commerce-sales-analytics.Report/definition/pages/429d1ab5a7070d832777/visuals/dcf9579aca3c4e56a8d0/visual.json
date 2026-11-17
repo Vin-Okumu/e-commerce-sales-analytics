@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "dcf9579aca3c4e56a8d0",
   "position": {
     "x": 439,
     "y": 194,
-    "z": 501,
+    "z": 14000,
     "height": 239,
     "width": 816,
-    "tabOrder": 501
+    "tabOrder": 14000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -28,8 +28,8 @@
               },
               "queryRef": "Dim_Customers.age_group",
               "nativeQueryRef": "Age group",
-              "displayName": "Age group",
-              "active": true
+              "active": true,
+              "displayName": "Age group"
             }
           ]
         },
@@ -68,8 +68,7 @@
             },
             "direction": "Ascending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {

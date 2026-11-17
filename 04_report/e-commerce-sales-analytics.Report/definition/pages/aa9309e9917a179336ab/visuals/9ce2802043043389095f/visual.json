@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "9ce2802043043389095f",
   "position": {
     "x": 854,
     "y": 447,
-    "z": 503,
+    "z": 17000,
     "height": 239,
     "width": 401,
-    "tabOrder": 503
+    "tabOrder": 17000
   },
   "visual": {
     "visualType": "textbox",
@@ -21,10 +21,10 @@
                   {
                     "value": "What to do next",
                     "textStyle": {
-                      "fontSize": "11pt",
-                      "color": "#F5B800",
+                      "fontWeight": "bold",
                       "fontFamily": "Segoe UI Semibold",
-                      "fontWeight": "bold"
+                      "fontSize": "11pt",
+                      "color": "#f5b800"
                     }
                   }
                 ]
@@ -34,9 +34,9 @@
                   {
                     "value": " ",
                     "textStyle": {
+                      "fontFamily": "Segoe UI",
                       "fontSize": "6pt",
-                      "color": "#FFFFFF",
-                      "fontFamily": "Segoe UI"
+                      "color": "#ffffff"
                     }
                   }
                 ]
@@ -44,36 +44,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "1. Win the second order: 13.4K one-time buyers this period",
-                    "textStyle": {
-                      "fontSize": "11pt",
-                      "color": "#FFFFFF",
-                      "fontFamily": "Segoe UI"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "2. Protect Platinum: 1 pp of Platinum churn ≈ ₹12.7M",
-                    "textStyle": {
-                      "fontSize": "11pt",
-                      "color": "#FFFFFF",
-                      "fontFamily": "Segoe UI"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "3. Cross-sell Home and Sports to Electronics buyers",
-                    "textStyle": {
-                      "fontSize": "11pt",
-                      "color": "#FFFFFF",
-                      "fontFamily": "Segoe UI"
-                    }
+                    "value": ""
                   }
                 ]
               }

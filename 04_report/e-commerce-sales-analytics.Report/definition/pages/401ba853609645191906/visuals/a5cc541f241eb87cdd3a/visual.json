@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "a5cc541f241eb87cdd3a",
   "position": {
     "x": 24,
     "y": 194,
-    "z": 500,
+    "z": 13000,
     "height": 492,
     "width": 401,
-    "tabOrder": 500
+    "tabOrder": 13000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -28,27 +28,8 @@
               },
               "queryRef": "Dim_Products.product_name",
               "nativeQueryRef": "Product",
-              "displayName": "Product",
-              "active": true
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measure"
-                    }
-                  },
-                  "Property": "Net Transaction Value"
-                }
-              },
-              "queryRef": "_Measure.Net Transaction Value",
-              "nativeQueryRef": "Net transaction value",
-              "displayName": "Net transaction value"
+              "active": true,
+              "displayName": "Product"
             }
           ]
         },
@@ -83,6 +64,25 @@
               "nativeQueryRef": "Lost Order Rate"
             }
           ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measure"
+                    }
+                  },
+                  "Property": "Net Transaction Value"
+                }
+              },
+              "queryRef": "_Measure.Net Transaction Value",
+              "nativeQueryRef": "Net transaction value",
+              "displayName": "Net transaction value"
+            }
+          ]
         }
       },
       "sortDefinition": {
@@ -100,8 +100,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {

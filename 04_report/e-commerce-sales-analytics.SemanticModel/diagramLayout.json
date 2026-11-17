@@ -84,6 +84,71 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1432,
+            "y": 134.5
+          },
+          "nodeIndex": "Growth Levers",
+          "nodeLineageTag": "bb75a5e1-1ecf-4a07-be5d-e01247074f54",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1716,
+            "y": 98.5
+          },
+          "nodeIndex": "Home Attach Rate",
+          "nodeLineageTag": "52cf8973-4e39-4021-8510-26d68484cb40",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2000,
+            "y": 98.5
+          },
+          "nodeIndex": "Platinum Churn Avoided",
+          "nodeLineageTag": "7522c267-951c-4aa0-bfa4-0b7674b74d82",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2284,
+            "y": 158.5
+          },
+          "nodeIndex": "Refresh_Log",
+          "nodeLineageTag": "b394d423-637b-4a92-8d2d-9c54bf3a34b4",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2568,
+            "y": 98.5
+          },
+          "nodeIndex": "Second Order Conversion",
+          "nodeLineageTag": "afea01dd-f3cf-4eaa-b687-397f93285ff9",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",

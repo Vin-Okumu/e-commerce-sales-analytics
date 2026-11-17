@@ -24,3 +24,4 @@ table 'Platinum Churn Avoided'
 		source = GENERATESERIES(0, 0.05, 0.005)
 
 	annotation PBI_Id = baa2a26ca9ca48388c926963269d9bb0
+

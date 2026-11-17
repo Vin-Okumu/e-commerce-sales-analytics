@@ -33,10 +33,10 @@ table Dim_Date
 
 	column Month
 		lineageTag: 0c9719e7-25c3-40d7-a22f-4c157cff92af
-		sortByColumn: 'Month Number'
 		summarizeBy: none
 		isNameInferred
 		sourceColumn: [Month]
+		sortByColumn: 'Month Number'
 
 		annotation SummarizationSetBy = Automatic
 

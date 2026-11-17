@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "40c4981dbccd1f0d2964",
   "position": {
     "x": 36,
     "y": 258,
-    "z": 491,
+    "z": 14000,
     "height": 96,
     "width": 377,
-    "tabOrder": 491
+    "tabOrder": 14000
   },
   "visual": {
     "visualType": "slicer",
@@ -38,6 +38,13 @@
       "data": [
         {
           "properties": {
+            "numericStart": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.18000000000000002D"
+                }
+              }
+            },
             "mode": {
               "expr": {
                 "Literal": {
@@ -189,6 +196,48 @@
                 "Literal": {
                   "Value": "9D"
                 }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "filter": {
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "s",
+                    "Entity": "Second Order Conversion",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "s"
+                              }
+                            },
+                            "Property": "Second Order Conversion"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "0.18000000000000002D"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
               }
             }
           }

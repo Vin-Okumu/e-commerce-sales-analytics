@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "a02f8604c05f37b9ed66",
   "position": {
     "x": 854,
     "y": 194,
-    "z": 501,
+    "z": 15000,
     "height": 239,
     "width": 401,
-    "tabOrder": 501
+    "tabOrder": 15000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -28,8 +28,8 @@
               },
               "queryRef": "Dim_Customers.customer_tier",
               "nativeQueryRef": "Tier",
-              "displayName": "Tier",
-              "active": true
+              "active": true,
+              "displayName": "Tier"
             }
           ]
         },
@@ -83,8 +83,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {

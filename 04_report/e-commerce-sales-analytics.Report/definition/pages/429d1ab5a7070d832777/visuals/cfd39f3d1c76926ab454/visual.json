@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "cfd39f3d1c76926ab454",
   "position": {
-    "x": 20,
-    "y": 40,
-    "z": 200,
-    "height": 44,
-    "width": 800,
-    "tabOrder": 200
+    "x": 20.053465962076469,
+    "y": 12.891513832763444,
+    "z": 0,
+    "height": 71.619521293130248,
+    "width": 605.90115013988191,
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "textbox",
@@ -21,28 +21,28 @@
                   {
                     "value": "A Platinum customer is worth ",
                     "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Segoe (Bold)",
                       "fontSize": "18pt",
-                      "color": "#FFFFFF",
-                      "fontFamily": "Segoe UI Bold",
-                      "fontWeight": "bold"
+                      "color": "#ffffff"
                     }
                   },
                   {
                     "value": "₹57.7K",
                     "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Segoe (Bold)",
                       "fontSize": "18pt",
-                      "color": "#F5B800",
-                      "fontFamily": "Segoe UI Bold",
-                      "fontWeight": "bold"
+                      "color": "#f5b800"
                     }
                   },
                   {
                     "value": ": 3× a Gold and 5× a Silver customer",
                     "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Segoe (Bold)",
                       "fontSize": "18pt",
-                      "color": "#FFFFFF",
-                      "fontFamily": "Segoe UI Bold",
-                      "fontWeight": "bold"
+                      "color": "#ffffff"
                     }
                   }
                 ]

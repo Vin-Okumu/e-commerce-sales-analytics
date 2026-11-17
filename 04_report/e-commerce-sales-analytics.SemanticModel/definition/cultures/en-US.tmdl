@@ -5277,16 +5277,6 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.714
 			          }
-			        },
-			        {
-			          "Cat": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
 			        }
 			      ]
 			    },
@@ -7617,7 +7607,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Net Value": {
+			          "2026": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -7805,6 +7795,16 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.818
 			          }
+			        },
+			        {
+			          "Units per order": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -7929,7 +7929,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Active Customers": {
+			          "Active customers": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -9379,6 +9379,16 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.508
 			          }
+			        },
+			        {
+			          "Repeat rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -9628,6 +9638,16 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "One-time buyers (second-order pool)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -10137,6 +10157,16 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.624
 			          }
+			        },
+			        {
+			          "Revenue from repeat buyers": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -10381,16 +10411,6 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.609
 			          }
-			        },
-			        {
-			          "Customer Base Value": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
 			        }
 			      ]
 			    },
@@ -10512,16 +10532,6 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.609
-			          }
-			        },
-			        {
-			          "Number of Customers": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -10773,6 +10783,16 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.727
 			          }
+			        },
+			        {
+			          "Buyer type": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -10900,6 +10920,16 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "Share of customers": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -11406,6 +11436,16 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "Delivered rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -12160,6 +12200,478 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.net_transaction_value_py": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Net Transaction Value PY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "2025": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.of_customers": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "% of Customers"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Share of customers": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.of_revenue": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "% of Revenue"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Share of revenue": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.of_units": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "% of Units"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Share of units": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.units_k": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Units (K)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Units": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.revenue_m": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Revenue (₹M)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Revenue": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.aov_k": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "AOV (₹K)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Avg order value": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.lost_order_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Lost Order Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Lost-order rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Lost orders (cancelled + returned)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.electronics_share_of_revenue": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Electronics Share of Revenue"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Electronics share of revenue": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.platinum_share_of_revenue": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Platinum Share of Revenue"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Platinum share of revenue": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.value_per_customer_k": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Value per Customer (₹K)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Value per customer": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.customer_type_share_of_revenue": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Customer Type Share of Revenue"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Share of revenue": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.of_orders": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "% of Orders"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Share of orders": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.lever_uplift": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Lever Uplift"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Uplift": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.total_uplift_m": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Total Uplift (₹M)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Combined uplift (what-if)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.lever_pool": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Lever Pool"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Pool": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.lever_assumption": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Lever Assumption"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Assumption": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.lever_value_each_k": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Lever Value Each (₹K)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Value each": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.lever_uplift_m": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Lever Uplift (₹M)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Uplift": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.electronicsonly_buyers": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Electronics-Only Buyers"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Electronics-only buyers (cross-sell pool)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.platinum_customers": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Platinum Customers"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Platinum customers at stake": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "growth_levers.lever": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Growth Levers",
+			          "ConceptualProperty": "Lever"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Lever": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]

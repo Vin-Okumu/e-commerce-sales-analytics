@@ -31,3 +31,4 @@ table 'Growth Levers'
 		source = DATATABLE ( "Lever", STRING, "Short Name", STRING, "Sort", INTEGER, { { "Second purchase from one-time buyers", "Winning second orders", 1 }, { "Platinum churn avoided", "Protecting Platinum", 2 }, { "Home cross-sell to Electronics-only buyers", "Cross-selling Home", 3 } } )
 
 	annotation PBI_Id = 1b0ccb40692a4e99ae24f525be34286b
+

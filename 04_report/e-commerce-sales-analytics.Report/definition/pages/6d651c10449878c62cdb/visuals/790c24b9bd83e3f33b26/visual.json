@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "790c24b9bd83e3f33b26",
   "position": {
     "x": 36,
     "y": 482,
-    "z": 493,
+    "z": 16000,
     "height": 96,
     "width": 377,
-    "tabOrder": 493
+    "tabOrder": 16000
   },
   "visual": {
     "visualType": "slicer",
@@ -38,6 +38,13 @@
       "data": [
         {
           "properties": {
+            "numericStart": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.08D"
+                }
+              }
+            },
             "mode": {
               "expr": {
                 "Literal": {
@@ -189,6 +196,48 @@
                 "Literal": {
                   "Value": "9D"
                 }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "filter": {
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "h",
+                    "Entity": "Home Attach Rate",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "h"
+                              }
+                            },
+                            "Property": "Home Attach Rate"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "0.08D"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
               }
             }
           }

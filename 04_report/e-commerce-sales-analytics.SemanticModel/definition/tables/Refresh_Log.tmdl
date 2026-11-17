@@ -19,3 +19,4 @@ table Refresh_Log
 				    Source
 
 	annotation PBI_ResultType = Table
+
