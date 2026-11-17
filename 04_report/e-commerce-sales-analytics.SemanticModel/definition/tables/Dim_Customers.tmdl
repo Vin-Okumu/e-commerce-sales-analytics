@@ -97,7 +97,7 @@ table Dim_Customers
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\admin\Documents\Projects\e-commerce-sales-analytics\data\processed\customers.csv"),[Delimiter=",", Columns=10, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents(DataFolder & "Dim_Customers.csv"),[Delimiter=",", Columns=10, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"customer_id", type text}, {"gender", type text}, {"age", Int64.Type}, {"age_group", type text}, {"city", type text}, {"state", type text}, {"registration_date", type date}, {"customer_tier", type text}, {"total_orders", Int64.Type}, {"total_spent", type number}})
 				in

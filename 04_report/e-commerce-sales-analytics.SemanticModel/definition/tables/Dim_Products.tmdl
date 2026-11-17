@@ -117,7 +117,7 @@ table Dim_Products
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\admin\Documents\Projects\e-commerce-sales-analytics\data\processed\products.csv"),[Delimiter=",", Columns=12, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents(DataFolder & "Dim_Products.csv"),[Delimiter=",", Columns=12, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"product_id", type text}, {"product_name", type text}, {"category", type text}, {"brand", type text}, {"original_price", type number}, {"discount_percent", Int64.Type}, {"discount_amount", type number}, {"selling_price", type number}, {"stock_quantity", Int64.Type}, {"weight_kg", type number}, {"avg_rating", type number}, {"total_reviews", Int64.Type}})
 				in

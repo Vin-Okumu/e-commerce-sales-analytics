@@ -1,6 +1,11 @@
-# Power BI temporary files
+# Power BI: per-user settings and local cache (rebuilt on open)
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
 *.pbit
 *.tmp
+
+# Office lock files
+~$*
 
 # Python
 __pycache__/
@@ -12,9 +17,11 @@ __pycache__/
 # OS files
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # Environment files
 .env
+.venv/
 
 # Temporary/output files
 *.log

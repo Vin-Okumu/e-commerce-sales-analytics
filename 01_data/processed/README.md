@@ -1,6 +1,6 @@
 # Processed Data
 
-This folder holds the three cleaned, analysis-ready tables that the Power BI report (`powerbi/e-commerce-sales-analytics.pbix`) loads. They are produced from the raw files in `data/raw/` by [`Analysis/02_data_preparation.ipynb`](../../Analysis/02_data_preparation.ipynb).
+This folder holds the three cleaned, analysis-ready tables that the Power BI report ([`04_report/e-commerce-sales-analytics.pbip`](../../04_report/e-commerce-sales-analytics.pbip)) loads through its `DataFolder` parameter. They are produced from the raw files in `01_data/raw/` by [`03_preparation/02_data_preparation.ipynb`](../../03_preparation/02_data_preparation.ipynb).
 
 | File | Rows | Columns | Grain | Built from |
 |---|---|---|---|---|
@@ -8,7 +8,7 @@ This folder holds the three cleaned, analysis-ready tables that the Power BI rep
 | `Dim_Customers.csv` | 40,000 | 10 | One customer | `raw/customers.csv` |
 | `Dim_Products.csv` | 2,000 | 12 | One product | `raw/products.csv` |
 
-Full field definitions are in the [data dictionary](../../documentation/data_dictionary.md).
+Full field definitions are in the [data dictionary](../../02_documentation/data_dictionary.md).
 
 ## How the tables relate
 
@@ -21,7 +21,7 @@ Power BI adds a `Dim_Date` table, joined on `Fact_Sales.order_date`, for time in
 
 ## What was done to the raw data
 
-Preparation follows the principle set out in [`data_preparation_decisions.md`](../../Analysis/data_preparation_decisions.md): *don't clean data that isn't dirty; only transform where there is an analytical reason.* Profiling (`01_data_profiling.ipynb`) found no duplicate rows, no duplicate keys and no orphan records, so the changes are limited to the following.
+Preparation follows the principle set out in [`data_preparation_decisions.md`](../../03_preparation/data_preparation_decisions.md): *don't clean data that isn't dirty; only transform where there is an analytical reason.* Profiling (`01_data_profiling.ipynb`) found no duplicate rows, no duplicate keys and no orphan records, so the changes are limited to the following.
 
 **All three tables**
 - Column names standardised to lower-case `snake_case` (for example `Order_ID` → `order_id`).
@@ -37,7 +37,7 @@ Preparation follows the principle set out in [`data_preparation_decisions.md`](.
 
 **Dim_Customers**
 - Converted `registration_date` to a date.
-- **Removed personal data:** `customer_name`, `email`, `phone`, `date_of_birth` and `pincode`. The raw file is kept unchanged in `data/raw/`.
+- **Removed personal data:** `customer_name`, `email`, `phone`, `date_of_birth` and `pincode`. The raw file is kept unchanged in `01_data/raw/`.
 
 **Dim_Products**
 - No changes besides column names.
@@ -65,9 +65,9 @@ These checks were run against the processed files and all pass unless noted.
 ## Regenerating these files
 
 ```bash
-pip install pandas numpy jupyter
-cd Analysis
+pip install -r requirements.txt
+cd 03_preparation
 jupyter notebook 02_data_preparation.ipynb   # Run all cells
 ```
 
-The notebook reads from `../data/raw/` and overwrites the three CSVs in this folder.
+The notebook reads from `../01_data/raw/` and overwrites the three CSVs in this folder.

@@ -8,7 +8,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["Fact_Sales","Dim_Customers","Dim_Products","Customer_Behavior","Refresh_Log"]
+annotation PBI_QueryOrder = ["DataFolder","Fact_Sales","Dim_Customers","Dim_Products","Customer_Behavior","Refresh_Log"]
 
 annotation PBI_ProTooling = ["DaxQueryView_Desktop","DevMode"]
 

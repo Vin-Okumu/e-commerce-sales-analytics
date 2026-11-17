@@ -1,0 +1,7 @@
+expression DataFolder = "C:\Users\admin\Documents\Projects\e-commerce-sales-analytics\01_data\processed\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 23dd37a1-a827-4047-a180-8af6c320cb09
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

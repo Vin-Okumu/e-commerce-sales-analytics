@@ -2,7 +2,7 @@
 Data Dictionary
 </h1>
 
-This document describes every field in the three analytical tables (`data/processed/`) that feed the Power BI model, and how each maps back to the raw source files (`data/raw/`).
+This document describes every field in the three analytical tables (`01_data/processed/`) that feed the Power BI model, and how each maps back to the raw source files (`data/raw/`).
 
 - **Currency:** all monetary values are in Indian rupees (₹).
 - **Ranges and counts** below are taken from the processed files as committed to this repository.
@@ -32,7 +32,7 @@ Referential integrity: every `customer_id` and `product_id` in `Fact_Sales` exis
 
 ## Fact_Sales
 
-Source: `data/raw/sales.csv` (21 columns) plus 11 derived columns.
+Source: `01_data/raw/sales.csv` (21 columns) plus 11 derived columns.
 
 ### Identifiers
 
@@ -102,7 +102,7 @@ Source: `data/raw/sales.csv` (21 columns) plus 11 derived columns.
 
 ## Dim_Customers
 
-Source: `data/raw/customers.csv` (15 columns). Five personal-data columns were removed in preparation.
+Source: `01_data/raw/customers.csv` (15 columns). Five personal-data columns were removed in preparation.
 
 | Column | Type | Description | Values / range |
 |---|---|---|---|
@@ -117,13 +117,13 @@ Source: `data/raw/customers.csv` (15 columns). Five personal-data columns were r
 | `total_orders` | integer | Lifetime order count, as supplied in the source file. **Does not reconcile with `Fact_Sales`** (see note below). | 0 – 17 |
 | `total_spent` | decimal | Lifetime spend, as supplied in the source file. **Does not reconcile with `Fact_Sales`** (see note below). | ₹0 – ₹890,131.55 |
 
-**Removed from the raw file (personal data):** `customer_name`, `email`, `phone`, `date_of_birth`, `pincode`. The raw file in `data/raw/` is left unchanged.
+**Removed from the raw file (personal data):** `customer_name`, `email`, `phone`, `date_of_birth`, `pincode`. The raw file in `01_data/raw/` is left unchanged.
 
 ---
 
 ## Dim_Products
 
-Source: `data/raw/products.csv` (12 columns). Only the column names were changed.
+Source: `01_data/raw/products.csv` (12 columns). Only the column names were changed.
 
 | Column | Type | Description | Values / range |
 |---|---|---|---|

@@ -130,7 +130,7 @@ Raw CSVs ──► Python profiling ──► Python cleaning & feature engineer
 **View the dashboard**
 1. Install [Power BI Desktop](https://www.microsoft.com/power-bi/desktop) (Windows), a recent version that supports Power BI Project (`.pbip`) files.
 2. Clone or download the repo, then open `04_report/e-commerce-sales-analytics.pbip`.
-3. Point the report at your copy of the data: **Transform data → Data source settings → Change Source**, and select the matching file in `01_data/processed/` for each query. Then select **Refresh**.
+3. Point the report at your copy of the data: **Transform data → Edit parameters**, set `DataFolder` to the full path of your clone's `01_data\processed\` folder (keep the trailing backslash), then select **Apply changes**. All three tables load from that one folder.
 
 You don't need to run the notebooks first, because the cleaned CSVs are already in `01_data/processed/`.
 
@@ -140,7 +140,7 @@ You don't need to run the notebooks first, because the cleaned CSVs are already 
 ```bash
 git clone https://github.com/Vin-Okumu/e-commerce-sales-analytics.git
 cd e-commerce-sales-analytics
-pip install pandas numpy jupyter
+pip install -r requirements.txt
 cd 03_preparation
 jupyter notebook   # run 01_data_profiling, then 02_data_preparation
 ```
@@ -172,6 +172,8 @@ e-commerce-sales-analytics/
 │   ├── figures/                              # Cover and page screenshots
 │   └── powerbi/
 │       └── DAX_measure_layer.md              # Measure design notes
+├── requirements.txt                          # Python packages for the notebooks
+├── LICENSE
 └── README.md
 ```
 </details>
