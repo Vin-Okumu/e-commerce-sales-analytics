@@ -1,7 +1,7 @@
 <h1 align="center">E-Commerce Sales Analytics Case Study</h1>
 
 <p align="center">
-<img src="04_report/figures/thumbnail.png" width="1000">
+<img src="04_report/figures/cover.png" width="1000">
 </p>
 
 <p align="center">
@@ -46,6 +46,7 @@ The project answers 12 business questions grouped into six areas: overall perfor
 | `products.csv` | 2,000 | One product | category, brand, price, discount, stock, rating |
 
 - **Time range:** June 2024 to June 2026 (25 months). The dashboard focuses on Jan–Jun 2026 and compares it with the same period a year earlier.
+- **Source:** public dataset from [Kaggle](https://www.kaggle.com/datasets/jatinkhandelwal112/indian-e-commerce-sales-analytics-dataset?resource=download&select=sales.csv).
 - **Market:** India. All values are in Indian rupees (₹), across 7 product categories.
 - **Data quality:** The data had no duplicate keys and no duplicate rows. The only large gaps were coupon codes (80% blank, meaning no coupon was used) and ratings or reviews (52% blank, meaning the order was not rated). These blanks were kept as meaningful values rather than filled in. The reasoning is in [data preparation decisions](03_preparation/data_preparation_decisions.md).
 
@@ -76,7 +77,7 @@ Raw CSVs ──► Python profiling ──► Python cleaning & feature engineer
 ### Customer Analysis: where does customer value come from?
 
 <p align="center">
-<img src="04_report/figures/customer_analysis.png" width="900">
+<img src="04_report/figures/customers.png" width="900">
 </p>
 
 - **Platinum customers make up 71% of active customers and bring in 90% of revenue.** Each one is worth **₹57.7K** on average, compared with ₹19.3K for Gold and ₹11.8K for Silver.
@@ -95,16 +96,16 @@ Raw CSVs ──► Python profiling ──► Python cleaning & feature engineer
 <br>
 
 **Product Performance**
-<img src="04_report/figures/product_performance.png" width="900">
+<img src="04_report/figures/products.png" width="900">
 
 **Retention & Customer Behavior**
-<img src="04_report/figures/retention_and_customer_behavior.png" width="900">
+<img src="04_report/figures/retention.png" width="900">
 
 **Operations**
 <img src="04_report/figures/operations.png" width="900">
 
 **Growth Opportunities**
-<img src="04_report/figures/growth_opportunities.png" width="900">
+<img src="04_report/figures/growth.png" width="900">
 
 </details>
 
@@ -168,8 +169,8 @@ e-commerce-sales-analytics/
 │   ├── e-commerce-sales-analytics.pbip       # Open this in Power BI Desktop
 │   ├── e-commerce-sales-analytics.Report/    # Report pages and visuals (PBIR)
 │   ├── e-commerce-sales-analytics.SemanticModel/  # Tables, relationships, DAX (TMDL)
-│   ├── ecommerce_sales_analytics_client_deck.pptx
-│   ├── figures/                              # Cover and page screenshots
+│   ├── client_deck/                          # Client presentation: detailed (8 slides) and condensed (5 slides)
+│   ├── figures/                              # Cover, thumbnail, social preview and page screenshots
 │   └── powerbi/
 │       └── DAX_measure_layer.md              # Measure design notes
 ├── requirements.txt                          # Python packages for the notebooks

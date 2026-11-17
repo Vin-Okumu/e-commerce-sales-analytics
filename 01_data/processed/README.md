@@ -1,4 +1,4 @@
-# Processed Data
+<h1 align="center">Processed Data Log</h1>
 
 This folder holds the three cleaned, analysis-ready tables that the Power BI report ([`04_report/e-commerce-sales-analytics.pbip`](../../04_report/e-commerce-sales-analytics.pbip)) loads through its `DataFolder` parameter. They are produced from the raw files in `01_data/raw/` by [`03_preparation/02_data_preparation.ipynb`](../../03_preparation/02_data_preparation.ipynb).
 
