@@ -1,7 +1,7 @@
 <h1 align="center">E-Commerce Sales Analytics Case Study</h1>
 
 <p align="center">
-<img src="04_report/figures/cover.png" width="950">
+<img src="04_report/figures/cover.png" width="900">
 </p>
 
 <p align="center">
