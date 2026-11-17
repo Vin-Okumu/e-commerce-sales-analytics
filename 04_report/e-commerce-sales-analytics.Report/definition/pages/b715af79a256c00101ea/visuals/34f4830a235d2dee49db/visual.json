@@ -403,8 +403,13 @@
             },
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'Within-month repeat buying is steady at 11–12%: no sign of a loyalty slide'"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measure"
+                    }
+                  },
+                  "Property": "Monthly Repeat Title"
                 }
               }
             },
@@ -469,8 +474,13 @@
             },
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'Share of each month''s customers who ordered 2+ times in that month. A monthly measure, so lower than the 56.5% period rate (axis starts at zero)'"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measure"
+                    }
+                  },
+                  "Property": "Monthly Repeat Subtitle"
                 }
               }
             },

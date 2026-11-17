@@ -432,8 +432,13 @@
             },
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'Each repeat buyer is worth 2.6× a one-time buyer'"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measure"
+                    }
+                  },
+                  "Property": "Repeat Value Title"
                 }
               }
             },

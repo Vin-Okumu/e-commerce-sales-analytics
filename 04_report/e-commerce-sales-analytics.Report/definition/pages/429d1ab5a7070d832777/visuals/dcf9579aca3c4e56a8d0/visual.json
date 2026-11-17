@@ -4,10 +4,10 @@
   "position": {
     "x": 439,
     "y": 194,
-    "z": 14000,
+    "z": 13000,
     "height": 239,
     "width": 816,
-    "tabOrder": 14000
+    "tabOrder": 13000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -378,8 +378,13 @@
             },
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'26–35-year-olds bring 43% of revenue; under-46s bring 93%'"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measure"
+                    }
+                  },
+                  "Property": "Age Title"
                 }
               }
             },

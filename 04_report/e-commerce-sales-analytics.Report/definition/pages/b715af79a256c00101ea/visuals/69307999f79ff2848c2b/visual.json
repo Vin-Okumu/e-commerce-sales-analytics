@@ -23,11 +23,11 @@
                       "Entity": "_Measure"
                     }
                   },
-                  "Property": "Repeat Customers YoY Label"
+                  "Property": "Repeat Customer YoY Label"
                 }
               },
               "queryRef": "_Measure.Repeat Customers YoY Label",
-              "nativeQueryRef": "Repeat Customers YoY Label"
+              "nativeQueryRef": "Repeat Customer YoY Label"
             }
           ]
         }

@@ -277,7 +277,7 @@ table _Measure
 			    [Repeat Customer Value],
 			    [Net Transaction Value]
 			)
-		formatString: 0.00%;-0.00%;0.00%
+		formatString: 0.0%;-0.0%;0.0%
 		lineageTag: d1f35646-bdf0-4a8d-a73d-28cc150d42b5
 
 	measure 'Orders per Repeat Customer' =
@@ -653,50 +653,46 @@ table _Measure
 		lineageTag: 11df2a0a-b1bc-4b9d-bcd4-7d6902eeb28b
 
 	measure 'Value per Customer YoY Label' =
+			
 			VAR _cap = EDATE ( [Last Sale Date], -12 )
-			VAR _cur = [Value per Customer]
+			VAR _cs = [Comparable Start]
+			VAR _cur = CALCULATE ( [Value per Customer], KEEPFILTERS ( Dim_Date[Date] >= _cs ) )
 			VAR _py = CALCULATE ( [Value per Customer], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
 			RETURN
-			    IF (
-			        NOT ISBLANK ( _py ),
-			        FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label]
-			    )
+			    IF ( NOT ISBLANK ( _py ), FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label] )
 		displayFolder: 2 KPI labels
 		lineageTag: 16dc154d-37bc-47fd-8bbd-9d9c73d17f33
 
 	measure 'Orders per Customer YoY Label' =
+			
 			VAR _cap = EDATE ( [Last Sale Date], -12 )
-			VAR _cur = [Orders per Customer]
+			VAR _cs = [Comparable Start]
+			VAR _cur = CALCULATE ( [Orders per Customer], KEEPFILTERS ( Dim_Date[Date] >= _cs ) )
 			VAR _py = CALCULATE ( [Orders per Customer], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
 			RETURN
-			    IF (
-			        NOT ISBLANK ( _py ),
-			        FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label]
-			    )
+			    IF ( NOT ISBLANK ( _py ), FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label] )
 		displayFolder: 2 KPI labels
 		lineageTag: 9f1a3c90-b5ff-43b4-ba35-fd88927875d8
 
-	measure 'Repeat Customers YoY Label' =
+	measure 'Repeat Customer YoY Label' =
+			
 			VAR _cap = EDATE ( [Last Sale Date], -12 )
-			VAR _cur = [Repeat Customers]
+			VAR _cs = [Comparable Start]
+			VAR _cur = CALCULATE ( [Repeat Customers], KEEPFILTERS ( Dim_Date[Date] >= _cs ) )
 			VAR _py = CALCULATE ( [Repeat Customers], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
 			RETURN
-			    IF (
-			        NOT ISBLANK ( _py ),
-			        FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label]
-			    )
+			    IF ( NOT ISBLANK ( _py ), FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label] )
 		displayFolder: 2 KPI labels
 		lineageTag: 863a006b-529d-4eae-9f62-6689e7ec4737
 
 	measure 'One-Time Customers YoY Label' =
+			
 			VAR _cap = EDATE ( [Last Sale Date], -12 )
-			VAR _cur = [One-Time Customers]
+			VAR _cs = [Comparable Start]
+			VAR _cur = CALCULATE ( [One-Time Customers], KEEPFILTERS ( Dim_Date[Date] >= _cs ) )
 			VAR _py = CALCULATE ( [One-Time Customers], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
 			RETURN
-			    IF (
-			        NOT ISBLANK ( _py ),
-			        FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label]
-			    )
+			    IF ( NOT ISBLANK ( _py ), FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label] )
 		displayFolder: 2 KPI labels
 		lineageTag: 06a6331f-559a-4b79-a43b-f01631afa98f
 
@@ -712,14 +708,13 @@ table _Measure
 		lineageTag: 68b6255b-409a-4026-b123-5f8699e61d0d
 
 	measure 'Repeat Revenue Share YoY Label' =
+			
 			VAR _cap = EDATE ( [Last Sale Date], -12 )
-			VAR _cur = [Repeat Customer Value Share %]
+			VAR _cs = [Comparable Start]
+			VAR _cur = CALCULATE ( [Repeat Customer Value Share %], KEEPFILTERS ( Dim_Date[Date] >= _cs ) )
 			VAR _py = CALCULATE ( [Repeat Customer Value Share %], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
 			RETURN
-			    IF (
-			        NOT ISBLANK ( _py ),
-			        FORMAT ( ( _cur - _py ) * 100, "▲ 0.0 pp;▼ 0.0 pp;— 0.0 pp" ) & " " & [PY Period Label]
-			    )
+			    IF ( NOT ISBLANK ( _py ), FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label] )
 		displayFolder: 2 KPI labels
 		lineageTag: bbe1788c-acc7-4871-98ca-90d8e170351b
 
@@ -735,14 +730,13 @@ table _Measure
 		lineageTag: 4a8e85f7-ce20-4bcc-ba23-9fad93980ff5
 
 	measure 'Platinum Share YoY Label' =
+			
 			VAR _cap = EDATE ( [Last Sale Date], -12 )
-			VAR _cur = [Platinum Share of Revenue]
+			VAR _cs = [Comparable Start]
+			VAR _cur = CALCULATE ( [Platinum Share of Revenue], KEEPFILTERS ( Dim_Date[Date] >= _cs ) )
 			VAR _py = CALCULATE ( [Platinum Share of Revenue], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
 			RETURN
-			    IF (
-			        NOT ISBLANK ( _py ),
-			        FORMAT ( ( _cur - _py ) * 100, "▲ 0.0 pp;▼ 0.0 pp;— 0.0 pp" ) & " " & [PY Period Label]
-			    )
+			    IF ( NOT ISBLANK ( _py ), FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label] )
 		displayFolder: 2 KPI labels
 		lineageTag: be23962e-19f7-4a57-b8dc-8f23614f6b85
 
@@ -865,16 +859,22 @@ table _Measure
 		lineageTag: 15e0768b-f9a2-407c-a39c-7a5f52eeef88
 
 	measure 'Repeat Rate Cell Color' =
+			
 			VAR _v = [Repeat Customer Rate]
+			VAR _max = MAXX ( ALLSELECTED ( Dim_Customers[customer_tier] ), [Repeat Customer Rate] )
+			VAR _min = MINX ( ALLSELECTED ( Dim_Customers[customer_tier] ), [Repeat Customer Rate] )
 			RETURN
-			    SWITCH ( TRUE (), _v >= 0.58, "#1F4A45", _v < 0.45, "#5C3340", "#111D38" )
+			    SWITCH ( TRUE (), _max = _min, "#111D38", _v = _max, "#1F4A45", _v = _min, "#5C3340", "#111D38" )
 		displayFolder: 3 Formatting
 		lineageTag: 4ae060a7-9f04-4261-97e3-d80bdc3cde96
 
 	measure 'Repeat Rate Font Color' =
+			
 			VAR _v = [Repeat Customer Rate]
+			VAR _max = MAXX ( ALLSELECTED ( Dim_Customers[customer_tier] ), [Repeat Customer Rate] )
+			VAR _min = MINX ( ALLSELECTED ( Dim_Customers[customer_tier] ), [Repeat Customer Rate] )
 			RETURN
-			    SWITCH ( TRUE (), _v >= 0.58, "#6EE7B7", _v < 0.45, "#FFA79C", "#FFFFFF" )
+			    SWITCH ( TRUE (), _max = _min, "#FFFFFF", _v = _max, "#6EE7B7", _v = _min, "#FFA79C", "#FFFFFF" )
 		displayFolder: 3 Formatting
 		lineageTag: 13921934-c69a-41ab-93d8-0890ae14deda
 
@@ -958,8 +958,12 @@ table _Measure
 		lineageTag: 9096c095-98b5-49d7-8c43-511f7d33320d
 
 	measure 'Retention Headline' =
-			"Repeat buyers are " & FORMAT ( [Repeat Customer Rate], "0%" )
-			    & " of customers but bring " & FORMAT ( [Repeat Customer Value Share %], "0%" ) & " of revenue"
+			
+			IF (
+			    NOT ISBLANK ( [Total Customers] ),
+			    "Repeat buyers are " & FORMAT ( [Repeat Customer Rate], "0%" )
+			        & " of customers and account for " & FORMAT ( [Repeat Customer Value Share %], "0%" ) & " of revenue"
+			)
 		displayFolder: 4 Titles
 		lineageTag: cd099964-0041-4d4f-8e36-c5b6ffa078f4
 
@@ -1260,6 +1264,167 @@ table _Measure
 			    )
 		displayFolder: 4 Titles
 		lineageTag: 2bd5a55c-dc44-40ac-a44d-52a72dc13545
+
+	measure 'Customers Headline' =
+			
+			VAR _tiers =
+			    ADDCOLUMNS (
+			        FILTER ( ALLSELECTED ( Dim_Customers[customer_tier] ), NOT ISBLANK ( [Value per Customer] ) ),
+			        "@vpc", [Value per Customer]
+			    )
+			VAR _top = TOPN ( 1, _tiers, [@vpc], DESC )
+			VAR _topName = MAXX ( _top, Dim_Customers[customer_tier] )
+			VAR _topVpc = MAXX ( _top, [@vpc] )
+			VAR _others = FILTER ( _tiers, Dim_Customers[customer_tier] <> _topName )
+			VAR _article = IF ( LEFT ( _topName, 1 ) IN { "A", "E", "I", "O", "U" }, "An ", "A " )
+			VAR _comparisons =
+			    CONCATENATEX (
+			        _others,
+			        FORMAT ( DIVIDE ( _topVpc, [@vpc] ), "0" ) & "× "
+			            & IF ( LEFT ( Dim_Customers[customer_tier], 1 ) IN { "A", "E", "I", "O", "U" }, "an ", "a " )
+			            & Dim_Customers[customer_tier],
+			        " and ",
+			        [@vpc], DESC
+			    )
+			RETURN
+			    IF (
+			        NOT ISEMPTY ( _tiers ),
+			        _article & _topName & " customer is worth ₹" & FORMAT ( _topVpc / 1e3, "#,0.0" ) & "K"
+			            & IF ( NOT ISEMPTY ( _others ), ": " & _comparisons & " customer", " this period" )
+			    )
+		displayFolder: 4 Titles
+		lineageTag: 17c01b8c-9d11-432b-a196-64a2621c26ef
+
+	measure 'Tier Value Title' =
+			
+			VAR _tiers =
+			    ADDCOLUMNS (
+			        FILTER ( ALLSELECTED ( Dim_Customers[customer_tier] ), NOT ISBLANK ( [Value per Customer] ) ),
+			        "@vpc", [Value per Customer]
+			    )
+			VAR _top = TOPN ( 1, _tiers, [@vpc], DESC )
+			VAR _value = "₹" & FORMAT ( MAXX ( _top, [@vpc] ) / 1e3, "#,0.0" ) & "K"
+			RETURN
+			    IF (
+			        COUNTROWS ( _tiers ) > 1,
+			        MAXX ( _top, Dim_Customers[customer_tier] ) & " customers are worth the most, each worth " & _value,
+			        MAXX ( _tiers, Dim_Customers[customer_tier] ) & " customers are worth " & _value & " each"
+			    )
+		displayFolder: 4 Titles
+		lineageTag: f97ccec7-7b27-445c-b401-aa2160a5a4e7
+
+	measure 'Age Title' =
+			
+			VAR _total = CALCULATE ( [Net Transaction Value], ALLSELECTED ( Dim_Customers[age_group] ) )
+			VAR _ages =
+			    ADDCOLUMNS (
+			        FILTER ( ALLSELECTED ( Dim_Customers[age_group] ), NOT ISBLANK ( [Net Transaction Value] ) ),
+			        "@share", DIVIDE ( [Net Transaction Value], _total )
+			    )
+			VAR _top = TOPN ( 1, _ages, [@share], DESC )
+			VAR _topName = SUBSTITUTE ( CONCATENATEX ( _top, Dim_Customers[age_group] ), "-", "–" )
+			VAR _young = TOPN ( 3, _ages, Dim_Customers[age_group], ASC )
+			VAR _youngLabel =
+			    LEFT ( CONCATENATEX ( TOPN ( 1, _young, Dim_Customers[age_group], ASC ), Dim_Customers[age_group] ), 2 ) & "–"
+			        & RIGHT ( CONCATENATEX ( TOPN ( 1, _young, Dim_Customers[age_group], DESC ), Dim_Customers[age_group] ), 2 )
+			VAR _first = _topName & "-year-olds bring " & FORMAT ( MAXX ( _top, [@share] ), "0%" ) & " of revenue"
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        ISEMPTY ( _ages ), BLANK (),
+			        COUNTROWS ( _ages ) = 1, "Revenue from " & _topName & "-year-olds only",
+			        COUNTROWS ( _ages ) > 3,
+			            _first & "; " & _youngLabel & "-year-olds bring " & FORMAT ( SUMX ( _young, [@share] ), "0%" ),
+			        _first
+			    )
+		displayFolder: 4 Titles
+		lineageTag: 6d8483fa-e98a-42aa-8748-8f295c71ac9f
+
+	measure 'Repeat Tier Title' =
+			
+			VAR _tiers =
+			    ADDCOLUMNS (
+			        FILTER ( ALLSELECTED ( Dim_Customers[customer_tier] ), NOT ISBLANK ( [Repeat Customer Rate] ) ),
+			        "@rate", [Repeat Customer Rate]
+			    )
+			VAR _hi = TOPN ( 1, _tiers, [@rate], DESC )
+			VAR _lo = TOPN ( 1, _tiers, [@rate], ASC )
+			RETURN
+			    IF (
+			        COUNTROWS ( _tiers ) > 1,
+			        MAXX ( _hi, Dim_Customers[customer_tier] ) & " buyers return most often (" & FORMAT ( MAXX ( _hi, [@rate] ), "0%" )
+			            & "); " & MAXX ( _lo, Dim_Customers[customer_tier] ) & " buyers return least ("
+			            & FORMAT ( MAXX ( _lo, [@rate] ), "0%" ) & ")",
+			        "Repeat rate: " & FORMAT ( MAXX ( _tiers, [@rate] ), "0%" )
+			    )
+		displayFolder: 4 Titles
+		lineageTag: f4f8d64f-473e-48f1-8bae-012d347dc25a
+
+	measure 'Repeat Value Title' =
+			
+			VAR _repeatEach = DIVIDE ( [Repeat Customer Value], [Repeat Customers] )
+			VAR _oneTimeEach = DIVIDE ( [One-Time Customer Value], [One-Time Customers] )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _repeatEach ) && NOT ISBLANK ( _oneTimeEach ),
+			        "Each repeat buyer is worth " & FORMAT ( DIVIDE ( _repeatEach, _oneTimeEach ), "0.0" ) & "× a one-time buyer",
+			        "Repeat vs one-time buyers"
+			    )
+		displayFolder: 4 Titles
+		lineageTag: a8a44a57-c60e-40ed-86a0-f096049c7e4a
+
+	measure 'Least Loyal Title' =
+			
+			VAR _tiers =
+			    ADDCOLUMNS (
+			        FILTER ( ALLSELECTED ( Dim_Customers[customer_tier] ), NOT ISBLANK ( [Repeat Customer Rate] ) ),
+			        "@rate", [Repeat Customer Rate]
+			    )
+			VAR _lo = TOPN ( 1, _tiers, [@rate], ASC )
+			VAR _hi = TOPN ( 1, _tiers, [@rate], DESC )
+			RETURN
+			    IF (
+			        COUNTROWS ( _tiers ) > 1,
+			        MAXX ( _lo, Dim_Customers[customer_tier] ) & " is the least loyal tier: "
+			            & FORMAT ( MAXX ( _lo, [@rate] ), "0%" ) & " bought again vs "
+			            & FORMAT ( MAXX ( _hi, [@rate] ), "0%" ) & " for " & MAXX ( _hi, Dim_Customers[customer_tier] ),
+			        MAXX ( _tiers, Dim_Customers[customer_tier] ) & ": " & FORMAT ( MAXX ( _tiers, [@rate] ), "0%" )
+			            & " of customers bought again"
+			    )
+		displayFolder: 4 Titles
+		lineageTag: f8b2bc42-bdfa-4bb4-990c-52bf9e00beee
+
+	measure 'Monthly Repeat Title' =
+			
+			VAR _months =
+			    ADDCOLUMNS (
+			        SUMMARIZE ( Fact_Sales, Dim_Date[Year], Dim_Date[Month Number] ),
+			        "@rate", [Repeat Customer Rate]
+			    )
+			VAR _min = MINX ( _months, [@rate] )
+			VAR _max = MAXX ( _months, [@rate] )
+			VAR _first = MAXX ( TOPN ( 1, _months, Dim_Date[Year], ASC, Dim_Date[Month Number], ASC ), [@rate] )
+			VAR _last = MAXX ( TOPN ( 1, _months, Dim_Date[Year], DESC, Dim_Date[Month Number], DESC ), [@rate] )
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        COUNTROWS ( _months ) < 2, "Within-month repeat buying",
+			        _max - _min < 0.02,
+			            "Within-month repeat buying is steady at " & FORMAT ( _min, "0.0%" ) & "–" & FORMAT ( _max, "0.0%" )
+			                & ": no sign of a loyalty slide",
+			        _last < _first,
+			            "Within-month repeat buying fell from " & FORMAT ( _first, "0.0%" ) & " to " & FORMAT ( _last, "0.0%" ),
+			        "Within-month repeat buying rose from " & FORMAT ( _first, "0.0%" ) & " to " & FORMAT ( _last, "0.0%" )
+			    )
+		displayFolder: 4 Titles
+		lineageTag: f95d158d-64b7-496c-b4ad-376e6993cd30
+
+	measure 'Monthly Repeat Subtitle' =
+			
+			"Share of each month's customers who ordered 2+ times in that month. A monthly measure, so lower than the "
+			    & FORMAT ( [Repeat Customer Rate], "0.0%" ) & " period rate (axis starts at zero)"
+		displayFolder: 4 Titles
+		lineageTag: 591949e9-8bb5-424c-8796-fb08a6d692a1
 
 	column Measure
 		isHidden

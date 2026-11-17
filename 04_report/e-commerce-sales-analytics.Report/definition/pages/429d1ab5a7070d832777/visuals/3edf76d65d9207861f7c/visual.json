@@ -4,10 +4,10 @@
   "position": {
     "x": 24,
     "y": 447,
-    "z": 15000,
+    "z": 14000,
     "height": 239,
     "width": 1231,
-    "tabOrder": 15000
+    "tabOrder": 14000
   },
   "visual": {
     "visualType": "tableEx",
@@ -558,8 +558,13 @@
             },
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'Platinum buyers also return most often (60%); Silver returns least (41%)'"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measure"
+                    }
+                  },
+                  "Property": "Repeat Tier Title"
                 }
               }
             },

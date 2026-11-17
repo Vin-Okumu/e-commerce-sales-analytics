@@ -120,6 +120,13 @@
                   "Value": "false"
                 }
               }
+            },
+            "innerPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "40L"
+                }
+              }
             }
           }
         }
@@ -378,8 +385,13 @@
             },
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'Silver is the least loyal tier'"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measure"
+                    }
+                  },
+                  "Property": "Least Loyal Title"
                 }
               }
             },
