@@ -793,11 +793,20 @@ table _Measure
 		displayFolder: 2 KPI labels
 		lineageTag: ab4434f7-4beb-4b57-b700-d8c121b052c4
 
-	measure 'Total Uplift Label' = "+" & FORMAT ( DIVIDE ( [Total Uplift], [Net Transaction Value] ), "0.0%" ) & " on " & [NTV Text] & " per half-year"
+	measure 'Total Uplift Label' =
+			
+			"+" & FORMAT ( DIVIDE ( [Total Uplift], [Net Transaction Value] ), "0.0%" )
+			    & " on " & [NTV Text] & " in " & [Selected Period Text]
 		displayFolder: 2 KPI labels
 		lineageTag: 45291651-5b9b-4c5d-a2d9-a3e23b5afc75
 
-	measure 'Platinum Value Label' = "₹" & FORMAT ( DIVIDE ( [Platinum Value per Customer], 1e3 ), "#,0.0" ) & "K each this period"
+	measure 'Platinum Value Label' =
+			
+			IF (
+			    [Platinum Customers] = 0,
+			    "no Platinum customers in this selection",
+			    "₹" & FORMAT ( DIVIDE ( [Platinum Value per Customer], 1e3 ), "#,0.0" ) & "K each this period"
+			)
 		displayFolder: 2 KPI labels
 		lineageTag: 00ccac19-e7d5-4124-ad48-da7f3affba16
 
@@ -992,12 +1001,17 @@ table _Measure
 		lineageTag: cb026f3b-7c83-45de-ae2e-49fcb03aa4d3
 
 	measure 'Growth Headline' =
+			
 			VAR _levers = ADDCOLUMNS ( ALL ( 'Growth Levers' ), "@uplift", [Lever Uplift] )
 			VAR _top = TOPN ( 1, _levers, [@uplift], DESC )
 			RETURN
-			    MAXX ( _top, 'Growth Levers'[Short Name] ) & " is the biggest lever: ₹"
-			        & FORMAT ( MAXX ( _top, [@uplift] ) / 1e6, "#,0.0" ) & "M of the ₹"
-			        & FORMAT ( [Total Uplift] / 1e6, "#,0.0" ) & "M on the table"
+			    IF (
+			        [Total Uplift] > 0,
+			        MAXX ( _top, 'Growth Levers'[Short Name] ) & " is the biggest lever: ₹"
+			            & FORMAT ( MAXX ( _top, [@uplift] ) / 1e6, "#,0.0" ) & "M of the ₹"
+			            & FORMAT ( [Total Uplift] / 1e6, "#,0.0" ) & "M on the table",
+			        "Move the sliders to size the three growth levers"
+			    )
 		displayFolder: 4 Titles
 		lineageTag: 3927f7ae-ea8c-4b37-96a8-f6c194eeaab1
 
@@ -1005,12 +1019,19 @@ table _Measure
 		displayFolder: 4 Titles
 		lineageTag: 11f178c0-8fbc-47fa-8108-47e7f584d3ca
 
-	measure 'Platinum Customers' = CALCULATE ( [Total Customers], Dim_Customers[customer_tier] = "Platinum" )
+	measure 'Platinum Customers' =
+			
+			COALESCE (
+			    CALCULATE ( [Total Customers], KEEPFILTERS ( Dim_Customers[customer_tier] = "Platinum" ) ),
+			    0
+			)
 		formatString: #,0
 		displayFolder: 5 Growth what-if
 		lineageTag: 169c1dfd-0061-4f3a-afd6-90b06b17b6be
 
-	measure 'Platinum Value per Customer' = CALCULATE ( [Value per Customer], Dim_Customers[customer_tier] = "Platinum" )
+	measure 'Platinum Value per Customer' =
+			
+			CALCULATE ( [Value per Customer], KEEPFILTERS ( Dim_Customers[customer_tier] = "Platinum" ) )
 		formatString: "₹"\ #,0.00;#,0.00\ -"₹";"₹"\ #,0.00
 		displayFolder: 5 Growth what-if
 		lineageTag: c8d8324e-dfe9-4261-997c-e0da57a2b4e1
@@ -1160,8 +1181,12 @@ table _Measure
 
 	measure 'Action Protect Platinum' =
 			
-			"2. Protect Platinum: each 1 pp of Platinum churn ≈ ₹"
-			    & FORMAT ( [Platinum Customers] * 0.01 * [Platinum Value per Customer] / 1e6, "#,0.0" ) & "M"
+			IF (
+			    [Platinum Customers] = 0,
+			    "2. Protect Platinum: no Platinum customers in this selection",
+			    "2. Protect Platinum: each 1 pp of Platinum churn ≈ ₹"
+			        & FORMAT ( [Platinum Customers] * 0.01 * [Platinum Value per Customer] / 1e6, "#,0.0" ) & "M"
+			)
 		displayFolder: 0 Comparison
 		lineageTag: 5f4924ed-7211-4c84-9f5a-eaef7a33eeb7
 
@@ -1576,6 +1601,37 @@ table _Measure
 			    )
 		displayFolder: 4 Titles
 		lineageTag: 0998464c-a903-42ca-bbc6-d7c7949c273d
+
+	measure 'Lever Subtitle' =
+			
+			"Revenue uplift by lever over " & [Selected Period Text] & " · axis scaled to the sliders' maximum"
+		displayFolder: 4 Titles
+		lineageTag: 66272807-c007-493a-af70-0835912c6bec
+
+	measure 'Whatif Note' =
+			
+			"Illustrative scenarios built on " & [Selected Period Text]
+			    & " averages. Revenue, not profit: the data has no cost of goods."
+		displayFolder: 5 Growth what-if
+		lineageTag: 574ac3d5-15af-4ae7-97d2-ed2d8194ca23
+
+	measure 'Lever Axis Max' =
+			
+			VAR _maxConv =
+			    CALCULATE ( MAX ( 'Second Order Conversion'[Second Order Conversion] ), ALL ( 'Second Order Conversion' ) )
+			VAR _maxChurn =
+			    CALCULATE ( MAX ( 'Platinum Churn Avoided'[Platinum Churn Avoided] ), ALL ( 'Platinum Churn Avoided' ) )
+			VAR _maxAttach =
+			    CALCULATE ( MAX ( 'Home Attach Rate'[Home Attach Rate] ), ALL ( 'Home Attach Rate' ) )
+			VAR _second = [One-Time Customers] * _maxConv * [Average Order Value]
+			VAR _platinum = [Platinum Customers] * _maxChurn * [Platinum Value per Customer]
+			VAR _crossSell = [Electronics-Only Buyers] * _maxAttach * [Avg Home Order Value]
+			VAR _top = MAX ( _second, MAX ( _platinum, _crossSell ) )
+			RETURN
+			    IF ( _top > 0, CEILING ( _top, 10000000 ) )
+		formatString: 0
+		displayFolder: 3 Formatting
+		lineageTag: 7d3680dd-fafc-47a6-980c-a05761ddeb44
 
 	column Measure
 		isHidden

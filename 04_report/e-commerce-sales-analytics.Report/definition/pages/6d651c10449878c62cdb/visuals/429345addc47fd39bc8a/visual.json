@@ -199,8 +199,13 @@
             },
             "end": {
               "expr": {
-                "Literal": {
-                  "Value": "100000000D"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measure"
+                    }
+                  },
+                  "Property": "Lever Axis Max"
                 }
               }
             }
@@ -392,13 +397,8 @@
             },
             "text": {
               "expr": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measure"
-                    }
-                  },
-                  "Property": "Growth Headline"
+                "Literal": {
+                  "Value": "'Revenue uplift by lever'"
                 }
               }
             },
@@ -463,8 +463,13 @@
             },
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'Revenue uplift by lever, per half-year · axis fixed at ₹0–100M'"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measure"
+                    }
+                  },
+                  "Property": "Lever Subtitle"
                 }
               }
             },

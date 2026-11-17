@@ -110,6 +110,17 @@
           "selector": {
             "id": "default"
           }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'top'"
+                }
+              }
+            }
+          }
         }
       ]
     },

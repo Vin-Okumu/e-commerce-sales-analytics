@@ -521,7 +521,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Uplift = pool × assumption × value each'"
+                  "Value": "''"
                 }
               }
             },

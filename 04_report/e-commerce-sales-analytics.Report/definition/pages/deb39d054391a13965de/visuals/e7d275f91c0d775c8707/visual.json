@@ -137,6 +137,13 @@
                   "Value": "50D"
                 }
               }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'top'"
+                }
+              }
             }
           }
         }

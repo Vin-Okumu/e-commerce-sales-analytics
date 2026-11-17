@@ -1,96 +1,134 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
-  "name": "269ca0428669bc0d6b5d",
+  "name": "540907bbd65023ad9000",
   "position": {
-    "x": 940,
-    "y": 24,
-    "z": 1000,
-    "height": 58,
-    "width": 100,
-    "tabOrder": 1000
+    "x": 21.001400145930702,
+    "y": 3.2309846378354927,
+    "z": 21001,
+    "height": 79.159123626969574,
+    "width": 764.12786684809407,
+    "tabOrder": 21001
   },
   "visual": {
-    "visualType": "slicer",
+    "visualType": "cardVisual",
     "query": {
       "queryState": {
-        "Values": {
+        "Data": {
           "projections": [
             {
               "field": {
-                "Column": {
+                "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Customers"
+                      "Entity": "_Measure"
                     }
                   },
-                  "Property": "customer_tier"
+                  "Property": "Growth Headline"
                 }
               },
-              "queryRef": "Dim_Customers.customer_tier",
-              "nativeQueryRef": "customer_tier",
-              "active": true
+              "queryRef": "_Measure.Growth Headline",
+              "nativeQueryRef": "Growth Headline"
             }
           ]
         }
       }
     },
     "objects": {
-      "data": [
+      "value": [
         {
           "properties": {
-            "mode": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Dropdown'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "header": [
-        {
-          "properties": {
-            "show": {
+            "bold": {
               "expr": {
                 "Literal": {
                   "Value": "true"
                 }
               }
             },
-            "text": {
+            "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "'Tier'"
+                  "Value": "16D"
                 }
               }
             },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#9AA8C7'"
-                    }
-                  }
-                }
-              }
-            },
-            "textSize": {
+            "textWrap": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "true"
                 }
               }
-            },
-            "fontFamily": {
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "label": [
+        {
+          "properties": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "'Segoe UI'"
+                  "Value": "false"
                 }
               }
-            },
-            "bold": {
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "paddingUniform": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "layout": [
+        {
+          "properties": {
+            "paddingUniform": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'top'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
               "expr": {
                 "Literal": {
                   "Value": "false"
@@ -100,55 +138,6 @@
           }
         }
       ],
-      "items": [
-        {
-          "properties": {
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#FFFFFF'"
-                    }
-                  }
-                }
-              }
-            },
-            "background": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#111D38'"
-                    }
-                  }
-                }
-              }
-            },
-            "textSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "9D"
-                }
-              }
-            },
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Segoe UI'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "general": [
-        {
-          "properties": {}
-        }
-      ]
-    },
-    "visualContainerObjects": {
       "background": [
         {
           "properties": {
@@ -175,55 +164,9 @@
           }
         }
       ],
-      "dropShadow": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "title": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "visualHeader": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
       "padding": [
         {
           "properties": {
-            "top": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            },
             "bottom": {
               "expr": {
                 "Literal": {
@@ -231,7 +174,7 @@
                 }
               }
             },
-            "left": {
+            "top": {
               "expr": {
                 "Literal": {
                   "Value": "0D"
@@ -244,15 +187,17 @@
                   "Value": "0D"
                 }
               }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
             }
           }
         }
       ]
-    },
-    "syncGroup": {
-      "groupName": "Tier",
-      "fieldChanges": true,
-      "filterChanges": true
     },
     "drillFilterOtherVisuals": true
   }

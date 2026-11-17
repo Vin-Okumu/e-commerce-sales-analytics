@@ -21,10 +21,10 @@
                   {
                     "value": "What-if assumptions",
                     "textStyle": {
-                      "fontSize": "11pt",
-                      "color": "#FFFFFF",
+                      "fontWeight": "bold",
                       "fontFamily": "Segoe UI Semibold",
-                      "fontWeight": "bold"
+                      "fontSize": "11pt",
+                      "color": "#ffffff"
                     }
                   }
                 ]
@@ -34,9 +34,9 @@
                   {
                     "value": "Power BI what-if parameters. Drag to test a scenario.",
                     "textStyle": {
+                      "fontFamily": "Segoe UI",
                       "fontSize": "9pt",
-                      "color": "#9AA8C7",
-                      "fontFamily": "Segoe UI"
+                      "color": "#9aa8c7"
                     }
                   }
                 ]
