@@ -1697,6 +1697,10 @@ table _Measure
 		displayFolder: 3 Formatting
 		lineageTag: fa16d17a-34f9-455a-aa4d-72d2611d07e6
 
+	measure 'Repeat Customers YoY Color' = SWITCH ( LEFT ( [Repeat Customers YoY Label], 1 ), "▲", "#34D399", "▼", "#FF7A6B", "#9AA8C7" )
+		displayFolder: 3 Formatting
+		lineageTag: 0e4347dd-be07-4bb9-9ea2-84c7af780890
+
 	column Measure
 		isHidden
 		formatString: 0

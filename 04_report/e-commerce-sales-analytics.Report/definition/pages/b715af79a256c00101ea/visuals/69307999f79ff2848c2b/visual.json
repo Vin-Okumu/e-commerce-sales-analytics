@@ -41,8 +41,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#9AA8C7'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measure"
+                        }
+                      },
+                      "Property": "Repeat Customers YoY Color"
                     }
                   }
                 }
@@ -226,5 +231,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "6018fb372e561b8020a0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measure"
+              }
+            },
+            "Property": "Repeat Customers YoY Label"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

@@ -41,40 +41,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Conditional": {
-                      "Cases": [
-                        {
-                          "Condition": {
-                            "Comparison": {
-                              "ComparisonKind": 0,
-                              "Left": {
-                                "Measure": {
-                                  "Expression": {
-                                    "SourceRef": {
-                                      "Entity": "_Measure"
-                                    }
-                                  },
-                                  "Property": "NTV YoY Color"
-                                }
-                              },
-                              "Right": {
-                                "Literal": {
-                                  "Value": "''"
-                                }
-                              }
-                            },
-                            "Annotations": {
-                              "PowerBI.SQExprEvaluationKind": 1,
-                              "PowerBI.SQExprTextOperatorOption": 2
-                            }
-                          },
-                          "Value": {
-                            "Literal": {
-                              "Value": "'#1E2D4F'"
-                            }
-                          }
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measure"
                         }
-                      ]
+                      },
+                      "Property": "NTV YoY Color"
                     }
                   }
                 }
