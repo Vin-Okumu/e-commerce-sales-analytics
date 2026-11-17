@@ -597,14 +597,18 @@ table _Measure
 		displayFolder: 2 KPI labels
 		lineageTag: 0a7435dd-edf4-43a8-8646-b99d2a719504
 
-	measure 'Orders YoY Label' =
+	measure 'Order YoY Label' =
 			
 			VAR _cap = EDATE ( [Last Sale Date], -12 )
 			VAR _cs = [Comparable Start]
 			VAR _cur = CALCULATE ( [Total Orders], KEEPFILTERS ( Dim_Date[Date] >= _cs ) )
 			VAR _py = CALCULATE ( [Total Orders], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			VAR _chg = ROUND ( DIVIDE( _cur - _py, _py ), 3 )
 			RETURN
-			    IF ( NOT ISBLANK ( _py ), FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label] )
+			    IF (
+			        NOT ISBLANK ( _py ),
+			        IF ( _chg = 0, "— no change", FORMAT ( _chg, "▲ 0.0 %;▼ 0.0 %" ) ) & " " & [PY Period Label]
+			    )
 		displayFolder: 2 KPI labels
 		lineageTag: e0d30e0f-5387-4eb2-97fa-a71cc08b8ecf
 
@@ -741,37 +745,46 @@ table _Measure
 		lineageTag: be23962e-19f7-4a57-b8dc-8f23614f6b85
 
 	measure 'Delivered Rate YoY Label' =
+			
 			VAR _cap = EDATE ( [Last Sale Date], -12 )
-			VAR _cur = [Completed Order Rate]
+			VAR _cs = [Comparable Start]
+			VAR _cur = CALCULATE ( [Completed Order Rate], KEEPFILTERS ( Dim_Date[Date] >= _cs ) )
 			VAR _py = CALCULATE ( [Completed Order Rate], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			VAR _chg = ROUND ( ( _cur - _py ) * 100, 1 )
 			RETURN
 			    IF (
 			        NOT ISBLANK ( _py ),
-			        FORMAT ( ( _cur - _py ) * 100, "▲ 0.0 pp;▼ 0.0 pp;— 0.0 pp" ) & " " & [PY Period Label]
+			        IF ( _chg = 0, "— no change", FORMAT ( _chg, "▲ 0.0 pp;▼ 0.0 pp" ) ) & " " & [PY Period Label]
 			    )
 		displayFolder: 2 KPI labels
 		lineageTag: 4686f838-808c-4cd9-8ab9-2c565a0e20a4
 
 	measure 'Lost Order Rate YoY Label' =
+			
 			VAR _cap = EDATE ( [Last Sale Date], -12 )
-			VAR _cur = [Lost Order Rate]
+			VAR _cs = [Comparable Start]
+			VAR _cur = CALCULATE ( [Lost Order Rate], KEEPFILTERS ( Dim_Date[Date] >= _cs ) )
 			VAR _py = CALCULATE ( [Lost Order Rate], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			VAR _chg = ROUND ( ( _cur - _py ) * 100, 1 )
 			RETURN
 			    IF (
 			        NOT ISBLANK ( _py ),
-			        FORMAT ( ( _cur - _py ) * 100, "▲ 0.0 pp;▼ 0.0 pp;— 0.0 pp" ) & " " & [PY Period Label]
+			        IF ( _chg = 0, "— no change", FORMAT ( _chg, "▲ 0.0 pp;▼ 0.0 pp" ) ) & " " & [PY Period Label]
 			    )
 		displayFolder: 2 KPI labels
 		lineageTag: 545eef0f-ced5-43a8-bd11-7de9019a4776
 
 	measure 'Delivery Days YoY Label' =
+			
 			VAR _cap = EDATE ( [Last Sale Date], -12 )
-			VAR _cur = [Average Delivery Days]
+			VAR _cs = [Comparable Start]
+			VAR _cur = CALCULATE ( [Average Delivery Days], KEEPFILTERS ( Dim_Date[Date] >= _cs ) )
 			VAR _py = CALCULATE ( [Average Delivery Days], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
+			VAR _chg = ROUND ( _cur - _py ,1)
 			RETURN
 			    IF (
 			        NOT ISBLANK ( _py ),
-			        FORMAT ( _cur - _py, "▲ 0.0 days;▼ 0.0 days;— 0.0 days" ) & " " & [PY Period Label]
+			        IF ( _chg = 0, "— no change", FORMAT ( _chg, "▲ 0.0 days;▼ 0.0 days" ) ) & " " & [PY Period Label]
 			    )
 		displayFolder: 2 KPI labels
 		lineageTag: e0f75b11-0da9-4fbb-9ddf-72bd47e2acb7
@@ -968,8 +981,13 @@ table _Measure
 		lineageTag: cd099964-0041-4d4f-8e36-c5b6ffa078f4
 
 	measure 'Operations Headline' =
-			"1 in " & FORMAT ( DIVIDE ( 1, [Lost Order Rate] ), "0" )
-			    & " orders is cancelled or returned: ₹" & FORMAT ( DIVIDE ( [Lost Order Value], 1e6 ), "#,0" ) & "M of order value"
+			
+			IF (
+			    [Lost Orders] > 0,
+			    "1 in " & FORMAT ( DIVIDE ( 1, [Lost Order Rate] ), "0" )
+			        & " orders is cancelled or returned: ₹" & FORMAT ( DIVIDE ( [Lost Order Value], 1e6 ), "#,0" )
+			        & "M of order value"
+			)
 		displayFolder: 4 Titles
 		lineageTag: cb026f3b-7c83-45de-ae2e-49fcb03aa4d3
 
@@ -1425,6 +1443,139 @@ table _Measure
 			    & FORMAT ( [Repeat Customer Rate], "0.0%" ) & " period rate (axis starts at zero)"
 		displayFolder: 4 Titles
 		lineageTag: 591949e9-8bb5-424c-8796-fb08a6d692a1
+
+	measure 'Status Title' =
+			
+			VAR _delivered = [Completed Order Rate]
+			VAR _lost = [Lost Order Rate]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( [Total Orders] ),
+			        FORMAT ( _delivered, "0%" ) & " delivered, " & FORMAT ( _lost, "0%" ) & " cancelled or returned, "
+			            & FORMAT ( 1 - _delivered - _lost, "0%" ) & " still in progress"
+			    )
+		displayFolder: 4 Titles
+		lineageTag: 5e830612-6321-406c-8ba2-216f45ea3c7d
+
+	measure 'Payment Title' =
+			
+			VAR _modes = FILTER ( ALLSELECTED ( Fact_Sales[payment_mode] ), NOT ISBLANK ( [Total Orders] ) )
+			VAR _total = CALCULATE ( [Total Orders], ALLSELECTED ( Fact_Sales[payment_mode] ) )
+			VAR _top = TOPN ( 1, _modes, [Total Orders], DESC )
+			RETURN
+			    IF (
+			        COUNTROWS ( _modes ) > 1,
+			        MAXX ( _top, Fact_Sales[payment_mode] ) & " carries "
+			            & FORMAT ( DIVIDE ( CALCULATE ( [Total Orders], _top ), _total ), "0%" ) & " of all orders",
+			        "Orders by payment mode"
+			    )
+		displayFolder: 4 Titles
+		lineageTag: caf15cd7-f728-470d-8232-cc762ad3ed4c
+
+	measure 'Delivery Title' =
+			
+			VAR _months =
+			    ADDCOLUMNS (
+			        SUMMARIZE ( Fact_Sales, Dim_Date[Year], Dim_Date[Month Number] ),
+			        "@days", [Average Delivery Days]
+			    )
+			VAR _first = MAXX ( TOPN ( 1, _months, Dim_Date[Year], ASC, Dim_Date[Month Number], ASC ), [@days] )
+			VAR _last = MAXX ( TOPN ( 1, _months, Dim_Date[Year], DESC, Dim_Date[Month Number], DESC ), [@days] )
+			VAR _spread = MAXX ( _months, [@days] ) - MINX ( _months, [@days] )
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        ISBLANK ( [Average Delivery Days] ), BLANK (),
+			        _spread < 0.5, "Delivery holds steady at " & FORMAT ( [Average Delivery Days], "0.0" ) & " days",
+			        _last > _first,
+			            "Delivery slowed from " & FORMAT ( _first, "0.0" ) & " to " & FORMAT ( _last, "0.0" ) & " days",
+			        "Delivery sped up from " & FORMAT ( _first, "0.0" ) & " to " & FORMAT ( _last, "0.0" ) & " days"
+			    )
+		displayFolder: 4 Titles
+		lineageTag: 9c2f51b3-3897-4c00-af7f-80c9e1b1c8d1
+
+	measure 'States Title' =
+			
+			VAR _states =
+			    ADDCOLUMNS (
+			        FILTER (
+			            TOPN ( 10, FILTER ( ALLSELECTED ( Fact_Sales[state] ), NOT ISBLANK ( [Total Orders] ) ), [Total Orders], DESC ),
+			            NOT ISBLANK ( [Total Orders] )
+			        ),
+			        "@r", [Lost Order Rate]
+			    )
+			VAR _lo = TOPN ( 1, _states, [@r], ASC )
+			VAR _hi = TOPN ( 1, _states, [@r], DESC )
+			VAR _min = MAXX ( _lo, [@r] )
+			VAR _max = MAXX ( _hi, [@r] )
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        COUNTROWS ( _states ) < 2, "Lost-order rate by state",
+			        _max - _min < 0.02,
+			            "Losses are even across states (" & FORMAT ( _min, "0.0%" ) & "–" & FORMAT ( _max, "0.0%" )
+			                & "), so the cause isn't regional",
+			        "Losses vary by state, from " & FORMAT ( _min, "0.0%" ) & " in " & MAXX ( _lo, Fact_Sales[state] )
+			            & " to " & FORMAT ( _max, "0.0%" ) & " in " & MAXX ( _hi, Fact_Sales[state] )
+			    )
+		displayFolder: 4 Titles
+		lineageTag: 8749619b-f5b5-4c4b-9c0f-a2ec2aae8003
+
+	measure 'Ops Next Step' =
+			
+			VAR _pay =
+			    ADDCOLUMNS (
+			        FILTER ( ALLSELECTED ( Fact_Sales[payment_mode] ), NOT ISBLANK ( [Total Orders] ) ),
+			        "@r", [Lost Order Rate]
+			    )
+			VAR _cat =
+			    ADDCOLUMNS (
+			        FILTER ( ALLSELECTED ( Dim_Products[category] ), NOT ISBLANK ( [Total Orders] ) ),
+			        "@r", [Lost Order Rate]
+			    )
+			VAR _states =
+			    ADDCOLUMNS (
+			        FILTER (
+			            TOPN ( 10, FILTER ( ALLSELECTED ( Fact_Sales[state] ), NOT ISBLANK ( [Total Orders] ) ), [Total Orders], DESC ),
+			            NOT ISBLANK ( [Total Orders] )
+			        ),
+			        "@r", [Lost Order Rate]
+			    )
+			VAR _paySpread = MAXX ( _pay, [@r] ) - MINX ( _pay, [@r] )
+			VAR _catSpread = MAXX ( _cat, [@r] ) - MINX ( _cat, [@r] )
+			VAR _stateSpread = MAXX ( _states, [@r] ) - MINX ( _states, [@r] )
+			VAR _widest = MAX ( _paySpread, MAX ( _catSpread, _stateSpread ) )
+			VAR _payRange = "(" & FORMAT ( MINX ( _pay, [@r] ), "0.0%" ) & "–" & FORMAT ( MAXX ( _pay, [@r] ), "0.0%" ) & ")"
+			VAR _catRange = "(" & FORMAT ( MINX ( _cat, [@r] ), "0.0%" ) & "–" & FORMAT ( MAXX ( _cat, [@r] ), "0.0%" ) & ")"
+			VAR _value = "₹" & FORMAT ( DIVIDE ( [Lost Order Value], 1e6 ), "#,0" ) & "M"
+			VAR _catLo = TOPN ( 1, _cat, [@r], ASC )
+			VAR _catHi = TOPN ( 1, _cat, [@r], DESC )
+			VAR _payLo = TOPN ( 1, _pay, [@r], ASC )
+			VAR _payHi = TOPN ( 1, _pay, [@r], DESC )
+			VAR _stLo = TOPN ( 1, _states, [@r], ASC )
+			VAR _stHi = TOPN ( 1, _states, [@r], DESC )
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        ISBLANK ( [Lost Orders] ), BLANK (),
+			        _widest < 0.02,
+			            "Lost-order rates are similar by payment mode " & _payRange & " and category " & _catRange
+			                & ". Next step: capture cancellation and return reason codes, because the current data can't explain the "
+			                & _value & ".",
+			        _widest = _catSpread,
+			            "Lost-order rates differ most by category: " & FORMAT ( MAXX ( _catLo, [@r] ), "0.0%" ) & " for "
+			                & MAXX ( _catLo, Dim_Products[category] ) & " vs " & FORMAT ( MAXX ( _catHi, [@r] ), "0.0%" ) & " for "
+			                & MAXX ( _catHi, Dim_Products[category] ) & ". Start the investigation there.",
+			        _widest = _paySpread,
+			            "Lost-order rates differ most by payment mode: " & FORMAT ( MAXX ( _payLo, [@r] ), "0.0%" ) & " for "
+			                & MAXX ( _payLo, Fact_Sales[payment_mode] ) & " vs " & FORMAT ( MAXX ( _payHi, [@r] ), "0.0%" ) & " for "
+			                & MAXX ( _payHi, Fact_Sales[payment_mode] ) & ". Start the investigation there.",
+			        "Lost-order rates differ most by state: " & FORMAT ( MAXX ( _stLo, [@r] ), "0.0%" ) & " in "
+			            & MAXX ( _stLo, Fact_Sales[state] ) & " vs " & FORMAT ( MAXX ( _stHi, [@r] ), "0.0%" ) & " in "
+			            & MAXX ( _stHi, Fact_Sales[state] ) & ". Start the investigation there."
+			    )
+		displayFolder: 4 Titles
+		lineageTag: 0998464c-a903-42ca-bbc6-d7c7949c273d
 
 	column Measure
 		isHidden

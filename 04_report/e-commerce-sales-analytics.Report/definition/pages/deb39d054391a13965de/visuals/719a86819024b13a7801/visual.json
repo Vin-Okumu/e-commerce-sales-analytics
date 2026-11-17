@@ -378,8 +378,13 @@
             },
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'UPI carries half of all orders'"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measure"
+                    }
+                  },
+                  "Property": "Payment Title"
                 }
               }
             },

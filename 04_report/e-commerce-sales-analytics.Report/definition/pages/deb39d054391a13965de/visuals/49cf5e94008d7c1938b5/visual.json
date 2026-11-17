@@ -410,8 +410,13 @@
             },
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'Losses are even across states (9.5–10.4%), so the cause isn''t regional'"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measure"
+                    }
+                  },
+                  "Property": "States Title"
                 }
               }
             },

@@ -396,8 +396,13 @@
             },
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'80% delivered; 10% lost before or after delivery'"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measure"
+                    }
+                  },
+                  "Property": "Status Title"
                 }
               }
             },

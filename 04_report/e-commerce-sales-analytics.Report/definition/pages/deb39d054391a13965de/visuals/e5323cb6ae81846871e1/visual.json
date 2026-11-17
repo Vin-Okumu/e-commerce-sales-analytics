@@ -389,8 +389,13 @@
             },
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'Delivery holds steady at 4.5 days'"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measure"
+                    }
+                  },
+                  "Property": "Delivery Title"
                 }
               }
             },
