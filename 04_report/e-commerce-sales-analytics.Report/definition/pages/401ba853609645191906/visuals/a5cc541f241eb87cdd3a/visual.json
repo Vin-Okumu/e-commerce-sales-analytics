@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "a5cc541f241eb87cdd3a",
   "position": {
-    "x": 24,
-    "y": 194,
+    "x": 23.787775081409578,
+    "y": 193.70045423433513,
     "z": 13000,
-    "height": 492,
-    "width": 401,
+    "height": 479.15375521125009,
+    "width": 400.99392280090433,
     "tabOrder": 13000
   },
   "visual": {
@@ -410,8 +410,13 @@
             },
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'All top-10 products are Electronics, led by Noise Watch V1'"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measure"
+                    }
+                  },
+                  "Property": "Top Products Title"
                 }
               }
             },
@@ -661,7 +666,64 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "c9f4a002240330080307",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Products"
+              }
+            },
+            "Property": "product_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c578518232a106cb656a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measure"
+              }
+            },
+            "Property": "Net Transaction Value"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "cf4c1baf9d5049121e97",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measure"
+              }
+            },
+            "Property": "Units Sold"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a19628ba4c80c9309e0e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measure"
+              }
+            },
+            "Property": "Lost Order Rate"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "66fec0185926f33476b6",
   "position": {
-    "x": 439,
-    "y": 447,
+    "x": 438.37471221454791,
+    "y": 446.87034617219422,
     "z": 15000,
-    "height": 239,
-    "width": 816,
+    "height": 225.983863273391,
+    "width": 817.27998672557192,
     "tabOrder": 15000
   },
   "visual": {
@@ -498,8 +498,13 @@
             },
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'An Electronics order is worth 10× a Fashion order'"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measure"
+                    }
+                  },
+                  "Property": "Category AOV Title"
                 }
               }
             },

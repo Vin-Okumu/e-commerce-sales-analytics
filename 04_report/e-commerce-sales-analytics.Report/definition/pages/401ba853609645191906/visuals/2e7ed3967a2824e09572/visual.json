@@ -432,8 +432,13 @@
             },
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'Fashion is 20% of units sold but only 6% of revenue'"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measure"
+                    }
+                  },
+                  "Property": "Volume Value Title"
                 }
               }
             },

@@ -631,26 +631,24 @@ table _Measure
 		lineageTag: a18d9dfb-af90-47be-83bb-3670200e3d2b
 
 	measure 'Units YoY Label' =
+			
 			VAR _cap = EDATE ( [Last Sale Date], -12 )
-			VAR _cur = [Units Sold]
+			VAR _cs = [Comparable Start]
+			VAR _cur = CALCULATE ( [Units Sold], KEEPFILTERS ( Dim_Date[Date] >= _cs ) )
 			VAR _py = CALCULATE ( [Units Sold], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
 			RETURN
-			    IF (
-			        NOT ISBLANK ( _py ),
-			        FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label]
-			    )
+			    IF ( NOT ISBLANK ( _py ), FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label] )
 		displayFolder: 2 KPI labels
 		lineageTag: dde84042-fe2b-4e18-beb9-5167797342cd
 
 	measure 'Units per Order YoY Label' =
+			
 			VAR _cap = EDATE ( [Last Sale Date], -12 )
-			VAR _cur = [Average Units per Order]
+			VAR _cs = [Comparable Start]
+			VAR _cur = CALCULATE ( [Average Units per Order], KEEPFILTERS ( Dim_Date[Date] >= _cs ) )
 			VAR _py = CALCULATE ( [Average Units per Order], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
 			RETURN
-			    IF (
-			        NOT ISBLANK ( _py ),
-			        FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label]
-			    )
+			    IF ( NOT ISBLANK ( _py ), FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label] )
 		displayFolder: 2 KPI labels
 		lineageTag: 11df2a0a-b1bc-4b9d-bcd4-7d6902eeb28b
 
@@ -726,14 +724,13 @@ table _Measure
 		lineageTag: bbe1788c-acc7-4871-98ca-90d8e170351b
 
 	measure 'Electronics Share YoY Label' =
+			
 			VAR _cap = EDATE ( [Last Sale Date], -12 )
-			VAR _cur = [Electronics Share of Revenue]
+			VAR _cs = [Comparable Start]
+			VAR _cur = CALCULATE ( [Electronics Share of Revenue], KEEPFILTERS ( Dim_Date[Date] >= _cs ) )
 			VAR _py = CALCULATE ( [Electronics Share of Revenue], SAMEPERIODLASTYEAR ( Dim_Date[Date] ), KEEPFILTERS ( Dim_Date[Date] <= _cap ) )
 			RETURN
-			    IF (
-			        NOT ISBLANK ( _py ),
-			        FORMAT ( ( _cur - _py ) * 100, "▲ 0.0 pp;▼ 0.0 pp;— 0.0 pp" ) & " " & [PY Period Label]
-			    )
+			    IF ( NOT ISBLANK ( _py ), FORMAT ( DIVIDE ( _cur - _py, _py ), "▲ 0.0%;▼ 0.0%;— 0.0%" ) & " " & [PY Period Label] )
 		displayFolder: 2 KPI labels
 		lineageTag: 4a8e85f7-ce20-4bcc-ba23-9fad93980ff5
 
@@ -1160,6 +1157,109 @@ table _Measure
 			    & " · Values in ₹, excl. cost of goods"
 		displayFolder: 3 Formatting
 		lineageTag: ad4310d7-940c-4483-a127-f9946da4d625
+
+	measure 'Products Headline' =
+			
+			VAR _all = FILTER ( ALLSELECTED ( Dim_Products[category] ), NOT ISBLANK ( [Net Transaction Value] ) )
+			VAR _rev = CALCULATE ( [Net Transaction Value], _all )
+			VAR _units = CALCULATE ( [Units Sold], _all )
+			VAR _cats =
+			    ADDCOLUMNS (
+			        _all,
+			        "@rev", DIVIDE ( [Net Transaction Value], _rev ),
+			        "@units", DIVIDE ( [Units Sold], _units ),
+			        "@aov", [Average Order Value]
+			    )
+			VAR _gap = TOPN ( 1, FILTER ( _cats, [@units] > [@rev] ), [@units] - [@rev], DESC )
+			VAR _top = TOPN ( 1, _cats, [@rev], DESC )
+			VAR _first =
+			    MAXX ( _top, Dim_Products[category] ) & " earns " & FORMAT ( MAXX ( _top, [@rev] ), "0%" )
+			        & " of revenue from " & FORMAT ( MAXX ( _top, [@units] ), "0%" ) & " of units sold"
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        ISBLANK ( _rev ), BLANK (),
+			        COUNTROWS ( _cats ) = 1,
+			            MAXX ( _cats, Dim_Products[category] ) & " only: " & [NTV Text] & " from "
+			                & FORMAT ( _units, "#,0" ) & " units sold",
+			        ISEMPTY ( _gap ), _first,
+			        _first & "; " & MAXX ( _gap, Dim_Products[category] ) & " sells "
+			            & FORMAT ( MAXX ( _gap, [@units] ), "0%" ) & " of units for "
+			            & FORMAT ( MAXX ( _gap, [@rev] ), "0%" ) & " of revenue"
+			    )
+		displayFolder: 4 Titles
+		lineageTag: 65383bfb-627a-4049-bd8a-48aac18fc726
+
+	measure 'Volume Value Title' =
+			
+			VAR _all = FILTER ( ALLSELECTED ( Dim_Products[category] ), NOT ISBLANK ( [Net Transaction Value] ) )
+			VAR _rev = CALCULATE ( [Net Transaction Value], _all )
+			VAR _units = CALCULATE ( [Units Sold], _all )
+			VAR _cats =
+			    ADDCOLUMNS (
+			        _all,
+			        "@rev", DIVIDE ( [Net Transaction Value], _rev ),
+			        "@units", DIVIDE ( [Units Sold], _units ),
+			        "@aov", [Average Order Value]
+			    )
+			VAR _gap = TOPN ( 1, FILTER ( _cats, [@units] > [@rev] ), [@units] - [@rev], DESC )
+			RETURN
+			    IF (
+			        ISEMPTY ( _gap ),
+			        "Units and revenue are shared out similarly across categories",
+			        MAXX ( _gap, Dim_Products[category] ) & " is " & FORMAT ( MAXX ( _gap, [@units] ), "0%" )
+			            & " of units sold but only " & FORMAT ( MAXX ( _gap, [@rev] ), "0%" ) & " of revenue"
+			    )
+		displayFolder: 4 Titles
+		lineageTag: 410dabef-88b9-46eb-b0b7-337e985c0235
+
+	measure 'Category AOV Title' =
+			
+			VAR _all = FILTER ( ALLSELECTED ( Dim_Products[category] ), NOT ISBLANK ( [Net Transaction Value] ) )
+			VAR _rev = CALCULATE ( [Net Transaction Value], _all )
+			VAR _units = CALCULATE ( [Units Sold], _all )
+			VAR _cats =
+			    ADDCOLUMNS (
+			        _all,
+			        "@rev", DIVIDE ( [Net Transaction Value], _rev ),
+			        "@units", DIVIDE ( [Units Sold], _units ),
+			        "@aov", [Average Order Value]
+			    )
+			VAR _gap = TOPN ( 1, FILTER ( _cats, [@units] > [@rev] ), [@units] - [@rev], DESC )
+			VAR _hi = TOPN ( 1, _cats, [@aov], DESC )
+			VAR _lowest = TOPN ( 1, _cats, [@aov], ASC )
+			VAR _useGap = NOT ISEMPTY ( _gap )
+			VAR _hiName = MAXX ( _hi, Dim_Products[category] )
+			VAR _loName = IF ( _useGap, MAXX ( _gap, Dim_Products[category] ), MAXX ( _lowest, Dim_Products[category] ) )
+			VAR _loAov = IF ( _useGap, MAXX ( _gap, [@aov] ), MAXX ( _lowest, [@aov] ) )
+			VAR _article = IF ( LEFT ( _hiName, 1 ) IN { "A", "E", "I", "O", "U" }, "An ", "A " )
+			VAR _article2 = IF ( LEFT ( _loName, 1 ) IN { "A", "E", "I", "O", "U" }, "an ", "a " )
+			RETURN
+			    IF (
+			        COUNTROWS ( _cats ) > 1,
+			        _article & _hiName & " order is worth " & FORMAT ( DIVIDE ( MAXX ( _hi, [@aov] ), _loAov ), "0" )
+			            & "× " & _article2 & _loName & " order",
+			        "Average order value by category"
+			    )
+		displayFolder: 4 Titles
+		lineageTag: e5a2086d-0ed1-41c7-8673-5934808d5caa
+
+	measure 'Top Products Title' =
+			
+			VAR _products =
+			    FILTER ( ALLSELECTED ( Dim_Products[product_name] ), NOT ISBLANK ( [Net Transaction Value] ) )
+			VAR _top10 = TOPN ( 10, _products, [Net Transaction Value], DESC )
+			VAR _leader = MAXX ( TOPN ( 1, _top10, [Net Transaction Value], DESC ), Dim_Products[product_name] )
+			VAR _cats = CALCULATETABLE ( VALUES ( Dim_Products[category] ), _top10 )
+			VAR _n = COUNTROWS ( _cats )
+			RETURN
+			    IF (
+			        _n = 1,
+			        "All top-10 product lines are " & MAXX ( _cats, Dim_Products[category] ) & ", led by " & _leader,
+			        "The top-10 product lines span " & _n & " categories, led by " & _leader
+			    )
+		displayFolder: 4 Titles
+		lineageTag: 2bd5a55c-dc44-40ac-a44d-52a72dc13545
 
 	column Measure
 		isHidden
