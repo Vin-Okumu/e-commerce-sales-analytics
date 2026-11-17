@@ -103,7 +103,5 @@ table Dim_Customers
 				in
 				    #"Changed Type"
 
-	changedProperty = Name
-
 	annotation PBI_ResultType = Table
 

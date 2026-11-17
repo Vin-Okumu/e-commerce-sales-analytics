@@ -32,8 +32,6 @@ table Fact_Sales
 		summarizeBy: none
 		sourceColumn: order_date
 
-		changedProperty = DataType
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -315,8 +313,6 @@ table Fact_Sales
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"order_id", type text}, {"customer_id", type text}, {"product_id", type text}, {"order_date", type date}, {"order_time", type time}, {"delivery_date", type date}, {"quantity", Int64.Type}, {"unit_price", type number}, {"order_value", type number}, {"shipping_cost", type number}, {"coupon_code", type text}, {"coupon_discount", type number}, {"total_amount", type number}, {"payment_mode", type text}, {"order_status", type text}, {"rating", Int64.Type}, {"review_text", type text}, {"city", type text}, {"state", type text}, {"customer_age", Int64.Type}, {"customer_age_group", type text}, {"order_hour", Int64.Type}, {"delivery_days", Int64.Type}, {"coupon_used", type text}, {"order_year", Int64.Type}, {"order_month", Int64.Type}, {"order_month_name", type text}, {"order_quarter", Int64.Type}, {"order_day", Int64.Type}, {"order_day_name", type text}, {"registration_date", type date}, {"customer_tenure_days", Int64.Type}})
 				in
 				    #"Changed Type"
-
-	changedProperty = Name
 
 	annotation PBI_ResultType = Table
 
