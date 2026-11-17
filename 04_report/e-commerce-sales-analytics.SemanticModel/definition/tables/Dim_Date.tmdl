@@ -82,6 +82,13 @@ table Dim_Date
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Month Short' = FORMAT ( Dim_Date[Date], "mmm" )
+		lineageTag: 63df43b4-dca0-4337-8e2a-0f2dc09a5e66
+		summarizeBy: none
+		sortByColumn: 'Month Number'
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Dim_Date = calculated
 		mode: import
 		source =

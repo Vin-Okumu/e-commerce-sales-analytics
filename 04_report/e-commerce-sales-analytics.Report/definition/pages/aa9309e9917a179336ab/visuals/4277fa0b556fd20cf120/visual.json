@@ -23,11 +23,11 @@
                       "Entity": "Dim_Date"
                     }
                   },
-                  "Property": "Month"
+                  "Property": "Month Short"
                 }
               },
-              "queryRef": "Dim_Date.Month",
-              "nativeQueryRef": "Month",
+              "queryRef": "Dim_Date.Month Short",
+              "nativeQueryRef": "Month Short",
               "active": true
             }
           ]
@@ -66,23 +66,6 @@
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Dim_Date"
-                  }
-                },
-                "Property": "Month"
-              }
-            },
-            "direction": "Ascending"
-          }
-        ]
       }
     },
     "objects": {
