@@ -23,7 +23,7 @@
                       "Entity": "_Measure"
                     }
                   },
-                  "Property": "Repeat Customer YoY Label"
+                  "Property": "Repeat Customers YoY Label"
                 }
               },
               "queryRef": "_Measure.Repeat Customers YoY Label",

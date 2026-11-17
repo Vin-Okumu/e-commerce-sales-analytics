@@ -597,7 +597,7 @@ table _Measure
 		displayFolder: 2 KPI labels
 		lineageTag: 0a7435dd-edf4-43a8-8646-b99d2a719504
 
-	measure 'Order YoY Label' =
+	measure 'Orders YoY Label' =
 			
 			VAR _cap = EDATE ( [Last Sale Date], -12 )
 			VAR _cs = [Comparable Start]
@@ -678,7 +678,7 @@ table _Measure
 		displayFolder: 2 KPI labels
 		lineageTag: 9f1a3c90-b5ff-43b4-ba35-fd88927875d8
 
-	measure 'Repeat Customer YoY Label' =
+	measure 'Repeat Customers YoY Label' =
 			
 			VAR _cap = EDATE ( [Last Sale Date], -12 )
 			VAR _cs = [Comparable Start]
@@ -1632,6 +1632,70 @@ table _Measure
 		formatString: 0
 		displayFolder: 3 Formatting
 		lineageTag: 7d3680dd-fafc-47a6-980c-a05761ddeb44
+
+	measure 'NTV YoY Color' = SWITCH ( LEFT ( [NTV YoY Label], 1 ), "▲", "#34D399", "▼", "#FF7A6B", "#9AA8C7" )
+		displayFolder: 3 Formatting
+		lineageTag: 7996a8b6-af1d-40cb-b7a5-4c0ed32fd337
+
+	measure 'Orders YoY Color' = SWITCH ( LEFT ( [Orders YoY Label], 1 ), "▲", "#34D399", "▼", "#FF7A6B", "#9AA8C7" )
+		displayFolder: 3 Formatting
+		lineageTag: cc6fe99b-51f2-4ad8-ae82-92d70a48fa90
+
+	measure 'AOV YoY Color' = SWITCH ( LEFT ( [AOV YoY Label], 1 ), "▲", "#34D399", "▼", "#FF7A6B", "#9AA8C7" )
+		displayFolder: 3 Formatting
+		lineageTag: 13caf05e-af94-4a20-a438-7ddd4642b715
+
+	measure 'Customers YoY Color' = SWITCH ( LEFT ( [Customers YoY Label], 1 ), "▲", "#34D399", "▼", "#FF7A6B", "#9AA8C7" )
+		displayFolder: 3 Formatting
+		lineageTag: a1632f4b-dc58-4b49-aa07-02dc90364e34
+
+	measure 'Repeat Rate YoY Color' = SWITCH ( LEFT ( [Repeat Rate YoY Label], 1 ), "▲", "#34D399", "▼", "#FF7A6B", "#9AA8C7" )
+		displayFolder: 3 Formatting
+		lineageTag: eeb37596-04ad-4f89-b344-1e2a98aeb7b1
+
+	measure 'Electronics Share YoY Color' = SWITCH ( LEFT ( [Electronics Share YoY Label], 1 ), "▲", "#34D399", "▼", "#FF7A6B", "#9AA8C7" )
+		displayFolder: 3 Formatting
+		lineageTag: 1d81d76b-58a2-4034-b588-e32fabd79a7d
+
+	measure 'Units YoY Color' = SWITCH ( LEFT ( [Units YoY Label], 1 ), "▲", "#34D399", "▼", "#FF7A6B", "#9AA8C7" )
+		displayFolder: 3 Formatting
+		lineageTag: 836185c7-4f33-4307-b3ee-d4eff497ad5d
+
+	measure 'Units per Order YoY Color' = SWITCH ( LEFT ( [Units per Order YoY Label], 1 ), "▲", "#34D399", "▼", "#FF7A6B", "#9AA8C7" )
+		displayFolder: 3 Formatting
+		lineageTag: ec512d48-bd90-4bfd-a61b-b305e6466c1d
+
+	measure 'Value per Customer YoY Color' = SWITCH ( LEFT ( [Value per Customer YoY Label], 1 ), "▲", "#34D399", "▼", "#FF7A6B", "#9AA8C7" )
+		displayFolder: 3 Formatting
+		lineageTag: bef67b42-c620-4a2f-8935-91a6b8690adb
+
+	measure 'Orders per Customer YoY Color' = SWITCH ( LEFT ( [Orders per Customer YoY Label], 1 ), "▲", "#34D399", "▼", "#FF7A6B", "#9AA8C7" )
+		displayFolder: 3 Formatting
+		lineageTag: 14e41c1e-901c-4e97-a8de-cce06b38fb7e
+
+	measure 'Platinum Share YoY Color' = SWITCH ( LEFT ( [Platinum Share YoY Label], 1 ), "▲", "#34D399", "▼", "#FF7A6B", "#9AA8C7" )
+		displayFolder: 3 Formatting
+		lineageTag: 82cf4965-40e9-4406-aed6-a49aaf0eaba7
+
+	measure 'Repeat Revenue Share YoY Color' = SWITCH ( LEFT ( [Repeat Revenue Share YoY Label], 1 ), "▲", "#34D399", "▼", "#FF7A6B", "#9AA8C7" )
+		displayFolder: 3 Formatting
+		lineageTag: 9a587bef-e7bb-4f95-b83b-9941bb2815fa
+
+	measure 'Delivered Rate YoY Color' = SWITCH ( LEFT ( [Delivered Rate YoY Label], 1 ), "▲", "#34D399", "▼", "#FF7A6B", "#9AA8C7" )
+		displayFolder: 3 Formatting
+		lineageTag: c68ea834-f1bd-4def-9098-101f2f181f2a
+
+	measure 'One-Time Customers YoY Color' = SWITCH ( LEFT ( [One-Time Customers YoY Label], 1 ), "▲", "#FF7A6B", "▼", "#34D399", "#9AA8C7" )
+		displayFolder: 3 Formatting
+		lineageTag: b2d9a62c-9f89-4614-a0a7-2bc566bbac27
+
+	measure 'Lost Order Rate YoY Color' = SWITCH ( LEFT ( [Lost Order Rate YoY Label], 1 ), "▲", "#FF7A6B", "▼", "#34D399", "#9AA8C7" )
+		displayFolder: 3 Formatting
+		lineageTag: 7e2b7f16-d1a1-48a8-b846-df4a59a6538d
+
+	measure 'Delivery Days YoY Color' = SWITCH ( LEFT ( [Delivery Days YoY Label], 1 ), "▲", "#FF7A6B", "▼", "#34D399", "#9AA8C7" )
+		displayFolder: 3 Formatting
+		lineageTag: fa16d17a-34f9-455a-aa4d-72d2611d07e6
 
 	column Measure
 		isHidden

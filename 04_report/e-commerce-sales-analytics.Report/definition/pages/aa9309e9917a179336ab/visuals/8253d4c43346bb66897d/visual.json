@@ -23,11 +23,11 @@
                       "Entity": "_Measure"
                     }
                   },
-                  "Property": "Order YoY Label"
+                  "Property": "Orders YoY Label"
                 }
               },
               "queryRef": "_Measure.Orders YoY Label",
-              "nativeQueryRef": "Orders YoY Label"
+              "nativeQueryRef": "Orders YoY Label1"
             }
           ]
         }
@@ -41,8 +41,40 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#9AA8C7'"
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 0,
+                              "Left": {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "_Measure"
+                                    }
+                                  },
+                                  "Property": "Orders YoY Color"
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "''"
+                                }
+                              }
+                            },
+                            "Annotations": {
+                              "PowerBI.SQExprEvaluationKind": 1,
+                              "PowerBI.SQExprTextOperatorOption": 2
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#1E2D4F'"
+                            }
+                          }
+                        }
+                      ]
                     }
                   }
                 }

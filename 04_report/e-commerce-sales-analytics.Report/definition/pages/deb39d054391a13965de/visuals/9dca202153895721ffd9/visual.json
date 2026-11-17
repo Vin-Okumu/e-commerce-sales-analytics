@@ -23,7 +23,7 @@
                       "Entity": "_Measure"
                     }
                   },
-                  "Property": "Order YoY Label"
+                  "Property": "Orders YoY Label"
                 }
               },
               "queryRef": "_Measure.Orders YoY Label",
