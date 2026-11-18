@@ -1183,8 +1183,8 @@ table _Measure
 			
 			IF (
 			    [Platinum Customers] = 0,
-			    "2. Protect Platinum: no Platinum customers in this selection",
-			    "2. Protect Platinum: each 1 pp of Platinum churn ≈ ₹"
+			    "2. Protect Platinum: No Platinum customers in this selection",
+			    "2. Protect Platinum: Each 1 pp of Platinum churn ≈ ₹"
 			        & FORMAT ( [Platinum Customers] * 0.01 * [Platinum Value per Customer] / 1e6, "#,0.0" ) & "M"
 			)
 		displayFolder: 0 Comparison
